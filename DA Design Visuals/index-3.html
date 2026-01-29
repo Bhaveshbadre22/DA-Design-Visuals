@@ -2210,6 +2210,64 @@
       });
    })();
 
+   // Latest Projects cards scroll animation
+   (function() {
+      if (typeof gsap === 'undefined') return;
+
+      const wraps = document.querySelectorAll('.tp-project-3-wrap');
+      if (!wraps.length) return;
+
+      if (typeof ScrollTrigger !== 'undefined' && gsap.registerPlugin) {
+         gsap.registerPlugin(ScrollTrigger);
+      }
+      if (typeof ScrollTrigger === 'undefined') return;
+
+      wraps.forEach(function(wrap) {
+         const leftImg = wrap.querySelector('.pro-img-1');
+         const rightImg = wrap.querySelector('.pro-img-2');
+         const content = wrap.querySelector('.tp-project-3-content');
+
+         if (!leftImg && !rightImg && !content) return;
+
+         if (content) {
+            gsap.set(content, { autoAlpha: 0, y: 40 });
+         }
+         if (leftImg) {
+            gsap.set(leftImg, { xPercent: -10, autoAlpha: 0 });
+         }
+         if (rightImg) {
+            gsap.set(rightImg, { xPercent: 10, autoAlpha: 0 });
+         }
+
+         gsap.timeline({
+            scrollTrigger: {
+               trigger: wrap,
+               start: 'top 80%',
+               end: 'bottom 60%',
+               scrub: true
+            }
+         })
+         .to(leftImg, {
+            xPercent: -20,
+            autoAlpha: 1,
+            ease: 'power2.out',
+            duration: 1
+         }, 0)
+         .to(rightImg, {
+            xPercent: 20,
+            autoAlpha: 1,
+            ease: 'power2.out',
+            duration: 1
+         }, 0)
+         .to(content, {
+            autoAlpha: 1,
+            y: 0,
+            ease: 'power2.out',
+            duration: 1
+         }, 0.1);
+      });
+   })();
+
    // Combined world-projects text and global map scroll sequence (single pinned section)
    (function() {
       const section = document.getElementById('da-global-map');
