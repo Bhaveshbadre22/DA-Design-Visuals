@@ -412,6 +412,22 @@
          .tp-header-3-area.mt-35 {
             margin-top: 15px;
          }
+
+         /* Mobile header logo sizing */
+         .tp-header-3-mobile-logo img {
+            max-height: 32px;
+            width: auto;
+         }
+
+         /* Make intro text after hero smaller on mobile */
+         .tp-about-3-title-box .tp-section-title-90 {
+            font-size: 32px !important;
+            line-height: 1.25;
+         }
+
+         .tp-about-3-title-box .tp-section-subtitle-2 {
+            font-size: 12px;
+         }
       }
 
       /* Hide all dropdown / mega-menu submenus in the main navigation */
@@ -596,7 +612,21 @@
       <!-- full-screen hero with left menu & centered logo -->
       <div id="header-sticky" class="tp-header-3-area mt-35 z-index-5" style="background: transparent; box-shadow: none;">
             <div class="container-fluid">
-               <div class="row align-items-center">
+
+               <!-- Mobile header: logo + hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-6">
+                     <div class="tp-header-3-mobile-logo">
+                        <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                     </div>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end">
+                     <button class="tp-header-3-bar tp-offcanvas-open-btn"><i class="fa-solid fa-bars"></i></button>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
                   <div class="col-xl-4 col-lg-4 col-md-4 col-6">
                      <div class="tp-header-3-menu-wrap text-start">
                         <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
@@ -2126,11 +2156,6 @@
    (function() {
       const section = document.getElementById('da-video-section');
       if (!section || typeof gsap === 'undefined') return;
-
-      // Skip heavy pinned animation on small screens for smoother mobile UX
-      if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
-         return;
-      }
 
       const wrapper = section.querySelector('.da-video-wrapper');
       const daText = document.getElementById('da-text');
