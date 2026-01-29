@@ -396,6 +396,24 @@
          }
       }
 
+      /* Mobile-specific tweaks */
+      @media (max-width: 767px) {
+         /* Hide vertical scroll progress bar on small screens */
+         .scroll-progress-bar {
+            display: none !important;
+         }
+
+         /* Disable floating service preview image on mobile */
+         .tp-service-3-floating-img {
+            display: none !important;
+         }
+
+         /* Slightly reduce hero top spacing on small screens */
+         .tp-header-3-area.mt-35 {
+            margin-top: 15px;
+         }
+      }
+
       /* Hide all dropdown / mega-menu submenus in the main navigation */
       .tp-main-menu-content .tp-submenu,
       .tp-main-menu-content .tp-mega-menu {
@@ -2109,6 +2127,11 @@
       const section = document.getElementById('da-video-section');
       if (!section || typeof gsap === 'undefined') return;
 
+      // Skip heavy pinned animation on small screens for smoother mobile UX
+      if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
+         return;
+      }
+
       const wrapper = section.querySelector('.da-video-wrapper');
       const daText = document.getElementById('da-text');
       const overlay = section.querySelector('.da-overlay-layer');
@@ -2166,6 +2189,11 @@
    (function() {
       const section = document.getElementById('da-global-map');
       if (!section || typeof gsap === 'undefined') return;
+
+       // Disable complex pinned scroll animation on mobile
+       if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
+          return;
+       }
 
       const wrapper = section.querySelector('.da-global-map-inner') || section;
       const worldLines = Array.from(wrapper.querySelectorAll('.tp-world-line'));
@@ -2294,6 +2322,11 @@
    (function() {
       const section = document.getElementById('sketch-layout');
       if (!section || typeof gsap === 'undefined') return;
+
+      // Keep this section static on small screens
+      if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
+         return;
+      }
 
       const image = section.querySelector('.sketch-main-image');
       if (!image) return;
