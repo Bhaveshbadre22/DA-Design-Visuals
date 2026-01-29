@@ -2210,7 +2210,7 @@
       });
    })();
 
-   // Latest Projects cards scroll animation
+   // Latest Projects cards scroll animation (desktop + mobile)
    (function() {
       if (typeof gsap === 'undefined') return;
 
@@ -2222,6 +2222,8 @@
       }
       if (typeof ScrollTrigger === 'undefined') return;
 
+      const isMobile = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+
       wraps.forEach(function(wrap) {
          const leftImg = wrap.querySelector('.pro-img-1');
          const rightImg = wrap.querySelector('.pro-img-2');
@@ -2230,41 +2232,70 @@
          if (!leftImg && !rightImg && !content) return;
 
          if (content) {
-            gsap.set(content, { autoAlpha: 0, y: 40 });
-         }
-         if (leftImg) {
-            gsap.set(leftImg, { xPercent: -10, autoAlpha: 0 });
-         }
-         if (rightImg) {
-            gsap.set(rightImg, { xPercent: 10, autoAlpha: 0 });
+            gsap.set(content, { autoAlpha: 0, y: isMobile ? 30 : 40 });
          }
 
-         gsap.timeline({
+         if (leftImg) {
+            if (isMobile) {
+               gsap.set(leftImg, { yPercent: -5, autoAlpha: 0 });
+            } else {
+               gsap.set(leftImg, { xPercent: -10, autoAlpha: 0 });
+            }
+         }
+
+         if (rightImg) {
+            if (isMobile) {
+               gsap.set(rightImg, { yPercent: 5, autoAlpha: 0 });
+            } else {
+               gsap.set(rightImg, { xPercent: 10, autoAlpha: 0 });
+            }
+         }
+
+         const tl = gsap.timeline({
             scrollTrigger: {
                trigger: wrap,
                start: 'top 80%',
                end: 'bottom 60%',
                scrub: true
             }
-         })
-         .to(leftImg, {
-            xPercent: -20,
-            autoAlpha: 1,
-            ease: 'power2.out',
-            duration: 1
-         }, 0)
-         .to(rightImg, {
-            xPercent: 20,
-            autoAlpha: 1,
-            ease: 'power2.out',
-            duration: 1
-         }, 0)
-         .to(content, {
-            autoAlpha: 1,
-            y: 0,
-            ease: 'power2.out',
-            duration: 1
-         }, 0.1);
+         });
+
+         if (leftImg) {
+            tl.to(leftImg, isMobile ? {
+               yPercent: -10,
+               autoAlpha: 1,
+               ease: 'power2.out',
+               duration: 1
+            } : {
+               xPercent: -20,
+               autoAlpha: 1,
+               ease: 'power2.out',
+               duration: 1
+            }, 0);
+         }
+
+         if (rightImg) {
+            tl.to(rightImg, isMobile ? {
+               yPercent: 10,
+               autoAlpha: 1,
+               ease: 'power2.out',
+               duration: 1
+            } : {
+               xPercent: 20,
+               autoAlpha: 1,
+               ease: 'power2.out',
+               duration: 1
+            }, 0);
+         }
+
+         if (content) {
+            tl.to(content, {
+               autoAlpha: 1,
+               y: 0,
+               ease: 'power2.out',
+               duration: 1
+            }, 0.1);
+         }
       });
    })();
 
