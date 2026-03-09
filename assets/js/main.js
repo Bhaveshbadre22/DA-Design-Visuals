@@ -67,6 +67,26 @@
 	// 08. Nice Select Js
 	$('select').niceSelect();
 
+
+	function back_to_top() {
+		var btn = $('#back_to_top');
+		var btn_wrapper = $('.back-to-top-wrapper');
+
+		windowOn.scroll(function () {
+			if (windowOn.scrollTop() > 300) {
+				btn_wrapper.addClass('back-to-top-btn-show');
+			} else {
+				btn_wrapper.removeClass('back-to-top-btn-show');
+			}
+		});
+
+		btn.on('click', function (e) {
+			e.preventDefault();
+			$('html, body').animate({ scrollTop: 0 }, '300');
+		});
+	}
+	back_to_top();
+
 	////////////////////////////////////////////////////
 	// 01. PreLoader Js
 	windowOn.on('load', function () {
@@ -236,11 +256,7 @@
 			var target = $(this.getAttribute('href'));
 			if (target.length) {
 				event.preventDefault();
-				var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
-				if (smoother) {
-					// Use GSAP ScrollSmoother when available (homepage)
-					smoother.scrollTo(target[0], true, "top top-120");
-				} else if (window.lenis) {
+				if (window.lenis) {
 					// Use Lenis for smooth anchor scrolling when available
 					window.lenis.scrollTo(target[0], { offset: -120 });
 				} else {
@@ -267,11 +283,7 @@
 
 		btn.on('click', function (e) {
 			e.preventDefault();
-			var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
-			if (smoother) {
-				// Use GSAP ScrollSmoother if active
-				smoother.scrollTo(0, true);
-			} else if (window.lenis) {
+			if (window.lenis) {
 				window.lenis.scrollTo(0);
 			} else {
 				$('html, body').animate({ scrollTop: 0 }, '300');
@@ -1831,8 +1843,6 @@
 			ignoreMobileResize: true,
 		});
 
-		// expose for other scripts (back-to-top, anchor links)
-		window.daSmoother = smoother;
 	}
 
 	/////////////////////////////////////////////////////
