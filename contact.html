@@ -1,0 +1,1880 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Contact – DA Design Visuals</title>
+   <meta name="description" content="Contact DA Design Visuals to discuss your next interior project.">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+   <!-- Page-specific styles -->
+   <style>
+      body {
+         background-color: #f9fafb;
+         color: #111827;
+      }
+
+      /* Back-to-top button: match homepage yellow floating button */
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      /* Contact page header bar: solid black background (override global inner-page styles) */
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      /* make sure header nav items are white on this page (override inner-page default) */
+      body.page-inner .tp-header-3-menu > nav > ul > li > a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu > nav > ul > li > a:hover {
+         color: #f9cb08;
+      }
+
+      /* ensure quote button is white on black header for this page */
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      /* center menu items within the middle column on desktop */
+      
+            #ffffff;
+      }
+
+      .da-contact-hero-right h4 {
+         font-size: 18px;
+         margin-bottom: 10px;
+      }
+
+      .da-contact-hero-right p {
+         font-size: 14px;
+         color: rgba(55, 65, 81, 0.9);
+         margin-bottom: 18px;
+      }
+
+      .da-contact-hero-grid {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 14px;
+      }
+
+      .da-contact-hero-card {
+         padding: 12px 14px;
+         border-radius: 14px;
+         background-color: #ffffff;
+         border: 1px solid rgba(209, 213, 219, 0.9);
+         font-size: 13px;
+      }
+
+      .da-contact-hero-card span {
+         display: block;
+         font-size: 11px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: rgba(75, 85, 99, 0.85);
+         margin-bottom: 6px;
+      }
+
+      .da-contact-hero-card strong,
+      .da-contact-hero-card a {
+         color: #111827;
+      }
+
+      .da-contact-hero-card a {
+         text-decoration: none;
+      }
+
+      .da-contact-hero-map-wrap {
+         margin-top: 40px;
+         border-radius: 22px;
+         overflow: hidden;
+         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.28);
+         background-color: #ffffff;
+      }
+
+      .da-contact-hero-map {
+         width: 100%;
+         height: 400px;
+         border: 0;
+         display: block;
+      }
+
+      /* full width map directly under header */
+      .da-contact-map-full {
+         width: 100%;
+         overflow: hidden;
+      }
+
+      .da-contact-map-full iframe {
+         width: 100%;
+         height: 500px;
+         border: 0;
+         display: block;
+      }
+
+      /* Quick contact cards (address / email / phone / hours) */
+      .da-contact-quick-cards {
+         padding: 36px 0 10px;
+         background-color: #f9fafb;
+      }
+
+      .da-contact-quick-card {
+         position: relative;
+         padding: 22px 26px;
+         border-radius: 26px;
+         background-color: #ffffff;
+         border: 1px solid #e5e7eb;
+         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.04);
+         display: flex;
+         flex-direction: column;
+         gap: 6px;
+         min-height: 124px;
+      }
+
+      .da-contact-quick-label {
+         font-size: 12px;
+         letter-spacing: 0.14em;
+         text-transform: uppercase;
+         color: #6b7280;
+      }
+
+      .da-contact-quick-value {
+         font-size: 16px;
+         line-height: 1.4;
+         font-weight: 500;
+         color: #111827;
+         max-width: 260px;
+      }
+
+      .da-contact-quick-icon {
+         position: absolute;
+         top: 50%;
+         right: 26px;
+         transform: translateY(-50%);
+         width: 46px;
+         height: 46px;
+         border-radius: 999px;
+         background-color: #F9CB08;
+         color: #050505;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-decoration: none;
+         box-shadow: 0 14px 32px rgba(249, 203, 8, 0.45);
+         transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, background-color 0.22s ease-out;
+      }
+
+      .da-contact-quick-icon i {
+         font-size: 16px;
+      }
+
+      .da-contact-quick-card:hover .da-contact-quick-icon {
+         transform: translateY(-56%);
+         box-shadow: 0 18px 40px rgba(249, 203, 8, 0.6);
+         background-color: #FACC15;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-contact-quick-cards {
+            padding-top: 30px;
+         }
+      }
+
+      @media (max-width: 575.98px) {
+         .da-contact-quick-card {
+            padding: 18px 20px;
+            min-height: 0;
+         }
+
+         .da-contact-quick-value {
+            font-size: 16px;
+            max-width: none;
+         }
+
+         .da-contact-quick-icon {
+            width: 40px;
+            height: 40px;
+            right: 18px;
+         }
+      }
+
+      /* Minimal "hire us" contact form (Mattered-style) */
+      .da-contact-minimal {
+         padding: 100px 0 60px;
+         background-color: #ffffff;
+      }
+
+      .da-contact-minimal .container-1480 {
+         max-width: 980px;
+         text-align: center;
+      }
+
+      .da-contact-minimal-left-label {
+         font-size: 13px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #9ca3af;
+         margin-bottom: 8px;
+      }
+
+      .da-contact-minimal-left-email {
+         font-size: 18px;
+         font-weight: 500;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #050505;
+         text-decoration: none;
+         display: inline-block;
+         margin-bottom: 32px;
+      }
+
+      .da-contact-minimal-left-email:hover {
+         text-decoration: underline;
+      }
+
+      .da-contact-minimal-left-follow {
+         font-size: 13px;
+         color: #6b7280;
+         margin-bottom: 10px;
+      }
+
+      .da-contact-minimal-socials {
+         display: flex;
+         align-items: center;
+         gap: 14px;
+         margin-bottom: 40px;
+      }
+
+      .da-contact-minimal-socials a {
+         color: #111827;
+      }
+
+      .da-contact-minimal-left-copy {
+         font-size: 13px;
+         line-height: 1.7;
+         color: #4b5563;
+         max-width: 260px;
+         margin-bottom: 24px;
+      }
+
+      .da-contact-minimal .da-contact-minimal-heading-eyebrow {
+         font-size: 13px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #9ca3af;
+         margin-bottom: 12px;
+      }
+
+      .da-contact-minimal-title {
+         font-size: 52px;
+         line-height: 1.05;
+         font-weight: 600;
+         letter-spacing: 0.02em;
+         text-transform: uppercase;
+         margin-bottom: 30px;
+      }
+
+      .da-contact-minimal-title span {
+         display: block;
+      }
+
+      .da-contact-chips-group-label {
+         font-size: 14px;
+         color: #6b7280;
+         margin-bottom: 8px;
+         text-align: center;
+      }
+
+      .da-contact-chips-row {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         margin-bottom: 18px;
+         justify-content: center;
+      }
+
+      .da-chip-input {
+         position: absolute;
+         opacity: 0;
+         pointer-events: none;
+      }
+
+      .da-chip-label {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         padding: 6px 18px;
+         border-radius: 999px;
+         border: 1px solid #e5e7eb;
+         background-color: #f4f4f5;
+         font-size: 13px;
+         color: #111827;
+         cursor: pointer;
+         transition: background-color 0.18s ease-out, color 0.18s ease-out, border-color 0.18s ease-out;
+      }
+
+      .da-chip-input:checked + .da-chip-label {
+         background-color: #050505;
+         border-color: #050505;
+         color: #ffffff;
+      }
+
+      .da-contact-minimal-fields-row {
+         display: flex;
+         gap: 34px;
+         margin-top: 26px;
+         margin-bottom: 30px;
+         flex-wrap: wrap;
+         text-align: left;
+      }
+
+      .da-contact-minimal-field {
+         flex: 1 1 220px;
+         text-align: left;
+      }
+
+      .da-contact-minimal-field label {
+         display: block;
+         font-size: 14px;
+         color: #6b7280;
+         margin-bottom: 6px;
+         text-align: left;
+      }
+
+      .da-contact-minimal-input,
+      .da-contact-minimal-textarea {
+         width: 100%;
+         border: none;
+         border-bottom: 1px solid #e5e7eb;
+         padding: 6px 0 8px;
+         font-size: 14px;
+         color: #111827;
+         background: transparent;
+         border-radius: 0;
+      }
+
+      .da-contact-minimal-input::placeholder,
+      .da-contact-minimal-textarea::placeholder {
+         color: #9ca3af;
+      }
+
+      .da-contact-minimal-input:focus,
+      .da-contact-minimal-textarea:focus {
+         outline: none;
+         border-bottom-color: #111827;
+      }
+
+      .da-contact-minimal-textarea {
+         resize: vertical;
+         min-height: 70px;
+      }
+
+      .da-contact-minimal-footer {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 26px;
+         margin-top: 40px;
+      }
+
+      .da-contact-minimal-submit {
+         width: 140px;
+         height: 140px;
+         border-radius: 999px;
+         border: none;
+         background-color: #F9CB08;
+         color: #050505;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 14px;
+         font-weight: 500;
+         cursor: pointer;
+         transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
+         box-shadow: 0 18px 45px rgba(249, 203, 8, 0.45);
+      }
+
+      .da-contact-minimal-submit:hover {
+         transform: translateY(-4px);
+         box-shadow: 0 24px 60px rgba(249, 203, 8, 0.65);
+         background-color: #FACC15;
+      }
+
+      .da-contact-minimal-note {
+         font-size: 12px;
+         color: #6b7280;
+         max-width: 340px;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-contact-minimal {
+            padding: 60px 0 30px;
+         }
+
+         .da-contact-minimal-title {
+            font-size: 38px;
+         }
+      }
+
+      @media (max-width: 767.98px) {
+         .da-contact-minimal-title {
+            font-size: 30px;
+         }
+
+         .da-contact-minimal-footer {
+            flex-direction: column;
+            align-items: center;
+         }
+
+         .da-contact-minimal-submit {
+            width: 110px;
+            height: 110px;
+         }
+      }
+
+      /* Contact page brand/logo slider strip */
+      .da-contact-brand-area {
+         background-color: #F9CB08;
+         padding: 40px 0;
+      }
+
+      /* Main contact layout */
+      .da-contact-main-area {
+         padding-top: 40px;
+         padding-bottom: 120px;
+         background: #f9fafb;
+      }
+
+      .da-contact-section-label {
+         font-size: 13px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #f9cb08;
+         margin-bottom: 14px;
+      }
+
+      .da-contact-section-title {
+         font-size: 32px;
+         line-height: 1.2;
+         margin-bottom: 14px;
+      }
+
+      .da-contact-section-text {
+         font-size: 15px;
+         max-width: 480px;
+         color: rgba(55, 65, 81, 0.85);
+      }
+
+      .da-contact-form-card {
+         margin-top: 32px;
+         padding: 28px 26px 26px;
+         border-radius: 22px;
+         border: 1px solid rgba(209, 213, 219, 0.9);
+         background-color: #ffffff;
+      }
+
+      .cn-contactform-input {
+         margin-bottom: 22px;
+      }
+
+      .da-contact-submit-wrap {
+         margin-top: 10px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 14px;
+         align-items: center;
+      }
+
+      .da-contact-small-note {
+         font-size: 12px;
+         color: rgba(75, 85, 99, 0.8);
+      }
+
+      .da-contact-small-note span {
+         color: #f9cb08;
+      }
+
+      .ajax-response.success {
+         margin-top: 14px;
+         font-size: 13px;
+         color: #30d158;
+      }
+
+      .ajax-response.error {
+         margin-top: 14px;
+         font-size: 13px;
+         color: #ff453a;
+      }
+
+      /* Right side info column */
+      .tp-contact-6-info-wrap {
+         padding: 30px 26px 24px;
+         border-radius: 22px;
+         border: 1px solid rgba(209, 213, 219, 0.9);
+         background:
+            radial-gradient(circle at 0 10%, rgba(249, 203, 8, 0.16) 0, transparent 60%),
+            #ffffff;
+      }
+
+      .tp-contact-6-title-box .tp-section-title-80 {
+         font-size: 32px;
+         line-height: 1.2;
+         margin-bottom: 10px;
+      }
+
+      .tp-contact-6-title-box p {
+         margin-bottom: 18px;
+      }
+
+      .tp-contact-6-info-item + .tp-contact-6-info-item {
+         margin-top: 18px;
+      }
+
+      .tp-contact-6-info-icon a {
+         color: #f9cb08;
+      }
+
+      .tp-contact-6-info-text a {
+         text-decoration: none;
+      }
+
+      .da-contact-map-note {
+         margin-top: 22px;
+         padding-top: 16px;
+         border-top: 1px dashed rgba(209, 213, 219, 1);
+         font-size: 12px;
+         color: rgba(75, 85, 99, 0.85);
+      }
+
+      /* Static semi-circle testimonial CTA (avatar arc) */
+      .da-orbit-section {
+         padding: 120px 0 110px;
+         background-color: #ffffff;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .da-orbit-inner {
+         width: 100%;
+         margin: 0 auto;
+         text-align: center;
+      }
+
+      .da-orbit-visual {
+         position: relative;
+         width: 100%;
+         height: 470px;
+         margin: 0 auto 40px;
+         overflow: hidden;
+      }
+
+      .da-orbit-ring {
+         position: absolute;
+         inset: -80px -260px 0;
+         margin: 0;
+         border-radius: 999px;
+         pointer-events: none;
+      }
+
+      .da-orbit-card {
+         position: absolute;
+         width: 184px;
+         height: 244px;
+         border-radius: 32px;
+         overflow: hidden;
+         box-shadow: none;
+         background-color: #020617;
+      }
+
+      .da-orbit-card img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      /* positions to mimic reference semi-circle */
+      .da-orbit-card-1 {
+         top: 180px;
+         left: -4%;
+         transform: rotate(-28deg);
+      }
+
+      .da-orbit-card-2 {
+         top: 120px;
+         left: 12%;
+         transform: rotate(-18deg);
+      }
+
+      .da-orbit-card-3 {
+         top: 80px;
+         left: 30%;
+         transform: rotate(-10deg);
+      }
+
+      .da-orbit-card-4 {
+         top: 60px;
+         left: 48%;
+         transform: rotate(-2deg);
+      }
+
+      .da-orbit-card-5 {
+         top: 80px;
+         left: 66%;
+         transform: rotate(8deg);
+      }
+
+      .da-orbit-card-6 {
+         top: 120px;
+         left: 84%;
+         transform: rotate(16deg);
+      }
+
+      .da-orbit-card-7 {
+         top: 180px;
+         left: 102%;
+         transform: rotate(26deg);
+      }
+
+      .da-orbit-meta-label {
+         font-size: 12px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #92400e;
+         margin-bottom: 10px;
+      }
+
+      .da-orbit-stars {
+         display: inline-flex;
+         align-items: center;
+         gap: 4px;
+         justify-content: center;
+         color: #facc15;
+         margin-bottom: 4px;
+      }
+
+      .da-orbit-rating-text {
+         font-size: 13px;
+         color: rgba(55, 65, 81, 0.9);
+         margin-bottom: 18px;
+      }
+
+      .da-orbit-title {
+         font-size: 40px;
+         line-height: 1.1;
+         margin-bottom: 10px;
+         color: #0f172a;
+      }
+
+      .da-orbit-title span {
+         display: block;
+         font-family: "Playfair Display", "Times New Roman", serif;
+      }
+
+      .da-orbit-copy {
+         max-width: 560px;
+         margin: 0 auto 26px;
+         font-size: 15px;
+         line-height: 1.7;
+         color: rgba(31, 41, 55, 0.85);
+      }
+
+      .da-orbit-cta-btn {
+         padding-inline: 32px;
+      }
+
+      .da-orbit-footnote {
+         margin-top: 12px;
+         font-size: 12px;
+         color: rgba(75, 85, 99, 0.9);
+      }
+
+      /* Team power hero section (above footer) */
+      #team-power {
+         background-color: #F4F1EA;
+         padding: 160px 20px;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .team-container {
+         position: relative;
+         max-width: 1200px;
+         margin: 0 auto;
+         min-height: 720px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .avatar-ring {
+         position: absolute;
+         top: 0;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 100%;
+         height: 600px;
+         pointer-events: none;
+      }
+
+      .avatar-card {
+         position: absolute;
+         width: 120px;
+         height: 120px;
+         border-radius: 20px;
+         overflow: hidden;
+         background: #ffffff;
+         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .avatar-card img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      .team-power-rating {
+         margin-bottom: 18px;
+      }
+
+      .team-power-rating-stars {
+         color: #FBBF24;
+         margin-bottom: 4px;
+      }
+
+      .team-power-rating-text {
+         font-size: 13px;
+         font-weight: 500;
+         color: #4b5563;
+         margin-bottom: 2px;
+      }
+
+      .team-power-rating-subtext {
+         font-size: 12px;
+         color: #6b7280;
+      }
+
+      .team-power-title {
+         font-size: 40px;
+         line-height: 1.1;
+         margin-bottom: 8px;
+         color: #111827;
+      }
+
+      .team-power-title span {
+         display: block;
+         font-family: "Playfair Display", "Times New Roman", serif;
+      }
+
+      .team-power-copy {
+         max-width: 560px;
+         margin: 0 auto 26px;
+         font-size: 15px;
+         line-height: 1.7;
+         color: rgba(31, 41, 55, 0.9);
+      }
+
+      .team-power-cta-btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 10px 26px;
+         border-radius: 999px;
+         border: none;
+         background-color: #050505;
+         color: #ffffff;
+         font-size: 14px;
+         font-weight: 500;
+         cursor: pointer;
+      }
+
+      .team-power-cta-btn i {
+         font-size: 13px;
+      }
+
+      .team-power-scroll {
+         display: none;
+         margin-bottom: 22px;
+      }
+
+      .team-power-scroll-track {
+         display: flex;
+         gap: 14px;
+         overflow-x: auto;
+         padding-bottom: 6px;
+         scroll-snap-type: x mandatory;
+      }
+
+      .team-power-scroll-card {
+         flex: 0 0 140px;
+         height: 170px;
+         border-radius: 32px;
+         overflow: hidden;
+         box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+         background-color: #020617;
+         scroll-snap-align: center;
+      }
+
+      .team-power-scroll-card img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      /* FAQ section */
+      .da-contact-faq {
+         padding: 80px 0 100px;
+         background-color: #ffffff;
+         border-top: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .da-contact-faq-inner {
+         max-width: 960px;
+         margin: 0 auto;
+      }
+
+      .da-contact-faq-eyebrow {
+         font-size: 12px;
+         letter-spacing: 0.22em;
+         text-transform: uppercase;
+         color: #9ca3af;
+         margin-bottom: 8px;
+      }
+
+      .da-contact-faq-title {
+         font-size: 32px;
+         line-height: 1.2;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 28px;
+      }
+
+      .da-contact-faq-list {
+         display: flex;
+         flex-direction: column;
+         gap: 16px;
+      }
+
+      .da-contact-faq-item {
+         border-radius: 20px;
+         border: 1px solid rgba(15, 23, 42, 0.08);
+         background-color: #f9fafb;
+         padding: 14px 18px 0;
+         cursor: pointer;
+      }
+
+      .da-contact-faq-question {
+         font-size: 15px;
+         font-weight: 600;
+         color: #111827;
+         margin: 0;
+      }
+
+      .da-contact-faq-answer {
+         font-size: 14px;
+         line-height: 1.7;
+         color: #4b5563;
+         margin-top: 8px;
+         padding-bottom: 14px;
+         display: none;
+      }
+
+      .da-contact-faq-item.is-open .da-contact-faq-answer {
+         display: block;
+      }
+
+      .da-contact-faq-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 14px;
+         padding-bottom: 10px;
+      }
+
+      .da-contact-faq-icon {
+         width: 22px;
+         height: 22px;
+         border-radius: 999px;
+         border: 1px solid rgba(15, 23, 42, 0.18);
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 11px;
+         color: #111827;
+         flex-shrink: 0;
+      }
+
+      .da-contact-faq-item.is-open .da-contact-faq-icon {
+         background-color: #111827;
+         color: #f9fafb;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-contact-hero-area {
+            padding-top: 110px;
+            padding-bottom: 60px;
+         }
+
+         .da-contact-main-area {
+            padding-bottom: 90px;
+         }
+
+         .da-contact-hero-right {
+            margin-top: 40px;
+         }
+
+         .da-orbit-visual {
+            height: 360px;
+            max-width: 720px;
+         }
+
+         .da-orbit-card {
+            width: 154px;
+            height: 214px;
+         }
+
+         #team-power {
+            padding: 140px 20px;
+         }
+      }
+
+      @media (max-width: 575.98px) {
+         .da-contact-hero-title {
+            font-size: 32px;
+         }
+         
+         .da-orbit-visual {
+            width: 100%;
+            max-width: 460px;
+            height: 300px;
+         }
+
+         .da-orbit-card {
+            width: 134px;
+            height: 194px;
+         }
+
+         .da-orbit-card-1,
+         .da-orbit-card-7 {
+            display: none;
+         }
+
+         .da-orbit-title {
+            font-size: 28px;
+         }
+
+         .da-contact-hero-meta {
+            flex-direction: column;
+            align-items: flex-start;
+         }
+
+         .da-contact-hero-panel {
+            width: 100%;
+         }
+
+         #team-power {
+            padding: 120px 16px 80px;
+         }
+
+         .team-power-title {
+            font-size: 30px;
+         }
+
+         .da-contact-hero-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .da-contact-form-card,
+         .tp-contact-6-info-wrap {
+            padding: 22px 18px 20px;
+         }
+      }
+   </style>
+</head>
+
+<body id="body" class="tp-smooth-scroll page-inner">
+   <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+   <![endif]-->
+
+   <!-- back to top start -->
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back to top end -->
+
+   <!-- offcanvas area (same structure as homepage) -->
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Information</h3>
+
+               <ul>
+                  <li><a href="tel:+919850811995">+91 9850811995</a></li>
+                  <li><a href="mailto:contact@dadesign.com">contact@dadesign.com</a></li>
+                  <li><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li>
+                     <a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M11.25 1.5H4.75C2.95507 1.5 1.5 2.95507 1.5 4.75V11.25C1.5 13.0449 2.95507 14.5 4.75 14.5H11.25C13.0449 14.5 14.5 13.0449 14.5 11.25V4.75C14.5 2.95507 13.0449 1.5 11.25 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M10.6016 7.5907C10.6818 8.13166 10.5894 8.68414 10.3375 9.16955C10.0856 9.65497 9.68711 10.0486 9.19862 10.2945C8.71014 10.5404 8.15656 10.6259 7.61663 10.5391C7.0767 10.4522 6.57791 10.1972 6.19121 9.81055C5.80451 9.42385 5.54959 8.92506 5.46271 8.38513C5.37583 7.8452 5.46141 7.29163 5.70728 6.80314C5.95315 6.31465 6.34679 5.91613 6.83221 5.66425C7.31763 5.41238 7.87011 5.31998 8.41107 5.4002C8.96287 5.48202 9.47372 5.73915 9.86817 6.1336C10.2626 6.52804 10.5197 7.0389 10.6016 7.5907Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M11.5742 4.42578H11.5842" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M2.50589 12.7494C4.57662 16.336 9.16278 17.5648 12.7494 15.4941C14.2113 14.65 15.2816 13.388 15.8962 11.9461C16.7895 9.85066 16.7208 7.37526 15.4941 5.25063C14.2674 3.12599 12.1581 1.82872 9.89669 1.55462C8.34063 1.366 6.71259 1.66183 5.25063 2.50589C1.66403 4.57662 0.435172 9.16278 2.50589 12.7494Z" stroke="currentColor" stroke-width="1.5" />
+                           <path d="M12.7127 15.4292C12.7127 15.4292 12.0086 10.4867 10.5011 7.87559C8.99362 5.26451 5.28935 2.57155 5.28935 2.57155M5.68449 15.6124C6.79553 12.2606 12.34 8.54524 16.3975 9.43537M12.311 2.4082C11.1953 5.72344 5.75732 9.38453 1.71875 8.58915" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M1 5.5715H6.33342C7.62867 5.5715 8.61917 6.56199 8.61917 7.85725C8.61917 9.15251 7.62867 10.143 6.33342 10.143H1.76192C1.30477 10.143 1 9.83823 1 9.38108V1.76192C1 1.30477 1.30477 1 1.76192 1H5.5715C6.86676 1 7.85725 1.99049 7.85725 3.28575C7.85725 4.58101 6.86676 5.5715 5.5715 5.5715H1Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+                           <path d="M10.9062 7.09454H17.0016C17.0016 5.41832 15.6301 4.04688 13.9539 4.04688C12.2777 4.04688 10.9062 5.41832 10.9062 7.09454ZM10.9062 7.09454C10.9062 8.77076 12.2777 10.1422 13.9539 10.1422H15.2492" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M16.1125 1.44434H11.668" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M12.75 13H5.25C3 13 1.5 11.5 1.5 9.25V4.75C1.5 2.5 3 1 5.25 1H12.75C15 1 16.5 2.5 16.5 4.75V9.25C16.5 11.5 15 13 12.75 13Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M8.70676 5.14837L10.8006 6.40465C11.5543 6.90716 11.5543 7.66093 10.8006 8.16344L8.70676 9.41972C7.86923 9.92224 7.19922 9.50348 7.19922 8.5822V6.06964C7.19922 4.98086 7.86923 4.64585 8.70676 5.14837Z" fill="currentColor" />
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+
+   <!-- Global sound widget: waveform bars -->
+   <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
+      <div class="da-sound-wave">
+            <span class="da-sound-bar da-sound-bar-1"></span>
+            <span class="da-sound-bar da-sound-bar-2"></span>
+            <span class="da-sound-bar da-sound-bar-3"></span>
+            <span class="da-sound-bar da-sound-bar-4"></span>
+            <span class="da-sound-bar da-sound-bar-5"></span>
+            <span class="da-sound-bar da-sound-bar-6"></span>
+            <span class="da-sound-bar da-sound-bar-7"></span>
+            <span class="da-sound-bar da-sound-bar-8"></span>
+      </div>
+      <button class="da-sound-toggle" id="da-sound-toggle" type="button" aria-label="Enable site sound">
+         <i class="fa-light fa-volume-off" aria-hidden="true"></i>
+      </button>
+      <audio id="da-sound-audio" src="assets/DA%20WEB.mp3" preload="auto" loop></audio>
+   </div>
+
+   <header>
+
+      <!-- full-screen hero with left menu & centered logo (same layout as homepage) -->
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+            <div class="container-fluid">
+
+               <!-- Mobile header: centered logo + global 2-line hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                     <div class="tp-header-3-menu-wrap text-start">
+                        <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                           <div class="tp-header-3-menu header-main-menu">
+                              <nav class="tp-main-menu-content">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="our-work.html">Our Work</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="blogs.html">Blogs</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="contact.html">Contact</a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                        <div class="tp-header-logo tp-header-3-logo text-center">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                     <div class="tp-header-3-right d-none d-md-flex">
+                        <a href="contact.html" class="da-header-quote-btn">
+                           <i class="fa-regular fa-file-lines"></i>
+                           <span>Request a Quote</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      <!-- header / hero combined area end -->
+
+   </header>
+
+   <main>
+      <!-- Full-width map just below header -->
+      <section class="da-contact-map-full" aria-label="DA Design Visuals studio map">
+         <iframe title="DA Design Visuals studio location" width="600" height="450" style="border:0;" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.6168799423363!2d73.7792194!3d18.5462074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf56b6a8a90b%3A0xd4ca0fa0040689c3!2sDA%20Design%20Visuals!5e0!3m2!1sen!2sin!4v1772776895841!5m2!1sen!2sin"></iframe>
+      </section>
+
+      <!-- Quick contact detail cards -->
+      <section class="da-contact-quick-cards" aria-label="Key contact information">
+         <div class="container container-1480">
+            <div class="row g-4">
+               <div class="col-xl-3 col-md-6">
+                  <article class="da-contact-quick-card">
+                     <p class="da-contact-quick-label">Address</p>
+                     <p class="da-contact-quick-value">Indilife, Pashan - Sus Rd, Pune</p>
+                     <a class="da-contact-quick-icon" href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank" aria-label="Open studio address in maps">
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                     </a>
+                  </article>
+               </div>
+               <div class="col-xl-3 col-md-6">
+                  <article class="da-contact-quick-card">
+                     <p class="da-contact-quick-label">You can email here</p>
+                     <p class="da-contact-quick-value">hello@dadesignvisuals.com</p>
+                     <a class="da-contact-quick-icon" href="mailto:hello@dadesignvisuals.com" aria-label="Email DA Design Visuals">
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                     </a>
+                  </article>
+               </div>
+               <div class="col-xl-3 col-md-6">
+                  <article class="da-contact-quick-card">
+                     <p class="da-contact-quick-label">Call us on</p>
+                     <p class="da-contact-quick-value">+91 98508 11995</p>
+                     <a class="da-contact-quick-icon" href="tel:+919850811995" aria-label="Call DA Design Visuals">
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                     </a>
+                  </article>
+               </div>
+               <div class="col-xl-3 col-md-6">
+                  <article class="da-contact-quick-card">
+                     <p class="da-contact-quick-label">Working hours</p>
+                     <p class="da-contact-quick-value">10:00 am – 6:00 pm</p>
+                     <a class="da-contact-quick-icon" href="#contact-form" aria-label="Jump to contact form">
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                     </a>
+                  </article>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Minimal "Hire us" style contact form -->
+      <section class="da-contact-minimal" aria-label="Project inquiry">
+         <div class="container container-1480">
+            <div class="row justify-content-center">
+               <div class="col-lg-9">
+                  <div class="da-contact-minimal-right">
+                     <p class="da-contact-minimal-heading-eyebrow">Hire us</p>
+                     <h2 class="da-contact-minimal-title">
+                        A project with<br>
+                        <span>DA Design Visuals?</span>
+                     </h2>
+
+                     <form action="assets/mail.php" method="POST">
+                        <div class="da-contact-chips-group">
+                           <p class="da-contact-chips-group-label">Services</p>
+                           <div class="da-contact-chips-row">
+                              <div>
+                                 <input class="da-chip-input" type="checkbox" id="service-branding" name="service[]" value="Branding">
+                                 <label class="da-chip-label" for="service-branding">Branding</label>
+                              </div>
+                              <div>
+                                 <input class="da-chip-input" type="checkbox" id="service-interior" name="service[]" value="Interior Design">
+                                 <label class="da-chip-label" for="service-interior">Interior Design</label>
+                              </div>
+                              <div>
+                                 <input class="da-chip-input" type="checkbox" id="service-3d" name="service[]" value="3D Visuals">
+                                 <label class="da-chip-label" for="service-3d">3D Visuals</label>
+                              </div>
+                              <div>
+                                 <input class="da-chip-input" type="checkbox" id="service-web" name="service[]" value="Web / Content">
+                                 <label class="da-chip-label" for="service-web">Web / Content</label>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="da-contact-chips-group">
+                           <p class="da-contact-chips-group-label">Your budget</p>
+                           <div class="da-contact-chips-row">
+                              <div>
+                                 <input class="da-chip-input" type="radio" id="budget-2-10" name="budget" value="2L – 10L">
+                                 <label class="da-chip-label" for="budget-2-10">2L – 10L</label>
+                              </div>
+                              <div>
+                                 <input class="da-chip-input" type="radio" id="budget-10-25" name="budget" value="10L – 25L">
+                                 <label class="da-chip-label" for="budget-10-25">10L – 25L</label>
+                              </div>
+                              <div>
+                                 <input class="da-chip-input" type="radio" id="budget-25-plus" name="budget" value="> 25L">
+                                 <label class="da-chip-label" for="budget-25-plus">More than 25L</label>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="da-contact-minimal-fields-row">
+                           <div class="da-contact-minimal-field">
+                              <label for="da-min-name">Your name</label>
+                              <input id="da-min-name" class="da-contact-minimal-input" type="text" name="name" placeholder="Your name" required>
+                           </div>
+                           <div class="da-contact-minimal-field">
+                              <label for="da-min-email">Your email</label>
+                              <input id="da-min-email" class="da-contact-minimal-input" type="email" name="email" placeholder="Enter your email" required>
+                           </div>
+                        </div>
+
+                        <div class="da-contact-minimal-field">
+                           <label for="da-min-details">Project details (optional)</label>
+                           <textarea id="da-min-details" class="da-contact-minimal-textarea" name="message" placeholder="Tell us about your space, timelines and any links or moodboards."></textarea>
+                        </div>
+
+                        <div class="da-contact-minimal-footer">
+                           <button type="submit" class="da-contact-minimal-submit">Send</button>
+                           <p class="da-contact-minimal-note">Share a rough idea of scope and budget. We’ll reply within one business day with next steps.</p>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+      <!-- Brand logo slider (same as home page) -->
+      <div class="tp-brand-3-area pb-120 da-contact-brand-area">
+         <div class="container container-1400">
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="tp-brand-3-slider-wrapper">
+                     <div class="swiper-container tp-brand-3-slider-active fix">
+                        <div class="swiper-wrapper brand-wrapper">
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Carazzo-logo-transparent.png" alt="Carazzo Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/434406545_122105001776268338_8239801938584406663_n.jpg" alt="Brand Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Carazzo-logo-transparent.png" alt="Carazzo Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/434406545_122105001776268338_8239801938584406663_n.jpg" alt="Brand Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb Logo">
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-brand-item">
+                                 <img src="assets/Slider%20logo/Carazzo-logo-transparent.png" alt="Carazzo Logo">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- FAQ section -->
+      <section class="da-contact-faq">
+         <div class="container container-1480">
+            <div class="da-contact-faq-inner">
+               <p class="da-contact-faq-eyebrow">FAQ</p>
+               <h2 class="da-contact-faq-title">Questions about working with an interior design agency.</h2>
+               <div class="da-contact-faq-list">
+                  <article class="da-contact-faq-item is-open">
+                     <div class="da-contact-faq-header">
+                        <h3 class="da-contact-faq-question">What type of projects does DA Design Visuals take on?</h3>
+                        <span class="da-contact-faq-icon" aria-hidden="true">+</span>
+                     </div>
+                     <p class="da-contact-faq-answer">
+                        We specialise in residential homes, content-first studios, offices and boutique hospitality spaces.
+                        If your project needs thoughtful layout, light planning and strong visual storytelling, it’s likely a good fit.
+                     </p>
+                  </article>
+
+                  <article class="da-contact-faq-item">
+                     <div class="da-contact-faq-header">
+                        <h3 class="da-contact-faq-question">Do you only work in Pune?</h3>
+                        <span class="da-contact-faq-icon" aria-hidden="true">+</span>
+                     </div>
+                     <p class="da-contact-faq-answer">
+                        Our core team is based in Pune, but we collaborate on projects across major Indian cities with trusted
+                        on-ground partners. For outstation projects we combine virtual workshops with scheduled site visits.
+                     </p>
+                  </article>
+
+                  <article class="da-contact-faq-item">
+                     <div class="da-contact-faq-header">
+                        <h3 class="da-contact-faq-question">What is the typical timeline for an interior project?</h3>
+                        <span class="da-contact-faq-icon" aria-hidden="true">+</span>
+                     </div>
+                     <p class="da-contact-faq-answer">
+                        For a 2–3 BHK home, design can take 4–8 weeks and execution 10–16 weeks depending on scope, approvals
+                        and site readiness. Studios and offices vary more, but we share a clear roadmap before we begin.
+                     </p>
+                  </article>
+
+                  <article class="da-contact-faq-item">
+                     <div class="da-contact-faq-header">
+                        <h3 class="da-contact-faq-question">Can you work with my existing contractor or vendor team?</h3>
+                        <span class="da-contact-faq-icon" aria-hidden="true">+</span>
+                     </div>
+                     <p class="da-contact-faq-answer">
+                        Yes. We can either execute with our ecosystem of partners or collaborate with your preferred
+                        contractors, carpenters and vendors—as long as quality benchmarks and timelines are aligned.
+                     </p>
+                  </article>
+
+                  <article class="da-contact-faq-item">
+                     <div class="da-contact-faq-header">
+                        <h3 class="da-contact-faq-question">What budget range should I have in mind before reaching out?</h3>
+                        <span class="da-contact-faq-icon" aria-hidden="true">+</span>
+                     </div>
+                     <p class="da-contact-faq-answer">
+                        Every project is different, but we’re the right fit when you’re ready to invest in long-term design
+                        rather than quick fixes. Share an honest range in the form and we’ll tell you what’s realistically possible.
+                     </p>
+                  </article>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+   <footer>
+
+            <!-- footer area start -->
+            <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                           <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                              <div class="swiper-wrapper">
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="container container-1480">
+                  <div class="tp-footer-4-top">
+                     <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-left">
+                              <p>Have a project in mind? <br> Lets work together!</p>
+                           </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-right text-start text-md-end">
+                              <a class="tp-btn-white-lg" href="contact.html">Let's Talk!</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-1">
+                           <div class="tp-footer-2-widget-logo">
+                              <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                           </div>
+                           <div class="tp-footer-2-widget-text">
+                              <p>Drop us a line & we will <br> contact as soon as we can</p>                         
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-2">
+                           <div class="tp-footer-2-widget-menu">
+                              <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                              <ul>
+                         <li><a href="#" onclick="return false;">Home</a></li>
+                         <li><a href="#" onclick="return false;">About</a></li>
+                         <li><a href="#" onclick="return false;">Contact</a></li>
+                         <li><a href="#" onclick="return false;">Blog</a></li>
+                         <li><a href="#" onclick="return false;">Portfolio</a></li>
+                       </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-3">
+                           <h4 class="tp-footer-2-widget-title">Office</h4>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-4">
+                           <div class="tp-footer-2-widget-newslatter">
+                              <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                              <form action="#">
+                                 <div class="tp-footer-2-input p-relative">
+                                    <input type="text" placeholder="Enter your email...">
+                                    <button>
+                                       <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4"/>
+                                       </svg>                                       
+                                    </button>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-copyright-2-area tp-copyright-2-bdr-top black-bg" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row align-items-center">
+                     <div class="col-xl-4 col-lg-5">
+                        <div class="tp-copyright-2-left text-center text-lg-start">
+                           <p>All rights reserved  2026  a9DA Design Visuals</p>
+                        </div>
+                     </div>
+                     <div class="col-xl-8 col-lg-7">
+                        <div class="tp-copyright-2-social text-center text-lg-end">
+                           <a class="mb-10" href="#">Instagram</a>
+                           <a class="mb-10" href="#">Facebook</a>
+                           <a class="mb-10" href="#">Linkedin</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- footer area end -->
+
+         </footer>
+
+   <!-- JS -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+
+   <!-- Lenis smooth scroll -->
+   <script src="https://unpkg.com/@studio-freight/lenis@1.0.40/dist/lenis.min.js"></script>
+
+   <script src="assets/js/range-slider.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/beforeafter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/webgl.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/tp-cursor.js"></script>
+
+   <!-- Contact page FAQ toggle -->
+   <script>
+      (function () {
+         var faqItems = document.querySelectorAll('.da-contact-faq-item');
+         if (!faqItems.length) return;
+
+         faqItems.forEach(function (item, index) {
+            var header = item.querySelector('.da-contact-faq-header');
+            if (!header) return;
+
+            header.addEventListener('click', function () {
+               var isOpen = item.classList.contains('is-open');
+
+               faqItems.forEach(function (other) {
+                  other.classList.remove('is-open');
+               });
+
+               if (!isOpen) {
+                  item.classList.add('is-open');
+               }
+            });
+
+            // Ensure first item starts open
+            if (index === 0) {
+               item.classList.add('is-open');
+            }
+         });
+      })();
+   </script>
+
+   <!-- Lenis init -->
+   <script>
+      (function () {
+         if (typeof Lenis === 'undefined') return;
+
+         const lenis = new Lenis({
+            lerp: 0.1,
+            smoothWheel: true,
+            smoothTouch: false
+         });
+
+         window.lenis = lenis;
+
+         function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+         }
+         requestAnimationFrame(raf);
+      })();
+   </script>
+
+   <!-- Contact page GSAP animations -->
+   <script>
+      (function () {
+         if (typeof gsap === 'undefined') return;
+
+         if (typeof ScrollTrigger !== 'undefined' && gsap.registerPlugin) {
+            gsap.registerPlugin(ScrollTrigger);
+         }
+
+         gsap.from('.da-contact-hero-badge', {
+            opacity: 0,
+            y: 20,
+            duration: 0.7,
+            ease: 'power2.out'
+         });
+
+         gsap.from('.da-contact-hero-title', {
+            opacity: 0,
+            y: 32,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.1
+         });
+
+         gsap.from('.da-contact-hero-text', {
+            opacity: 0,
+            y: 28,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.2
+         });
+
+         gsap.from('.da-contact-hero-meta-item', {
+            opacity: 0,
+            y: 20,
+            duration: 0.7,
+            ease: 'power2.out',
+            stagger: 0.08,
+            delay: 0.3
+         });
+
+         gsap.from('.da-contact-hero-panel', {
+            opacity: 0,
+            y: 26,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.45
+         });
+
+         var formFields = document.querySelectorAll('.da-contact-form .cn-contactform-input');
+         if (formFields.length && typeof ScrollTrigger !== 'undefined') {
+            gsap.from(formFields, {
+               opacity: 0,
+               y: 24,
+               duration: 0.7,
+               ease: 'power2.out',
+               stagger: 0.06,
+               scrollTrigger: {
+                  trigger: '.da-contact-form-card',
+                  start: 'top 78%'
+               }
+            });
+         }
+
+         var infoItems = document.querySelectorAll('.tp-contact-6-info-item');
+         if (infoItems.length && typeof ScrollTrigger !== 'undefined') {
+            gsap.from(infoItems, {
+               opacity: 0,
+               y: 20,
+               duration: 0.7,
+               ease: 'power2.out',
+               stagger: 0.08,
+               scrollTrigger: {
+                  trigger: '.tp-contact-6-info-wrap',
+                  start: 'top 82%'
+               }
+            });
+         }
+
+         var teamSection = document.getElementById('team-power');
+         if (teamSection && typeof gsap !== 'undefined') {
+            var cards = teamSection.querySelectorAll('.avatar-card');
+            var centerContent = teamSection.querySelector('.center-content');
+
+            if (cards.length) {
+               var radius = 420;
+               var spread = Math.PI * 1.2;
+
+               cards.forEach(function (card, index) {
+                  var angle = (index / (cards.length - 1)) * spread - spread / 2;
+                  var x = Math.sin(angle) * radius;
+                  var y = Math.cos(angle) * radius;
+
+                  card.style.left = '50%';
+                  card.style.top = '-120px';
+                  card.style.transform = 'translate(-50%, -50%) translate(' + x + 'px, ' + y + 'px) rotate(' + (angle * 0.25) + 'rad)';
+               });
+
+               if (typeof ScrollTrigger !== 'undefined') {
+                  gsap.from(cards, {
+                     opacity: 0,
+                     scale: 0.7,
+                     duration: 1,
+                     stagger: 0.08,
+                     ease: 'power3.out',
+                     scrollTrigger: {
+                        trigger: '#team-power',
+                        start: 'top 75%'
+                     }
+                  });
+
+                  gsap.to(cards, {
+                     y: 10,
+                     duration: 3,
+                     repeat: -1,
+                     yoyo: true,
+                     ease: 'sine.inOut',
+                     stagger: 0.2
+                  });
+               }
+            }
+
+            if (centerContent && typeof ScrollTrigger !== 'undefined') {
+               gsap.from(centerContent.children, {
+                  opacity: 0,
+                  y: 24,
+                  duration: 0.7,
+                  ease: 'power2.out',
+                  stagger: 0.05,
+                  scrollTrigger: {
+                     trigger: '#team-power',
+                     start: 'top 75%'
+                  }
+               });
+            }
+         }
+      })();
+   </script>
+
+   <script>
+      // Ensure offcanvas mobile nav + hamburger work reliably on this page
+      (function () {
+         var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+         if (mobileNavContainer && mobileNavContainer.children.length === 0) {
+            var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+            if (desktopNav) {
+               mobileNavContainer.innerHTML = desktopNav.outerHTML;
+            }
+         }
+
+         if (!window.jQuery) return;
+
+         jQuery(function ($) {
+            $(document).on('click', '.da-burger', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').addClass('opened');
+               $('.body-overlay').addClass('opened');
+               $('.da-burger').addClass('is-open');
+            });
+
+            $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').removeClass('opened');
+               $('.body-overlay').removeClass('opened');
+               $('.da-burger').removeClass('is-open');
+            });
+         });
+      })();
+   </script>
+
+</body>
+
+</html>

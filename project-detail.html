@@ -1,0 +1,1437 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Project Detail – DA Design Visuals</title>
+   <meta name="description" content="Detailed view of a single DA Design Visuals project.">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+   <!-- Page-specific styles for single project -->
+   <style>
+      body {
+         background-color: #f5f7fb;
+         color: #020617;
+      }
+
+      /* Back-to-top button: match homepage yellow floating button */
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      /* Match inner page header style from About Us (black bar) */
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      /* white nav items on black header */
+      body.page-inner .tp-header-3-menu > nav > ul > li > a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu > nav > ul > li > a:hover {
+         color: #f9cb08;
+      }
+
+      /* white quote button on black */
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      /* center menu items within the middle column on desktop */
+      #header-sticky .tp-header-3-menu > nav > ul {
+         justify-content: center;
+      }
+
+      .da-single-project-hero {
+         padding-top: 140px;
+         padding-bottom: 80px;
+         background: #ffffff;
+         color: #020617;
+         border-bottom: 1px solid #e5e7eb;
+      }
+
+      .da-single-project-meta {
+         font-size: 13px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #9ca3af;
+         margin-bottom: 12px;
+      }
+
+      .da-single-project-title {
+         font-size: 44px;
+         line-height: 1.05;
+         margin-bottom: 18px;
+      }
+
+      .da-single-project-location {
+         font-size: 15px;
+         color: #4b5563;
+         margin-bottom: 10px;
+      }
+
+      .da-single-project-tagline {
+         font-size: 16px;
+         color: #4b5563;
+         margin-bottom: 24px;
+      }
+
+      .da-single-project-pill {
+         display: inline-flex;
+         align-items: center;
+         border-radius: 999px;
+         border: 1px solid rgba(148, 163, 184, 0.8);
+         padding: 6px 16px;
+         font-size: 13px;
+         margin-right: 8px;
+         margin-bottom: 8px;
+         color: #e5e7eb;
+         background: rgba(15, 23, 42, 0.8);
+         backdrop-filter: blur(16px);
+      }
+
+      .da-single-project-hero-image-wrap {
+         border-radius: 24px;
+         overflow: hidden;
+         background: #f3f4f6;
+         box-shadow: none;
+         position: relative;
+         height: 500px;
+      }
+
+      .da-single-project-hero-image-wrap img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+         transform: none;
+         opacity: 1;
+      }
+
+      /* Full-bleed project image band */
+      .da-single-project-image-band {
+         padding: 0 0 80px;
+         margin-top: 0;
+         background: #f9fafb;
+      }
+
+      .da-single-project-image-frame {
+         max-width: 1320px;
+         margin: 0 auto;
+         border-radius: 30px;
+         overflow: hidden;
+         box-shadow: none;
+      }
+
+      .da-single-project-image-frame img {
+         width: 100%;
+         display: block;
+         object-fit: cover;
+      }
+
+      .da-single-project-body {
+         padding: 40px 0 110px;
+         background: #f9fafb;
+      }
+
+      .da-single-project-section-title {
+         font-size: 20px;
+         margin-bottom: 14px;
+      }
+
+      .da-single-project-copy {
+         font-size: 15px;
+         color: rgba(31, 41, 55, 0.95);
+      }
+
+      .da-single-project-facts {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+         font-size: 14px;
+      }
+
+      .da-single-project-facts li + li {
+         margin-top: 6px;
+      }
+
+      .da-single-project-facts span {
+         display: inline-block;
+         min-width: 110px;
+         color: #6b7280;
+      }
+
+      /* Project gallery carousel */
+      .da-single-project-gallery {
+         padding: 0 0 110px;
+         background: #f9fafb;
+      }
+
+      .da-single-project-gallery-header {
+         margin-bottom: 20px;
+      }
+
+      .da-single-project-gallery-eyebrow {
+         font-size: 11px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #6b7280;
+         margin-bottom: 6px;
+      }
+
+      .da-single-project-gallery-title {
+         font-size: 24px;
+         font-weight: 600;
+         margin-bottom: 4px;
+      }
+
+      .da-single-project-gallery-copy {
+         font-size: 14px;
+         color: #6b7280;
+      }
+
+      .da-project-gallery-controls {
+         display: flex;
+         justify-content: flex-end;
+         gap: 10px;
+      }
+
+      .da-project-gallery-nav {
+         width: 32px;
+         height: 32px;
+         border-radius: 999px;
+         border: 1px solid #e5e7eb;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: #ffffff;
+         color: #111827;
+         cursor: pointer;
+      }
+
+      .da-project-gallery-nav:hover {
+         background: #020617;
+         color: #f9fafb;
+      }
+
+      .da-project-gallery-slider {
+         padding-bottom: 26px;
+      }
+
+      .da-project-gallery-card {
+         border-radius: 22px;
+         overflow: hidden;
+         background: #020617;
+         box-shadow: none;
+      }
+
+      .da-project-gallery-card img {
+         width: 100%;
+         height: 340px;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-project-gallery-caption {
+         padding: 12px 16px 14px;
+         font-size: 13px;
+         color: #e5e7eb;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .da-project-gallery-caption span {
+         opacity: 0.8;
+      }
+
+      .da-project-gallery-pagination .swiper-pagination-bullet {
+         width: 8px;
+         height: 8px;
+         background: #d1d5db;
+         opacity: 1;
+      }
+
+      .da-project-gallery-pagination .swiper-pagination-bullet-active {
+         background: #020617;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-single-project-hero {
+            padding-top: 120px;
+            padding-bottom: 60px;
+         }
+
+         .da-single-project-title {
+            font-size: 34px;
+         }
+
+         .da-single-project-hero-image-wrap {
+            margin-top: 32px;
+            height: 360px;
+         }
+
+         .da-single-project-image-band {
+            margin-top: 0;
+            padding-bottom: 60px;
+         }
+      }
+
+      @media (max-width: 575.98px) {
+         .da-single-project-hero {
+            padding-top: 110px;
+         }
+      }
+   </style>
+</head>
+
+<body id="body" class="tp-smooth-scroll page-inner">
+   <!-- back to top start -->
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back to top end -->
+
+   <!-- Global sound widget (same as other pages) -->
+   <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
+      <div class="da-sound-wave">
+         <span class="da-sound-bar da-sound-bar-1"></span>
+         <span class="da-sound-bar da-sound-bar-2"></span>
+         <span class="da-sound-bar da-sound-bar-3"></span>
+         <span class="da-sound-bar da-sound-bar-4"></span>
+         <span class="da-sound-bar da-sound-bar-5"></span>
+         <span class="da-sound-bar da-sound-bar-6"></span>
+         <span class="da-sound-bar da-sound-bar-7"></span>
+         <span class="da-sound-bar da-sound-bar-8"></span>
+      </div>
+      <button class="da-sound-toggle" id="da-sound-toggle" type="button" aria-label="Enable site sound">
+         <i class="fa-light fa-volume-off" aria-hidden="true"></i>
+      </button>
+      <audio id="da-sound-audio" src="assets/DA%20WEB.mp3" preload="auto" loop></audio>
+   </div>
+
+   <!-- offcanvas area (same structure as homepage) -->
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Information</h3>
+
+               <ul>
+                  <li><a href="tel:+919850811995">+91 9850811995</a></li>
+                  <li><a href="mailto:contact@dadesign.com">contact@dadesign.com</a></li>
+                  <li><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li>
+                     <a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M11.25 1.5H4.75C2.95507 1.5 1.5 2.95507 1.5 4.75V11.25C1.5 13.0449 2.95507 14.5 4.75 14.5H11.25C13.0449 14.5 14.5 13.0449 14.5 11.25V4.75C14.5 2.95507 13.0449 1.5 11.25 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M10.6016 7.5907C10.6818 8.13166 10.5894 8.68414 10.3375 9.16955C10.0856 9.65497 9.68711 10.0486 9.19862 10.2945C8.71014 10.5404 8.15656 10.6259 7.61663 10.5391C7.0767 10.4522 6.57791 10.1972 6.19121 9.81055C5.80451 9.42385 5.54959 8.92506 5.46271 8.38513C5.37583 7.8452 5.46141 7.29163 5.70728 6.80314C5.95315 6.31465 6.34679 5.91613 6.83221 5.66425C7.31763 5.41238 7.87011 5.31998 8.41107 5.4002C8.96287 5.48202 9.47372 5.73915 9.86817 6.1336C10.2626 6.52804 10.5197 7.0389 10.6016 7.5907Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M11.5742 4.42578H11.5842" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M2.50589 12.7494C4.57662 16.336 9.16278 17.5648 12.7494 15.4941C14.2113 14.65 15.2816 13.388 15.8962 11.9461C16.7895 9.85066 16.7208 7.37526 15.4941 5.25063C14.2674 3.12599 12.1581 1.82872 9.89669 1.55462C8.34063 1.366 6.71259 1.66183 5.25063 2.50589C1.66403 4.57662 0.435172 9.16278 2.50589 12.7494Z" stroke="currentColor" stroke-width="1.5" />
+                           <path d="M12.7127 15.4292C12.7127 15.4292 12.0086 10.4867 10.5011 7.87559C8.99362 5.26451 5.28935 2.57155 5.28935 2.57155M5.68449 15.6124C6.79553 12.2606 12.34 8.54524 16.3975 9.43537M12.311 2.4082C11.1953 5.72344 5.75732 9.38453 1.71875 8.58915" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M1 5.5715H6.33342C7.62867 5.5715 8.61917 6.56199 8.61917 7.85725C8.61917 9.15251 7.62867 10.143 6.33342 10.143H1.76192C1.30477 10.143 1 9.83823 1 9.38108V1.76192C1 1.30477 1.30477 1 1.76192 1H5.5715C6.86676 1 7.85725 1.99049 7.85725 3.28575C7.85725 4.58101 6.86676 5.5715 5.5715 5.5715H1Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+                           <path d="M10.9062 7.09454H17.0016C17.0016 5.41832 15.6301 4.04688 13.9539 4.04688C12.2777 4.04688 10.9062 5.41832 10.9062 7.09454ZM10.9062 7.09454C10.9062 8.77076 12.2777 10.1422 13.9539 10.1422H15.2492" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M16.1125 1.44434H11.668" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M12.75 13H5.25C3 13 1.5 11.5 1.5 9.25V4.75C1.5 2.5 3 1 5.25 1H12.75C15 1 16.5 2.5 16.5 4.75V9.25C16.5 11.5 15 13 12.75 13Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M8.70676 5.14837L10.8006 6.40465C11.5543 6.90716 11.5543 7.66093 10.8006 8.16344L8.70676 9.41972C7.86923 9.92224 7.19922 9.50348 7.19922 8.5822V6.06964C7.19922 4.98086 7.86923 4.64585 8.70676 5.14837Z" fill="currentColor" />
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+
+   <header>
+
+      <!-- full-screen hero with left menu & centered logo (same as Our Work / Contact) -->
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+            <div class="container-fluid">
+
+               <!-- Mobile header: centered logo + global 2-line hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                     <div class="tp-header-3-menu-wrap text-start">
+                        <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                           <div class="tp-header-3-menu header-main-menu">
+                              <nav class="tp-main-menu-content">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="our-work.html">Our Work</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="blogs.html">Blogs</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="contact.html">Contact</a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                        <div class="tp-header-logo tp-header-3-logo text-center">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                     <div class="tp-header-3-right d-none d-md-flex">
+                        <a href="contact.html" class="da-header-quote-btn">
+                           <i class="fa-regular fa-file-lines"></i>
+                           <span>Request a Quote</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      <!-- header / hero combined area end -->
+
+   </header>
+
+   <main>
+      <section class="da-single-project-hero">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-lg-6">
+                  <h1 class="da-single-project-title" id="sp-title">Project title</h1>
+                  <div class="da-single-project-location" id="sp-location">Location</div>
+                  <div class="da-single-project-meta" id="sp-category-meta">Residential project</div>
+                  <div id="sp-pills"></div>
+                  <p class="da-single-project-tagline" id="sp-tagline">Short positioning line about the project.</p>
+               </div>
+               <div class="col-lg-6">
+                  <div class="da-single-project-hero-image-wrap" id="sp-hero-wrap">
+                     <img id="sp-hero-image" src="assets/Projects Data/Chandekar 2BHK Project.jpg" alt="Project image">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="da-single-project-body">
+         <div class="container">
+            <div class="row gy-5">
+               <div class="col-lg-7">
+                  <h3 class="da-single-project-section-title">Project overview</h3>
+                  <p class="da-single-project-copy" id="sp-overview">
+                     This interior visualization balances function, comfort and a clear design story. Each view was crafted to
+                     help clients understand materiality, natural light and the overall experience of the space.
+                  </p>
+               </div>
+               <div class="col-lg-5">
+                  <h3 class="da-single-project-section-title">Project facts</h3>
+                  <ul class="da-single-project-facts" id="sp-facts">
+                     <li><span>Type</span> Apartment</li>
+                     <li><span>Size</span> 2 BHK</li>
+                     <li><span>Location</span> Pune, Maharashtra</li>
+                     <li><span>Services</span> 3D visualization, styling</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Project gallery carousel -->
+      <section class="da-single-project-gallery">
+         <div class="container">
+            <div class="row align-items-end da-single-project-gallery-header">
+               <div class="col-md-7">
+                  <div class="da-single-project-gallery-eyebrow">Project gallery</div>
+                  <h3 class="da-single-project-gallery-title">See more views from this project</h3>
+                  <p class="da-single-project-gallery-copy">Swipe through a looping carousel of additional perspectives and details.</p>
+               </div>
+               <div class="col-md-5">
+                  <div class="da-project-gallery-controls">
+                     <button class="da-project-gallery-nav da-project-gallery-prev" type="button" aria-label="Previous image">
+                        <i class="fa-regular fa-arrow-left"></i>
+                     </button>
+                     <button class="da-project-gallery-nav da-project-gallery-next" type="button" aria-label="Next image">
+                        <i class="fa-regular fa-arrow-right"></i>
+                     </button>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12">
+                  <div class="swiper da-project-gallery-slider">
+                     <div class="swiper-wrapper">
+                        <!-- Slides will be populated via JS from the active project -->
+                     </div>
+                     <div class="da-project-gallery-pagination mt-10"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <footer>
+         <!-- footer area start -->
+
+               <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xl-12">
+                           <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                              <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                                 <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                       <div class="tp-line-content">
+                                          <h4 class="tp-footer-4-big-title">
+                                             <span class="d-none d-md-inline-block">
+                                                <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                                </svg>
+                                             </span>
+                                             Have A Great Project ?
+                                          </h4>
+                                       </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                       <div class="tp-line-content">
+                                          <h4 class="tp-footer-4-big-title">
+                                             <span class="d-none d-md-inline-block">
+                                                <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                                </svg>
+                                             </span>
+                                             Have A Great Project ?
+                                          </h4>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container container-1480">
+                     <div class="tp-footer-4-top">
+                        <div class="row align-items-center">
+                           <div class="col-xl-6 col-lg-6 col-md-6">
+                              <div class="tp-footer-4-top-left">
+                                 <p>Have a project in mind? <br> Let’s work together!</p>
+                              </div>
+                           </div>
+                           <div class="col-xl-6 col-lg-6 col-md-6">
+                              <div class="tp-footer-4-top-right text-start text-md-end">
+                                 <a class="tp-btn-white-lg" href="contact.html">Let's Talk!</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+                  <div class="container container-1480">
+                     <div class="row">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                           <div class="tp-footer-2-widget footer-col-2-1">
+                              <div class="tp-footer-2-widget-logo">
+                                 <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                              </div>
+                              <div class="tp-footer-2-widget-text">
+                                 <p>Drop us a line & we will <br> contact as soon as we can</p>                         
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                           <div class="tp-footer-2-widget footer-col-2-2">
+                              <div class="tp-footer-2-widget-menu">
+                                 <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                                 <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about-us.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="blog-list.html">Blog</a></li>
+                            <li><a href="project.html">Portfolio</a></li>
+                          </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                           <div class="tp-footer-2-widget footer-col-2-3">
+                              <h4 class="tp-footer-2-widget-title">Office</h4>
+                              <div class="tp-footer-2-contact-item">
+                                 <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                              </div>
+                              <div class="tp-footer-2-contact-item">
+                                 <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                              </div>
+                              <div class="tp-footer-2-contact-item">
+                                 <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                           <div class="tp-footer-2-widget footer-col-2-4">
+                              <div class="tp-footer-2-widget-newslatter">
+                                 <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                                 <form action="#">
+                                    <div class="tp-footer-2-input p-relative">
+                                       <input type="text" placeholder="Enter your email...">
+                                       <button>
+                                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4"/>
+                                          </svg>                                       
+                                       </button>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social tpopyright-2-social" data-background="assets/img/home-04/hero/overly.png">
+                  <div class="container container-1480">
+                     <div class="row align-items-center">
+                        <div class="col-xl-4 col-lg-5">
+                           <div class="tpopyright-2-social text-center text-lg-start">
+                              <p>All rights reserved — 2026 ©DA Design Visuals</p>
+                           </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-7">
+                           <div class="tpopyright-2-social text-center text-lg-end">
+                              <a class="mb-10" href="#">Instagram</a>
+                              <a class="mb-10" href="#">Facebook</a>
+                              <a class="mb-10" href="#">Linkedin</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- footer area end -->
+
+            </footer>
+   </footer>
+
+   <!-- JS -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/beforeafter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/webgl.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/tp-cursor.js"></script>
+
+      <script>
+         // Ensure offcanvas mobile nav + hamburger work reliably on this page
+         (function () {
+            var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+            if (mobileNavContainer && mobileNavContainer.children.length === 0) {
+               var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+               if (desktopNav) {
+                  mobileNavContainer.innerHTML = desktopNav.outerHTML;
+               }
+            }
+
+            if (!window.jQuery) return;
+
+            jQuery(function ($) {
+               $(document).on('click', '.da-burger', function (e) {
+                  e.preventDefault();
+                  $('.tp-offcanvas-area').addClass('opened');
+                  $('.body-overlay').addClass('opened');
+                  $('.da-burger').addClass('is-open');
+               });
+
+               $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+                  e.preventDefault();
+                  $('.tp-offcanvas-area').removeClass('opened');
+                  $('.body-overlay').removeClass('opened');
+                  $('.da-burger').removeClass('is-open');
+               });
+            });
+         })();
+      </script>
+
+   <script>
+      (function () {
+         var params = new URLSearchParams(window.location.search);
+         var slug = params.get('project') || 'chandekar-2bhk';
+
+         var PROJECTS = {
+            'chandekar-2bhk': {
+               title: 'Chandekar 2-BHK Project',
+               category: 'Residential',
+               location: 'Pune, Maharashtra',
+               tagline: 'A warm, lived-in 2-BHK apartment with layered textures and soft light.',
+                  image: 'assets/Projects Data/Chandekar 2BHK Project.webp',
+               pills: ['Residential', '2-BHK', 'Soft neutrals'],
+               galleryImages: [
+                  'assets/Chandekar 2BHK Project/DSC07330.webp',
+                  'assets/Chandekar 2BHK Project/DSC07332.webp',
+                  'assets/Chandekar 2BHK Project/DSC07333.webp',
+                  'assets/Chandekar 2BHK Project/DSC07337.webp',
+                  'assets/Chandekar 2BHK Project/DSC07338.webp',
+                  'assets/Chandekar 2BHK Project/DSC07339 copy.webp',
+                  'assets/Chandekar 2BHK Project/DSC07340 copy.webp',
+                  'assets/Chandekar 2BHK Project/DSC07341.webp',
+                  'assets/Chandekar 2BHK Project/DSC07350.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2870 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2872 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2874 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2879 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2881 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2882 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2886 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2889 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2890 copy.webp',
+                  'assets/Chandekar 2BHK Project/IMG_2898 copy.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Apartment – 2 BHK' },
+                  { label: 'Location', value: 'Pune, Maharashtra' },
+                  { label: 'Scope', value: 'Full interior visualization' },
+                  { label: 'Services', value: '3D visualization, styling, lighting' }
+               ],
+               overview: 'This 2-BHK home is visualized as a calm everyday retreat. Natural woods, soft textiles and warm lighting help highlight circulation, zoning and furniture proportions for the client before execution.'
+            },
+            'kharadi-1': {
+               title: 'Kharadi-1 Site',
+               category: 'Residential',
+               location: 'Kharadi, Pune',
+               tagline: 'Contemporary apartment visuals focused on clarity and daylight.',
+               image: 'assets/Projects Data/Kharadi1 Site.webp',
+               pills: ['Residential', 'Modern', 'Neutral palette'],
+               galleryImages: [
+                  'assets/Kharadi Site 1/DSC07028.webp',
+                  'assets/Kharadi Site 1/DSC07029.webp',
+                  'assets/Kharadi Site 1/DSC07030.webp',
+                  'assets/Kharadi Site 1/DSC07032.webp',
+                  'assets/Kharadi Site 1/DSC07034.webp',
+                  'assets/Kharadi Site 1/DSC07035.webp',
+                  'assets/Kharadi Site 1/DSC07036.webp',
+                  'assets/Kharadi Site 1/DSC07037.webp',
+                  'assets/Kharadi Site 1/DSC07039.webp',
+                  'assets/Kharadi Site 1/DSC07040.webp',
+                  'assets/Kharadi Site 1/DSC07041.webp',
+                  'assets/Kharadi Site 1/DSC07042.webp',
+                  'assets/Kharadi Site 1/DSC07042_1.webp',
+                  'assets/Kharadi Site 1/DSC07043.webp',
+                  'assets/Kharadi Site 1/DSC07045.webp',
+                  'assets/Kharadi Site 1/DSC07047.webp',
+                  'assets/Kharadi Site 1/DSC07051.webp',
+                  'assets/Kharadi Site 1/DSC07053.webp',
+                  'assets/Kharadi Site 1/DSC07055.webp',
+                  'assets/Kharadi Site 1/DSC07057.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Urban apartment' },
+                  { label: 'Location', value: 'Kharadi, Pune' },
+                  { label: 'Scope', value: 'Living, dining and bedroom views' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Minimal joinery, light tones and clean lines keep this Kharadi apartment feeling spacious. The visuals helped the client validate layout options and furniture sizing ahead of fit-out.'
+            },
+            'kharadi-2': {
+               title: 'Kharadi-2 Site',
+               category: 'Residential',
+               location: 'Kharadi, Pune',
+               tagline: 'A sibling project exploring bolder contrast and materials.',
+               image: 'assets/Projects Data/Kharadi2 Site.webp',
+               pills: ['Residential', 'Contrast', 'Statement details'],
+               galleryImages: [
+                  'assets/Kharadi Site 2/DSC08547.webp',
+                  'assets/Kharadi Site 2/DSC08550.webp',
+                  'assets/Kharadi Site 2/DSC08551.webp',
+                  'assets/Kharadi Site 2/DSC08557.webp',
+                  'assets/Kharadi Site 2/DSC08558.webp',
+                  'assets/Kharadi Site 2/DSC08560.webp',
+                  'assets/Kharadi Site 2/DSC08561.webp',
+                  'assets/Kharadi Site 2/DSC08566.webp',
+                  'assets/Kharadi Site 2/DSC08571.webp',
+                  'assets/Kharadi Site 2/DSC08577.webp',
+                  'assets/Kharadi Site 2/DSC08579.webp',
+                  'assets/Kharadi Site 2/DSC08582.webp',
+                  'assets/Kharadi Site 2/DSC08584.webp',
+                  'assets/Kharadi Site 2/DSC08586.webp',
+                  'assets/Kharadi Site 2/DSC08596.webp',
+                  'assets/Kharadi Site 2/DSC08601.webp',
+                  'assets/Kharadi Site 2/DSC08604.webp',
+                  'assets/Kharadi Site 2/DSC08611.webp',
+                  'assets/Kharadi Site 2/DSC08612.webp',
+                  'assets/Kharadi Site 2/DSC08614.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Apartment' },
+                  { label: 'Location', value: 'Kharadi, Pune' },
+                  { label: 'Scope', value: 'Key rooms & hero perspectives' },
+                  { label: 'Services', value: '3D visualization, mood exploration' }
+               ],
+               overview: 'Working with the same architectural shell as Kharadi-1, this series explores richer contrasts, darker woods and accent colours to give the home a more dramatic character.'
+            },
+            'kondhwa': {
+               title: 'Kondhwa Site',
+               category: 'Residential',
+               location: 'Kondhwa, Pune',
+               tagline: 'Family-centric layouts with focus on comfort and storage.',
+               image: 'assets/Projects Data/Kondhwa Site.webp',
+               pills: ['Residential', 'Family home', 'Soft lighting'],
+               facts: [
+                  { label: 'Type', value: 'Family apartment' },
+                  { label: 'Location', value: 'Kondhwa, Pune' },
+                  { label: 'Scope', value: 'Full interior set' },
+                  { label: 'Services', value: '3D visualization, material studies' }
+               ],
+               overview: 'The Kondhwa visuals help communicate how built-in storage, circulation and softer furnishings come together to support a busy family schedule without feeling cluttered.'
+            },
+            'kudje-5bhk': {
+               title: 'Kudje 5-BHK',
+               category: 'Residential',
+               location: 'Kudje, Maharashtra',
+               tagline: 'Expansive 5-BHK residence visualized with layered luxury.',
+               image: 'assets/Projects Data/Kudje 5 BHK.webp',
+               pills: ['Residential', '5-BHK', 'Luxury detailing'],
+               galleryImages: [
+                  'assets/Kudje 5 BHK/DSC07430.webp',
+                  'assets/Kudje 5 BHK/DSC07436.webp',
+                  'assets/Kudje 5 BHK/DSC07438.webp',
+                  'assets/Kudje 5 BHK/DSC07443.webp',
+                  'assets/Kudje 5 BHK/DSC07444.webp',
+                  'assets/Kudje 5 BHK/DSC07450.webp',
+                  'assets/Kudje 5 BHK/DSC07453.webp',
+                  'assets/Kudje 5 BHK/DSC07454.webp',
+                  'assets/Kudje 5 BHK/DSC07458.webp',
+                  'assets/Kudje 5 BHK/DSC07461.webp',
+                  'assets/Kudje 5 BHK/DSC07463.webp',
+                  'assets/Kudje 5 BHK/DSC07466.webp',
+                  'assets/Kudje 5 BHK/DSC07476.webp',
+                  'assets/Kudje 5 BHK/DSC07478.webp',
+                  'assets/Kudje 5 BHK/DSC07482.webp',
+                  'assets/Kudje 5 BHK/DSC07484.webp',
+                  'assets/Kudje 5 BHK/DSC07503.webp',
+                  'assets/Kudje 5 BHK/DSC07513.webp',
+                  'assets/Kudje 5 BHK/DSC07515.webp',
+                  'assets/Kudje 5 BHK/DSC07520.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Large residence – 5 BHK' },
+                  { label: 'Location', value: 'Kudje, Maharashtra' },
+                  { label: 'Scope', value: 'Key public and private zones' },
+                  { label: 'Services', value: '3D visualization, concept support' }
+               ],
+               overview: 'For this 5-BHK home, the visuals focus on double-height spaces, feature lighting and rich materiality to help align all stakeholders around the design direction.'
+            },
+            'raut-3bhk': {
+               title: 'Raut 3-BHK',
+               category: 'Residential',
+               location: 'Pune, Maharashtra',
+               tagline: 'Warm neutrals and subtle pattern play in a 3-BHK.',
+               image: 'assets/Projects Data/Raut3 BHK.webp',
+               pills: ['Residential', '3-BHK', 'Textured surfaces'],
+               galleryImages: [
+                  'assets/Raut 3 Bhk/DSC07352.webp',
+                  'assets/Raut 3 Bhk/DSC07354.webp',
+                  'assets/Raut 3 Bhk/DSC07355.webp',
+                  'assets/Raut 3 Bhk/DSC07356.webp',
+                  'assets/Raut 3 Bhk/DSC07358.webp',
+                  'assets/Raut 3 Bhk/DSC07359.webp',
+                  'assets/Raut 3 Bhk/DSC07360.webp',
+                  'assets/Raut 3 Bhk/DSC07361.webp',
+                  'assets/Raut 3 Bhk/DSC07362.webp',
+                  'assets/Raut 3 Bhk/DSC07363.webp',
+                  'assets/Raut 3 Bhk/DSC07364.webp',
+                  'assets/Raut 3 Bhk/DSC07366.webp',
+                  'assets/Raut 3 Bhk/DSC07370.webp',
+                  'assets/Raut 3 Bhk/DSC07371.webp',
+                  'assets/Raut 3 Bhk/DSC07372.webp',
+                  'assets/Raut 3 Bhk/DSC07374.webp',
+                  'assets/Raut 3 Bhk/DSC07375.webp',
+                  'assets/Raut 3 Bhk/DSC07376.webp',
+                  'assets/Raut 3 Bhk/DSC07379.webp',
+                  'assets/Raut 3 Bhk/DSC07381.webp',
+                  'assets/Raut 3 Bhk/DSC07382.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Apartment – 3 BHK' },
+                  { label: 'Location', value: 'Pune, Maharashtra' },
+                  { label: 'Scope', value: 'Core living spaces' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Soft fabrics, textured walls and carefully balanced lighting bring this 3-BHK brief to life, helping clients understand the space beyond flat drawings.'
+            },
+            'santorini-blue': {
+               title: 'Santorini Blue Site',
+               category: 'Residential',
+               location: 'Coastal-inspired, Maharashtra',
+               tagline: 'A Santorini-inspired palette reinterpreted for an Indian home.',
+               image: 'assets/Projects Data/Santorini Blue Site.webp',
+               pills: ['Residential', 'Santorini blue', 'Coastal mood'],
+               galleryImages: [
+                  'assets/Santorini Blue Site/DSC00279.webp',
+                  'assets/Santorini Blue Site/DSC00285.webp',
+                  'assets/Santorini Blue Site/DSC00287.webp',
+                  'assets/Santorini Blue Site/DSC00288.webp',
+                  'assets/Santorini Blue Site/DSC00290.webp',
+                  'assets/Santorini Blue Site/DSC00293.webp',
+                  'assets/Santorini Blue Site/DSC00295.webp',
+                  'assets/Santorini Blue Site/DSC00297.webp',
+                  'assets/Santorini Blue Site/DSC00306.webp',
+                  'assets/Santorini Blue Site/DSC00308.webp',
+                  'assets/Santorini Blue Site/DSC00312.webp',
+                  'assets/Santorini Blue Site/DSC00319.webp',
+                  'assets/Santorini Blue Site/DSC00323.webp',
+                  'assets/Santorini Blue Site/DSC00332.webp',
+                  'assets/Santorini Blue Site/DSC00343.webp',
+                  'assets/Santorini Blue Site/DSC00346.webp',
+                  'assets/Santorini Blue Site/DSC00358.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Themed residence' },
+                  { label: 'Location', value: 'Maharashtra' },
+                  { label: 'Scope', value: 'Living, bedrooms and terrace' },
+                  { label: 'Services', value: '3D visualization, colour studies' }
+               ],
+               overview: 'White plaster, blue accents and warm wood tones give this project a calm, coastal character while still remaining practical for everyday Indian living.'
+            },
+            'shirwal': {
+               title: 'Shirwal Site',
+               category: 'Residential',
+               location: 'Shirwal, Maharashtra',
+               tagline: 'Visuals that reconcile rural context with modern comfort.',
+               image: 'assets/Projects Data/Shirwal Site.webp',
+               pills: ['Residential', 'Rural context', 'Modern comfort'],
+               galleryImages: [
+                  'assets/Shirwal Site/DSC03772.webp',
+                  'assets/Shirwal Site/DSC03774.webp',
+                  'assets/Shirwal Site/DSC03775.webp',
+                  'assets/Shirwal Site/DSC03777.webp',
+                  'assets/Shirwal Site/DSC03778.webp',
+                  'assets/Shirwal Site/DSC03780.webp',
+                  'assets/Shirwal Site/DSC03782.webp',
+                  'assets/Shirwal Site/DSC03785.webp',
+                  'assets/Shirwal Site/DSC03788.webp',
+                  'assets/Shirwal Site/DSC03790.webp',
+                  'assets/Shirwal Site/DSC03791.webp',
+                  'assets/Shirwal Site/DSC03792.webp',
+                  'assets/Shirwal Site/DSC03793.webp',
+                  'assets/Shirwal Site/DSC03800.webp',
+                  'assets/Shirwal Site/DSC03801.webp',
+                  'assets/Shirwal Site/DSC03803.webp',
+                  'assets/Shirwal Site/DSC03805 copy.webp',
+                  'assets/Shirwal Site/DSC03806.webp',
+                  'assets/Shirwal Site/DSC03807 copy.webp',
+                  'assets/Shirwal Site/DSC03812.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Residence' },
+                  { label: 'Location', value: 'Shirwal, Maharashtra' },
+                  { label: 'Scope', value: 'Key interior zones' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'The Shirwal visuals focus on light, views and robust finishes that feel appropriate to the local context while still delivering a crisp interior language.'
+            },
+            'premium-apartment': {
+               title: 'Premium Apartment',
+               category: 'Residential',
+               location: 'Pune, Maharashtra',
+               tagline: 'Elevated apartment visualizations with premium finishes and styling.',
+               image: 'assets/Projects Data/Premium Apartment.HEIC',
+               pills: ['Residential', 'Premium', 'High-end finishes'],
+               galleryImages: [
+                  'assets/Premium Apartment with Rustic Interiors/IMG_0105.HEIC',
+                  'assets/Premium Apartment with Rustic Interiors/IMG_0106.HEIC',
+                  'assets/Premium Apartment with Rustic Interiors/IMG_0107.HEIC',
+                  'assets/Premium Apartment with Rustic Interiors/IMG_0110.HEIC',
+                  'assets/Premium Apartment with Rustic Interiors/IMG_0111.HEIC'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Premium apartment' },
+                  { label: 'Location', value: 'Pune, Maharashtra' },
+                  { label: 'Scope', value: 'Full apartment visuals' },
+                  { label: 'Services', value: '3D visualization, styling' }
+               ],
+               overview: 'Metallic accents, stone surfaces and curated art pieces communicate the premium positioning of this apartment to end clients and marketing teams alike.'
+            },
+            'diveagar': {
+               title: 'Diveagar Project',
+               category: 'Residential',
+               location: 'Diveagar, Maharashtra',
+               tagline: 'Holiday home visuals with an emphasis on openness and light.',
+               image: 'assets/Projects Data/Diveagar Project.webp',
+               pills: ['Residential', 'Holiday home', 'Relaxed mood'],
+               galleryImages: [
+                  'assets/Diveagar Project/PXL_20240512_063555294.RAW-01.COVER.webp',
+                  'assets/Diveagar Project/PXL_20240512_063608606.RAW-01.COVER.webp',
+                  'assets/Diveagar Project/PXL_20240512_064912737.RAW-01.COVER.webp',
+                  'assets/Diveagar Project/PXL_20240512_082729266.RAW-01.COVER.webp',
+                  'assets/Diveagar Project/WhatsApp Image 2022-09-10 at 05.06.44 (2).webp',
+                  'assets/Diveagar Project/WhatsApp Image 2022-09-10 at 05.06.44 (3).webp',
+                  'assets/Diveagar Project/WhatsApp Image 2022-09-10 at 05.06.45.webp',
+                  'assets/Diveagar Project/WhatsApp Image 2024-05-13 at 2.46.50 PM.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Holiday home' },
+                  { label: 'Location', value: 'Diveagar, Maharashtra' },
+                  { label: 'Scope', value: 'Primary living spaces' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Large openings, light fabrics and natural materials convey the relaxed rhythm of a coastal getaway while keeping the scheme practical to build.'
+            },
+            'ahmednagar-institute': {
+               title: 'Ahmednagar Institute',
+               category: 'Hospitality',
+               location: 'Ahmednagar, Maharashtra',
+               tagline: 'Institutional spaces visualized with clarity and wayfinding in mind.',
+               image: 'assets/Projects Data/Ahmednagar Institute.HEIC',
+               pills: ['Hospitality', 'Education', 'Public spaces'],
+               galleryImages: [
+                  'assets/Ahmednagar Institute/IT Department/IMG_0105.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_0106.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_0913.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_0914.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_0915.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_0916.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1418.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1419.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1420.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1421.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1422.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1423.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1424.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1425.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1426.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1427.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1428.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1429.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1430.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1432.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1433.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1434.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1435.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1436.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1437.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1438.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1439.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_1440.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_2322.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_2323.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_2324.HEIC',
+                  'assets/Ahmednagar Institute/IT Department/IMG_2326.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1441.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1442.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1443.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1444.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1445.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1446.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1447.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1448.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1449.HEIC',
+                  'assets/Ahmednagar Institute/Institutional Office/IMG_1450.HEIC'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Educational institute interiors' },
+                  { label: 'Location', value: 'Ahmednagar, Maharashtra' },
+                  { label: 'Scope', value: 'Key public zones' },
+                  { label: 'Services', value: '3D visualization, wayfinding studies' }
+               ],
+               overview: 'The visuals highlight circulation, signage and key gathering areas to help stakeholders understand how students and visitors move through the building.'
+            },
+            'boyden': {
+               title: 'Boyden Project',
+               category: 'Workspace',
+               location: 'Corporate office',
+               tagline: 'A contemporary workspace visualized for clarity, focus and brand.',
+               image: 'assets/Projects Data/Boyden Project.webp',
+               pills: ['Workspace', 'Open plan', 'Brand expression'],
+               galleryImages: [
+                  'assets/Boyden Project/DSC08482 copy.webp',
+                  'assets/Boyden Project/DSC08485 copy.webp',
+                  'assets/Boyden Project/DSC08489 copy.webp',
+                  'assets/Boyden Project/DSC08491 copy.webp',
+                  'assets/Boyden Project/DSC08492 copy.webp',
+                  'assets/Boyden Project/DSC08497 copy.webp',
+                  'assets/Boyden Project/DSC08501 copy.webp',
+                  'assets/Boyden Project/DSC08503 copy.webp',
+                  'assets/Boyden Project/DSC08506 copy.webp',
+                  'assets/Boyden Project/DSC08515 copy.webp',
+                  'assets/Boyden Project/DSC08520 copy.webp',
+                  'assets/Boyden Project/DSC08521 copy.webp',
+                  'assets/Boyden Project/DSC08523 copy.webp',
+                  'assets/Boyden Project/DSC08524 copy.webp',
+                  'assets/Boyden Project/DSC08527 copy.webp',
+                  'assets/Boyden Project/DSC08539 copy.webp',
+                  'assets/Boyden Project/DSC08540 copy.webp',
+                  'assets/Boyden Project/DSC08543 copy.webp',
+                  'assets/Boyden Project/DSC08544 copy.webp',
+                  'assets/Boyden Project/DSC08546 copy.webp',
+                  'assets/Boyden Project/DSC08548 copy.webp',
+                  'assets/Boyden Project/DSC08551 copy.webp',
+                  'assets/Boyden Project/DSC08552 copy.webp',
+                  'assets/Boyden Project/DSC08556 copy.webp',
+                  'assets/Boyden Project/DSC08559 copy.webp',
+                  'assets/Boyden Project/DSC08564 copy.webp',
+                  'assets/Boyden Project/DSC08568 copy.webp',
+                  'assets/Boyden Project/DSC08570 copy.webp',
+                  'assets/Boyden Project/DSC08571 copy.webp',
+                  'assets/Boyden Project/DSC08574 copy.webp',
+                  'assets/Boyden Project/DSC08577 copy.webp',
+                  'assets/Boyden Project/DSC08579 copy.webp',
+                  'assets/Boyden Project/DSC08581 copy.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Corporate office fit-out' },
+                  { label: 'Location', value: 'Urban business district' },
+                  { label: 'Scope', value: 'Open plan, cabins, meeting rooms' },
+                  { label: 'Services', value: '3D visualization, styling' }
+               ],
+               overview: 'Open-plan work zones, quiet rooms and collaborative pockets are visualized to help the client communicate the new workplace to global stakeholders.'
+            },
+            'chocolate-factory': {
+               title: 'Chocolate Factory',
+               category: 'Hospitality',
+               location: 'Retail & experience space',
+               tagline: 'A chocolate experience space balancing retail and storytelling.',
+               image: 'assets/Projects Data/Chocolate Factory.webp',
+               pills: ['Hospitality', 'Retail', 'Experience design'],
+               galleryImages: [
+                  'assets/Chocolate Factory/IMG-20250621-WA0009.webp',
+                  'assets/Chocolate Factory/IMG-20250621-WA0018.webp',
+                  'assets/Chocolate Factory/IMG-20250623-WA0039.webp',
+                  'assets/Chocolate Factory/IMG-20250626-WA0018.webp',
+                  'assets/Chocolate Factory/IMG-20250628-WA0019.webp',
+                  'assets/Chocolate Factory/IMG-20250702-WA0008.webp',
+                  'assets/Chocolate Factory/IMG-20250702-WA0009.webp',
+                  'assets/Chocolate Factory/IMG-20250711-WA0035.webp',
+                  'assets/Chocolate Factory/IMG-20250717-WA0024.webp',
+                  'assets/Chocolate Factory/IMG-20250717-WA0025.webp',
+                  'assets/Chocolate Factory/PXL_20250709_081740141.webp',
+                  'assets/Chocolate Factory/PXL_20250721_082005324.webp'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Retail & tasting space' },
+                  { label: 'Location', value: 'India' },
+                  { label: 'Scope', value: 'Customer journey visuals' },
+                  { label: 'Services', value: '3D visualization, lighting studies' }
+               ],
+               overview: 'The visuals focus on how lighting, display units and circulation work together to create a memorable, brand-led chocolate experience.'
+            },
+            'mahabaleshwar-treetops': {
+               title: 'Mahabaleshwar Treetops',
+               category: 'Hospitality',
+               location: 'Mahabaleshwar, Maharashtra',
+               tagline: 'Treetop hospitality visuals surrounded by landscape and mist.',
+               image: 'assets/Projects Data/Mahabaleshwar Treetops.HEIC',
+               pills: ['Hospitality', 'Resort', 'Nature-led'],
+               galleryImages: [
+                  'assets/Mahabaleshwar Treetops Cottage/IMG_6453.HEIC',
+                  'assets/Mahabaleshwar Treetops Cottage/IMG_6457.HEIC',
+                  'assets/Mahabaleshwar Treetops Cottage/IMG_6458.HEIC',
+                  'assets/Mahabaleshwar Treetops Cottage/IMG_6459.HEIC',
+                  'assets/Mahabaleshwar Treetops Cottage/IMG_6460.HEIC'
+               ],
+               facts: [
+                  { label: 'Type', value: 'Resort interiors' },
+                  { label: 'Location', value: 'Mahabaleshwar, Maharashtra' },
+                  { label: 'Scope', value: 'Key suites and public areas' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Large glazing, timber details and soft furnishings highlight views into the surrounding treetops, helping operators market the atmosphere well before opening.'
+            },
+            'fadke-hall': {
+               title: 'Fadke Hall',
+               category: 'Hospitality',
+               location: 'Event & banquet space',
+               tagline: 'Banquet visuals focused on flexibility and lighting scenarios.',
+               image: 'assets/Projects Data/Fadke Hall.webp',
+               pills: ['Hospitality', 'Events', 'Flexible layouts'],
+               facts: [
+                  { label: 'Type', value: 'Banquet & event hall' },
+                  { label: 'Location', value: 'India' },
+                  { label: 'Scope', value: 'Multiple layout options' },
+                  { label: 'Services', value: '3D visualization, layout studies' }
+               ],
+               overview: 'Different seating layouts and lighting moods are visualized to help clients quickly understand how the hall supports weddings, conferences and intimate events.'
+            },
+            'joshi': {
+               title: 'Joshi Residence',
+               category: 'Residential',
+               location: 'Pune, Maharashtra',
+               tagline: 'A personalised residence visualized with a warm, timeless palette.',
+               image: 'assets/Projects Data/Joshi .webp',
+               pills: ['Residential', 'Custom home', 'Warm palette'],
+               facts: [
+                  { label: 'Type', value: 'Private residence' },
+                  { label: 'Location', value: 'Pune, Maharashtra' },
+                  { label: 'Scope', value: 'Selected interior spaces' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'The Joshi visuals focus on everyday comfort, natural materials and a layout that feels intuitive to move through.'
+            },
+            'chande-restaurant': {
+               title: 'Chande Restaurant',
+               category: 'Hospitality',
+               location: 'Restaurant interior',
+               tagline: 'Restaurant visuals balancing ambience, seating density and circulation.',
+               image: 'assets/Projects Data/Chande Restaurant.webp',
+               pills: ['Hospitality', 'Restaurant', 'Ambient lighting'],
+               facts: [
+                  { label: 'Type', value: 'Restaurant interiors' },
+                  { label: 'Location', value: 'India' },
+                  { label: 'Scope', value: 'Dining floor and key vignettes' },
+                  { label: 'Services', value: '3D visualization, lighting' }
+               ],
+               overview: 'The Chande Restaurant visuals help operators fine-tune seating layouts, lighting and material combinations before committing on site.'
+            },
+            'pearl-site': {
+               title: 'Pearl Site',
+               category: 'Residential',
+               location: 'Urban residence',
+               tagline: 'Clean-lined residential visuals with a soft, pearl-toned palette.',
+               image: 'assets/Projects Data/Pearl site.webp',
+               pills: ['Residential', 'Muted tones', 'Clean lines'],
+               facts: [
+                  { label: 'Type', value: 'Apartment' },
+                  { label: 'Location', value: 'India' },
+                  { label: 'Scope', value: 'Living and bedroom views' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Calm, desaturated colours and simple forms keep this home feeling light and open, while still being practical to execute locally.'
+            }
+         };
+
+         var project = PROJECTS[slug] || PROJECTS['chandekar-2bhk'];
+
+         function setText(id, value) {
+            var el = document.getElementById(id);
+            if (el && value) el.textContent = value;
+         }
+
+         setText('sp-title', project.title);
+         setText('sp-category-meta', project.category + ' project');
+         setText('sp-location', project.location);
+         setText('sp-tagline', project.tagline);
+         setText('sp-overview', project.overview);
+
+         var heroImg = document.getElementById('sp-hero-image');
+         if (heroImg) {
+            heroImg.src = project.image;
+            heroImg.alt = project.title;
+            heroImg.addEventListener('load', function () {
+               var wrap = document.getElementById('sp-hero-wrap');
+               if (wrap) {
+                  wrap.classList.add('is-visible');
+               }
+            });
+         }
+
+         var mainImg = document.getElementById('sp-main-image');
+         if (mainImg) {
+            mainImg.src = project.image;
+            mainImg.alt = project.title + ' main visual';
+         }
+
+         var pillsWrap = document.getElementById('sp-pills');
+         if (pillsWrap && Array.isArray(project.pills)) {
+            pillsWrap.innerHTML = '';
+            project.pills.forEach(function (label) {
+               var pill = document.createElement('span');
+               pill.className = 'da-single-project-pill';
+               pill.textContent = label;
+               pillsWrap.appendChild(pill);
+            });
+         }
+
+         var factsWrap = document.getElementById('sp-facts');
+         if (factsWrap && Array.isArray(project.facts)) {
+            factsWrap.innerHTML = '';
+            project.facts.forEach(function (fact) {
+               var li = document.createElement('li');
+               var labelSpan = document.createElement('span');
+               labelSpan.textContent = fact.label;
+               li.appendChild(labelSpan);
+               li.appendChild(document.createTextNode(' ' + fact.value));
+               factsWrap.appendChild(li);
+            });
+         }
+
+         // Build a looping gallery for the active project
+         var galleryWrapper = document.querySelector('.da-project-gallery-slider .swiper-wrapper');
+         if (galleryWrapper && project.image) {
+            galleryWrapper.innerHTML = '';
+
+            var images = Array.isArray(project.galleryImages) && project.galleryImages.length
+               ? project.galleryImages
+               : [project.image, project.image, project.image, project.image];
+
+            images.forEach(function (src, index) {
+               var slide = document.createElement('div');
+               slide.className = 'swiper-slide';
+
+               var card = document.createElement('div');
+               card.className = 'da-project-gallery-card';
+
+               var img = document.createElement('img');
+               img.src = src;
+               img.alt = project.title + ' view ' + (index + 1);
+
+               var caption = document.createElement('div');
+               caption.className = 'da-project-gallery-caption';
+               var leftSpan = document.createElement('span');
+               leftSpan.textContent = 'View ' + (index + 1);
+               var rightSpan = document.createElement('span');
+               rightSpan.textContent = project.category;
+               caption.appendChild(leftSpan);
+               caption.appendChild(rightSpan);
+
+               card.appendChild(img);
+               card.appendChild(caption);
+               slide.appendChild(card);
+               galleryWrapper.appendChild(slide);
+            });
+         }
+
+         if (typeof Swiper !== 'undefined') {
+            new Swiper('.da-project-gallery-slider', {
+               loop: true,
+               centeredSlides: true,
+               slidesPerView: 1.1,
+               spaceBetween: 18,
+               autoplay: {
+                  delay: 2600,
+                  disableOnInteraction: false
+               },
+               breakpoints: {
+                  768: {
+                     slidesPerView: 2.1,
+                     spaceBetween: 22
+                  },
+                  1200: {
+                     slidesPerView: 3,
+                     spaceBetween: 26
+                  }
+               },
+               pagination: {
+                  el: '.da-project-gallery-pagination',
+                  clickable: true
+               },
+               navigation: {
+                  nextEl: '.da-project-gallery-next',
+                  prevEl: '.da-project-gallery-prev'
+               }
+            });
+         }
+      })();
+   </script>
+</body>
+
+</html>

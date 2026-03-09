@@ -1,0 +1,559 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Unveiling the Secrets Behind Calm Living Rooms - DA Design Visuals</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/nice-select.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+   <style>
+      /* Back-to-top button: match homepage yellow floating button */
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      body {
+         background-color: #f3f4f6;
+      }
+
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      body.page-inner .tp-header-3-menu>nav>ul>li>a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu>nav>ul>li>a:hover {
+         color: #f9cb08;
+      }
+
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      #header-sticky .tp-header-3-menu>nav>ul {
+         justify-content: center;
+      }
+
+      .da-blog-detail-shell {
+         padding-top: 130px;
+         padding-bottom: 90px;
+      }
+
+      .da-blog-detail-header {
+         max-width: 720px;
+         margin: 0 auto 28px;
+         text-align: center;
+      }
+
+      .da-blog-detail-meta {
+         display: inline-flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         align-items: center;
+         justify-content: center;
+         font-size: 12px;
+         color: #6b7280;
+         margin-bottom: 12px;
+      }
+
+      .da-blog-detail-tag {
+         padding: 4px 12px;
+         border-radius: 999px;
+         background-color: #0f172a;
+         color: #f9fafb;
+         font-size: 11px;
+         letter-spacing: 0.12em;
+         text-transform: uppercase;
+      }
+
+      .da-blog-detail-title {
+         font-size: 32px;
+         font-weight: 600;
+         margin-bottom: 10px;
+      }
+
+      .da-blog-detail-subtitle {
+         font-size: 14px;
+         color: #6b7280;
+      }
+
+      .da-blog-detail-hero-img {
+         border-radius: 24px;
+         overflow: hidden;
+         box-shadow: 0 25px 60px rgba(15, 23, 42, 0.22);
+         margin-bottom: 32px;
+      }
+
+      .da-blog-detail-hero-img img {
+         width: 100%;
+         display: block;
+         object-fit: cover;
+      }
+
+      .da-blog-detail-body {
+         max-width: 760px;
+         margin: 0 auto;
+         background-color: #ffffff;
+         border-radius: 24px;
+         padding: 32px 32px 30px;
+         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+      }
+
+      .da-blog-detail-body p {
+         font-size: 15px;
+         line-height: 1.9;
+         color: #374151;
+         margin-bottom: 18px;
+      }
+
+      .da-blog-detail-body h3 {
+         font-size: 20px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+      }
+
+      .da-blog-detail-quote {
+         border-left: 3px solid #facc15;
+         padding-left: 16px;
+         margin: 20px 0;
+         font-size: 15px;
+         color: #111827;
+      }
+
+      .da-blog-detail-footer {
+         margin-top: 26px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 12px;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .da-author-chip {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         font-size: 13px;
+         color: #6b7280;
+      }
+
+      .da-author-chip img {
+         width: 40px;
+         height: 40px;
+         border-radius: 999px;
+         object-fit: cover;
+      }
+
+      .da-author-chip strong {
+         display: block;
+         line-height: 1.1;
+         margin-bottom: 2px;
+      }
+
+      .da-author-chip span {
+         display: block;
+         line-height: 1.1;
+         margin-top: 0;
+      }
+
+      .da-blog-detail-actions {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+      }
+
+      .da-btn-outline-light {
+         border-radius: 999px;
+         border: 1px solid #d1d5db;
+         padding: 8px 18px;
+         font-size: 13px;
+         color: #111827;
+         background-color: #f9fafb;
+      }
+
+      .da-btn-outline-light:hover {
+         background-color: #e5e7eb;
+      }
+
+      @media (max-width: 767.98px) {
+         .da-blog-detail-shell {
+            padding-top: 110px;
+            padding-bottom: 70px;
+         }
+
+         .da-blog-detail-body {
+            padding: 24px 20px 22px;
+         }
+
+         .da-blog-detail-title {
+            font-size: 24px;
+         }
+      }
+   </style>
+</head>
+
+<body id="body" class="tp-smooth-scroll page-inner">
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+
+   <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
+      <div class="da-sound-wave">
+         <span class="da-sound-bar da-sound-bar-1"></span>
+         <span class="da-sound-bar da-sound-bar-2"></span>
+         <span class="da-sound-bar da-sound-bar-3"></span>
+         <span class="da-sound-bar da-sound-bar-4"></span>
+         <span class="da-sound-bar da-sound-bar-5"></span>
+         <span class="da-sound-bar da-sound-bar-6"></span>
+         <span class="da-sound-bar da-sound-bar-7"></span>
+         <span class="da-sound-bar da-sound-bar-8"></span>
+      </div>
+      <button class="da-sound-toggle" id="da-sound-toggle" type="button" aria-label="Enable site sound">
+         <i class="fa-light fa-volume-off" aria-hidden="true"></i>
+      </button>
+      <audio id="da-sound-audio" src="assets/DA%20WEB.mp3" preload="auto" loop></audio>
+   </div>
+
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="DA Design Visuals logo">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="DA Design Visuals logo">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-offcanvas-content">
+               <h3 class="tp-offcanvas-title"></h3>
+               <p>Browse work across residential, commercial and hospitality spaces crafted by DA Design Visuals.</p>
+            </div>
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Contact</h3>
+               <ul>
+                  <li><a href="tel:+4472077001007">+44 (0) 20 7700 1007</a></li>
+                  <li><a href="mailto:hello@dadesignvisuals.com">hello@dadesignvisuals.com</a></li>
+                  <li><a href="#">Lisbon &amp; Pune, working worldwide</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li><a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">Instagram</a></li>
+                  <li><a href="#">Behance</a></li>
+                  <li><a href="#">Dribbble</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+
+   <header>
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+         <div class="container-fluid">
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            <div class="row align-items-center d-none d-md-flex">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                  <div class="tp-header-3-menu-wrap text-start">
+                     <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                        <div class="tp-header-3-menu header-main-menu">
+                           <nav class="tp-main-menu-content">
+                              <ul>
+                                 <li class="has-dropdown"><a href="about-us.html">About Us</a></li>
+                                 <li class="has-dropdown"><a href="our-work.html">Our Work</a></li>
+                                 <li class="has-dropdown"><a href="blogs.html">Blogs</a></li>
+                                 <li class="has-dropdown"><a href="contact.html">Contact</a></li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                  <div class="tp-header-logo tp-header-3-logo text-center">
+                     <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+               <div class="tp-header-3-right d-none d-md-flex">
+                  <a href="contact.html" class="da-header-quote-btn">
+                     <i class="fa-regular fa-file-lines"></i>
+                     <span>Request a Quote</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <main>
+      <section class="da-blog-detail-shell">
+         <div class="container container-1480">
+            <div class="da-blog-detail-header">
+               <div class="da-blog-detail-meta">
+                  <span class="da-blog-detail-tag">Residential</span>
+                  <span>30 Jan 2026 
+                     <span aria-hidden="true">·</span> 10 mins read
+                  </span>
+               </div>
+               <h1 class="da-blog-detail-title">Unveiling the Secrets Behind Calm Living Rooms</h1>
+               <p class="da-blog-detail-subtitle">How we use AI-powered moodboards to layer light, texture and tone for living rooms that feel like a quiet exhale after the city.</p>
+            </div>
+
+            <div class="da-blog-detail-hero-img mb-4">
+               <img src="assets/img/inner-blog/blog-standard/blog-1.jpg" alt="AI-generated visualization of a calm beige living room">
+            </div>
+
+            <article class="da-blog-detail-body">
+               <p>Calm doesn’t happen by accident. It’s the result of hundreds of tiny choices about colour temperature, contrast, texture and where your eye lands the moment you walk into the room. On calm living room projects we start with AI-generated moodboards so we can audition those choices quickly, before anyone buys a single sofa or light fitting.</p>
+
+               <p>We feed the AI a tight brief – the way light moves through your home, the pieces you already own, how many people usually share the sofa – and iterate through dozens of compositions. Each round helps us understand which silhouettes, rug scales and curtain heights genuinely contribute to a softer, more grounded space.</p>
+
+               <div class="da-blog-detail-quote">
+                  Calm isn’t the absence of detail – it’s the right details, repeated with intention.
+               </div>
+
+               <p>Once a direction is locked, we move into higher fidelity renders that explore layered lighting and styling. This is where we fine-tune the glow on a wall sconce, the warmth of the timber and how reflections behave on glass and metal. By the time we step onto site, you already know exactly what your living room will feel like at 7pm on a rainy weekday.</p>
+            </article>
+
+            <div class="da-blog-detail-footer">
+               <div class="da-author-chip">
+                  <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                  <div>
+                     <strong>Deepali Shinde</strong><br>
+                     Founder, DA
+                  </div>
+               </div>
+               <div class="da-blog-detail-actions">
+                  <a href="blogs.html" class="da-btn-outline-light">← Back to all blogs</a>
+                  <a href="contact.html" class="da-header-quote-btn">
+                     <i class="fa-regular fa-file-lines"></i>
+                     <span>Start a living room brief</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer>
+      <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                     <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                        <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                              <div class="tp-line-content">
+                                 <h4 class="tp-footer-4-big-title">
+                                    <span class="d-none d-md-inline-block">
+                                       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white" />
+                                       </svg>
+                                    </span>
+                                    Have A Great Project ?
+                                 </h4>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container container-1480">
+            <div class="row">
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-1">
+                     <div class="tp-footer-2-widget-logo">
+                        <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                     </div>
+                     <div class="tp-footer-2-widget-text">
+                        <p>Drop us a line & we will <br> contact as soon as we can</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-2">
+                     <div class="tp-footer-2-widget-menu">
+                        <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                        <ul>
+                           <li><a href="index.html">Home</a></li>
+                           <li><a href="about-us.html">About</a></li>
+                           <li><a href="contact.html">Contact</a></li>
+                           <li><a href="blogs.html">Blog</a></li>
+                           <li><a href="project.html">Portfolio</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-3">
+                     <h4 class="tp-footer-2-widget-title">Office</h4>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                     </div>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                     </div>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-4">
+                     <div class="tp-footer-2-widget-newslatter">
+                        <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                        <form action="#">
+                           <div class="tp-footer-2-input p-relative">
+                              <input type="text" placeholder="Enter your email...">
+                              <button>
+                                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4" />
+                                 </svg>
+                              </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="tpopyright-2-area tpopyright-2-bdr-top black-bg" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container container-1480">
+            <div class="row align-items-center">
+               <div class="col-xl-4 col-lg-5">
+                  <div class="tpopyright-2-left text-center text-lg-start">
+                     <p>All rights reserved — 2026 ©DA Design Visuals</p>
+                  </div>
+               </div>
+               <div class="col-xl-8 col-lg-7">
+                  <div class="tpopyright-2-social text-center text-lg-end">
+                     <a class="mb-10" href="#">Instagram</a>
+                     <a class="mb-10" href="#">Facebook</a>
+                     <a class="mb-10" href="#">Linkedin</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/tp-cursor.js"></script>
+   <script>
+      // Ensure offcanvas mobile nav + hamburger work reliably on this page
+      (function () {
+         var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+         if (mobileNavContainer && mobileNavContainer.children.length === 0) {
+            var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+            if (desktopNav) {
+               mobileNavContainer.innerHTML = desktopNav.outerHTML;
+            }
+         }
+
+         if (!window.jQuery) return;
+
+         jQuery(function ($) {
+            $(document).on('click', '.da-burger', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').addClass('opened');
+               $('.body-overlay').addClass('opened');
+               $('.da-burger').addClass('is-open');
+            });
+
+            $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').removeClass('opened');
+               $('.body-overlay').removeClass('opened');
+               $('.da-burger').removeClass('is-open');
+            });
+         });
+      })();
+   </script>
+</body>
+</html>

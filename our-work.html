@@ -1,0 +1,1226 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Our Work – DA Design Visuals</title>
+   <meta name="description" content="Explore DA Design Visuals projects – interiors, hospitality and architectural visualizations.">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+   <!-- Page-specific styles for Our Work layout -->
+   <style>
+      body {
+         background-color: #f5f7fb;
+         color: #020617;
+      }
+
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      /* Our Work header: use same black bar as contact page (override global inner-page styles) */
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      /* make sure header nav items are white on this page (override inner-page default) */
+      body.page-inner .tp-header-3-menu > nav > ul > li > a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu > nav > ul > li > a:hover {
+         color: #f9cb08;
+      }
+
+      /* ensure quote button is white on black header for this page */
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      /* center menu items within the middle column on desktop */
+      #header-sticky .tp-header-3-menu > nav > ul {
+         justify-content: center;
+      }
+      
+
+      /* Hero */
+      .da-work-hero-area {
+         padding-top: 140px;
+         padding-bottom: 130px;
+         background: #ffffff;
+      }
+
+      .da-work-hero-shell {
+         max-width: 1120px;
+         margin: 0 auto;
+         padding: 40px 0 0;
+      }
+
+      .da-work-hero-main {
+         text-align: center;
+      }
+
+      .da-work-tag {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         padding: 6px 14px;
+         border-radius: 999px;
+         background: #0f172a;
+         color: #e5e7eb;
+         font-size: 12px;
+         letter-spacing: 0.12em;
+         text-transform: uppercase;
+         margin: 0 auto;
+      }
+
+      .da-work-tag span:last-child {
+         color: #ffffff;
+      }
+
+      .da-work-hero-title {
+         font-size: 54px;
+         line-height: 1.05;
+         margin-top: 26px;
+         margin-bottom: 20px;
+         text-align: center;
+      }
+
+      .da-work-hero-title span {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .da-work-hero-title-highlight {
+         background: #facc15;
+         color: #020617;
+         padding: 6px 24px 10px;
+         border-radius: 999px;
+      }
+
+      .da-work-hero-title .badge-dot {
+         display: none;
+      }
+
+      .da-work-hero-sub {
+         font-size: 16px;
+         max-width: 520px;
+         color: rgba(15, 23, 42, 0.7);
+         margin: 0 auto;
+         text-align: center;
+      }
+
+      .da-work-hero-avatars {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         margin-top: 26px;
+         justify-content: center;
+      }
+
+      .da-work-hero-avatars img {
+         width: 40px;
+         height: 40px;
+         border-radius: 999px;
+         border: 2px solid #ffffff;
+         box-shadow: 0 10px 25px rgba(15, 23, 42, 0.45);
+      }
+
+      .da-work-hero-avatars img + img {
+         margin-left: -12px;
+      }
+
+      .da-work-hero-avatars p {
+         margin: 0 0 0 6px;
+         font-size: 13px;
+         color: rgba(15, 23, 42, 0.75);
+      }
+
+      .da-work-hero-actions {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 14px;
+         margin-top: 30px;
+         justify-content: center;
+      }
+
+      .da-work-btn-primary {
+         padding: 11px 26px;
+         border-radius: 999px;
+         border: none;
+         background: #020617;
+         color: #f9fafb;
+         font-size: 14px;
+      }
+
+      .da-work-btn-primary:hover {
+         background: #facc15;
+         color: #020617;
+      }
+
+      .da-work-btn-secondary {
+         padding: 11px 22px;
+         border-radius: 999px;
+         border: 1px solid rgba(148, 163, 184, 0.6);
+         background: #ffffff;
+         color: #020617;
+         font-size: 14px;
+      }
+
+      /* search strip */
+      .da-work-search-area {
+         margin-top: 40px;
+      }
+
+      .da-work-search-card {
+         padding: 22px 26px;
+         border-radius: 28px;
+         background: #ffffff;
+         box-shadow: 0 26px 90px rgba(15, 23, 42, 0.14);
+      }
+
+      .da-work-search-header {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         margin-bottom: 16px;
+         font-size: 14px;
+         color: rgba(15, 23, 42, 0.7);
+      }
+
+      .da-work-search-header i {
+         width: 26px;
+         height: 26px;
+         border-radius: 999px;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         background: #eff6ff;
+         color: #2563eb;
+      }
+
+      .da-work-search-grid {
+         display: grid;
+         grid-template-columns: repeat(4, minmax(0, 1fr));
+         gap: 12px;
+      }
+
+      .da-work-search-field {
+         padding: 12px 14px;
+         border-radius: 999px;
+         border: 1px solid rgba(209, 213, 219, 0.9);
+         display: flex;
+         align-items: center;
+         font-size: 13px;
+         color: rgba(15, 23, 42, 0.7);
+         background: #f9fafb;
+         position: relative;
+      }
+
+      .da-work-select {
+         width: 100%;
+         border: none !important;
+         outline: none;
+         background-color: transparent !important;
+         font-size: 14px;
+         color: rgba(15, 23, 42, 0.8);
+         padding-right: 24px;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         appearance: none;
+      }
+
+      .da-work-select option[value=""] {
+         color: rgba(107, 114, 128, 0.9);
+      }
+
+      .da-work-select-icon {
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         color: rgba(107, 114, 128, 0.9);
+         pointer-events: none;
+      }
+
+      .da-work-search-go {
+         width: 100%;
+         height: 100%;
+         padding: 0 10px;
+         border-radius: 999px;
+         border: none;
+         background: #F9CB08;
+         color: #020617;
+         font-size: 14px;
+         font-weight: 500;
+         text-align: center;
+      }
+
+      .da-work-search-action {
+         padding: 12px 14px;
+         border-radius: 999px;
+         border: 1px solid rgba(209, 213, 219, 0.9);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: #f9fafb;
+      }
+
+      /* feature strip */
+      .da-work-feature-area {
+         padding: 80px 0 70px;
+         background: #ffffff;
+      }
+
+      .da-work-feature-grid {
+         display: grid;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+         gap: 22px;
+      }
+
+      .da-work-feature-card {
+         padding: 24px 22px;
+         border-radius: 24px;
+         background: #f9fafb;
+         border: 1px solid rgba(229, 231, 235, 0.9);
+      }
+
+      .da-work-feature-card span {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 34px;
+         height: 34px;
+         border-radius: 999px;
+         background: #020617;
+         color: #f9fafb;
+         margin-bottom: 16px;
+      }
+
+      .da-work-feature-card h4 {
+         font-size: 18px;
+         margin-bottom: 8px;
+      }
+
+      .da-work-feature-card p {
+         font-size: 14px;
+         color: rgba(55, 65, 81, 0.85);
+         margin: 0;
+      }
+
+      .da-work-feature-copy h3 {
+         font-size: 30px;
+         margin-bottom: 10px;
+      }
+
+      .da-work-feature-copy p {
+         font-size: 15px;
+         color: rgba(55, 65, 81, 0.9);
+      }
+
+      /* project grid */
+      .da-work-project-section {
+         padding: 80px 0 110px;
+         background: #f9fafb;
+      }
+
+      .da-work-project-section .container {
+         padding-left: 8px;
+         padding-right: 8px;
+      }
+
+      .da-work-project-heading {
+         margin-bottom: 32px;
+      }
+
+      .da-work-project-heading p {
+         font-size: 14px;
+         letter-spacing: 0.14em;
+         text-transform: uppercase;
+         color: #6b7280;
+         margin-bottom: 8px;
+      }
+
+      .da-work-project-heading h2 {
+         font-size: 34px;
+         margin: 0;
+      }
+
+      .da-work-project-grid {
+         display: grid;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+         gap: 22px;
+      }
+
+      .da-work-project-item {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .da-work-project-card {
+         position: relative;
+         border-radius: 2px;
+         overflow: hidden;
+         background: #020617;
+         min-height: 0;
+         aspect-ratio: 1 / 1;
+         box-shadow: none;
+         display: block;
+      }
+
+      .da-work-project-card img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transform: scale(1.03);
+         transition: transform 0.7s ease;
+      }
+
+      .da-work-project-card:hover img {
+         transform: scale(1.08);
+      }
+
+      .da-work-project-title {
+         margin-top: 10px;
+         font-size: 15px;
+         font-weight: 500;
+         color: #111827;
+      }
+
+      .da-work-project-filters {
+         margin-top: 16px;
+         margin-bottom: 4px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+      }
+
+      .da-work-filter-btn {
+         border-radius: 999px;
+         border: 1px solid rgba(148, 163, 184, 0.7);
+         background: #ffffff;
+         color: #111827;
+         padding: 6px 16px;
+         font-size: 13px;
+         line-height: 1.2;
+         cursor: pointer;
+         transition: all 0.2s ease;
+      }
+
+      .da-work-filter-btn.is-active {
+         background: #020617;
+         color: #f9fafb;
+         border-color: transparent;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-work-hero-area {
+            padding-top: 120px;
+            padding-bottom: 80px;
+         }
+
+         .da-work-hero-title {
+            font-size: 40px;
+         }
+
+         .da-work-hero-shell {
+            padding: 32px 22px 30px;
+            border-radius: 30px;
+         }
+
+         .da-work-search-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+
+         .da-work-feature-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .da-work-project-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      @media (max-width: 575.98px) {
+         .da-work-hero-title {
+            font-size: 32px;
+         }
+
+         .da-work-search-card {
+            padding: 18px 18px;
+         }
+      }
+   </style>
+</head>
+
+<body id="body" class="tp-smooth-scroll page-inner">
+   <!-- back to top start -->
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back to top end -->
+
+   <!-- Global sound widget (reused) -->
+   <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
+      <div class="da-sound-wave">
+         <span class="da-sound-bar da-sound-bar-1"></span>
+         <span class="da-sound-bar da-sound-bar-2"></span>
+         <span class="da-sound-bar da-sound-bar-3"></span>
+         <span class="da-sound-bar da-sound-bar-4"></span>
+         <span class="da-sound-bar da-sound-bar-5"></span>
+         <span class="da-sound-bar da-sound-bar-6"></span>
+         <span class="da-sound-bar da-sound-bar-7"></span>
+         <span class="da-sound-bar da-sound-bar-8"></span>
+      </div>
+      <button class="da-sound-toggle" id="da-sound-toggle" type="button" aria-label="Enable site sound">
+         <i class="fa-light fa-volume-off" aria-hidden="true"></i>
+      </button>
+      <audio id="da-sound-audio" src="assets/DA%20WEB.mp3" preload="auto" loop></audio>
+   </div>
+
+   <!-- offcanvas start (same structure & content as homepage) -->
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+                       <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Information</h3>
+
+               <ul>
+                  <li><a href="tel:+919850811995">+91 9850811995</a></li>
+                  <li><a href="mailto:contact@dadesign.com">contact@dadesign.com</a></li>
+                  <li><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li>
+                     <a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M11.25 1.5H4.75C2.95507 1.5 1.5 2.95507 1.5 4.75V11.25C1.5 13.0449 2.95507 14.5 4.75 14.5H11.25C13.0449 14.5 14.5 13.0449 14.5 11.25V4.75C14.5 2.95507 13.0449 1.5 11.25 1.5Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path
+                              d="M10.6016 7.5907C10.6818 8.13166 10.5894 8.68414 10.3375 9.16955C10.0856 9.65497 9.68711 10.0486 9.19862 10.2945C8.71014 10.5404 8.15656 10.6259 7.61663 10.5391C7.0767 10.4522 6.57791 10.1972 6.19121 9.81055C5.80451 9.42385 5.54959 8.92506 5.46271 8.38513C5.37583 7.8452 5.46141 7.29163 5.70728 6.80314C5.95315 6.31465 6.34679 5.91613 6.83221 5.66425C7.31763 5.41238 7.87011 5.31998 8.41107 5.4002C8.96287 5.48202 9.47372 5.73915 9.86817 6.1336C10.2626 6.52804 10.5197 7.0389 10.6016 7.5907Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M11.5742 4.42578H11.5842" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M2.50589 12.7494C4.57662 16.336 9.16278 17.5648 12.7494 15.4941C14.2113 14.65 15.2816 13.388 15.8962 11.9461C16.7895 9.85066 16.7208 7.37526 15.4941 5.25063C14.2674 3.12599 12.1581 1.82872 9.89669 1.55462C8.34063 1.366 6.71259 1.66183 5.25063 2.50589C1.66403 4.57662 0.435172 9.16278 2.50589 12.7494Z"
+                              stroke="currentColor" stroke-width="1.5" />
+                           <path
+                              d="M12.7127 15.4292C12.7127 15.4292 12.0086 10.4867 10.5011 7.87559C8.99362 5.26451 5.28935 2.57155 5.28935 2.57155M5.68449 15.6124C6.79553 12.2606 12.34 8.54524 16.3975 9.43537M12.311 2.4082C11.1953 5.72344 5.75732 9.38453 1.71875 8.58915"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M1 5.5715H6.33342C7.62867 5.5715 8.61917 6.56199 8.61917 7.85725C8.61917 9.15251 7.62867 10.143 6.33342 10.143H1.76192C1.30477 10.143 1 9.83823 1 9.38108V1.76192C1 1.30477 1.30477 1 1.76192 1H5.5715C6.86676 1 7.85725 1.99049 7.85725 3.28575C7.85725 4.58101 6.86676 5.5715 5.5715 5.5715H1Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+                           <path
+                              d="M10.9062 7.09454H17.0016C17.0016 5.41832 15.6301 4.04688 13.9539 4.04688C12.2777 4.04688 10.9062 5.41832 10.9062 7.09454ZM10.9062 7.09454C10.9062 8.77076 12.2777 10.1422 13.9539 10.1422H15.2492"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                           <path d="M16.1125 1.44434H11.668" stroke="currentColor" stroke-width="1.2"
+                              stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M12.75 13H5.25C3 13 1.5 11.5 1.5 9.25V4.75C1.5 2.5 3 1 5.25 1H12.75C15 1 16.5 2.5 16.5 4.75V9.25C16.5 11.5 15 13 12.75 13Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                           <path
+                              d="M8.70676 5.14837L10.8006 6.40465C11.5543 6.90716 11.5543 7.66093 10.8006 8.16344L8.70676 9.41972C7.86923 9.92224 7.19922 9.50348 7.19922 8.5822V6.06964C7.19922 4.98086 7.86923 4.64585 8.70676 5.14837Z"
+                              fill="currentColor" />
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+   <!-- offcanvas end -->
+
+   <header>
+
+      <!-- full-screen hero with left menu & centered logo (copied from contact page) -->
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+            <div class="container-fluid">
+
+               <!-- Mobile header: centered logo + global 2-line hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                     <div class="tp-header-3-menu-wrap text-start">
+                        <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                           <div class="tp-header-3-menu header-main-menu">
+                              <nav class="tp-main-menu-content">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="our-work.html">Our Work</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="blogs.html">Blogs</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="contact.html">Contact</a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                        <div class="tp-header-logo tp-header-3-logo text-center">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                     <div class="tp-header-3-right d-none d-md-flex">
+                        <a href="contact.html" class="da-header-quote-btn">
+                           <i class="fa-regular fa-file-lines"></i>
+                           <span>Request a Quote</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      <!-- header / hero combined area end -->
+
+   </header>
+
+   <main>
+      <!-- Hero + search -->
+      <section class="da-work-hero-area">
+         <div class="container">
+            <div class="da-work-hero-shell">
+               <div class="da-work-hero-main">
+                  <div class="da-work-tag">
+                     <span>Our Work</span>
+                  </div>
+                  <h1 class="da-work-hero-title">
+                     Your marketplace
+                     <br>
+                     <span class="da-work-hero-title-highlight">
+                        for crafted interior visuals
+                     </span>
+                  </h1>
+                  <div class="da-work-hero-avatars">
+                     <img src="assets/Projects Data/Chandekar 2BHK Project.jpg" alt="Chandekar 2-BHK project visual">
+                     <img src="assets/Projects Data/Boyden Project.jpg" alt="Boyden workspace visual">
+                     <img src="assets/Projects Data/Chocolate Factory.jpg" alt="Chocolate Factory hospitality visual">
+                     <p>Trusted by studios in Pune, Mumbai, Banglore &amp; beyond.</p>
+                  </div>
+                  <div class="da-work-hero-actions">
+                     <a href="#work-grid" class="da-work-btn-primary">Browse projects</a>
+                     <a href="contact.html" class="da-work-btn-secondary">Start a new brief</a>
+                  </div>
+               </div>
+
+               <div class="da-work-search-area">
+                  <div class="da-work-search-card">
+                     <div class="da-work-search-header">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Browse Our Projects Faster</span>
+                     </div>
+                     <div class="da-work-search-grid">
+                        <div class="da-work-search-field">
+                           <select id="filter-category" class="da-work-select">
+                              <option value="">Category</option>
+                              <option value="residential">Residential</option>
+                              <option value="hospitality">Hospitality</option>
+                              <option value="workspace">Workspace</option>
+                           </select>
+                        </div>
+                        <div class="da-work-search-field">
+                           <select id="filter-city" class="da-work-select">
+                              <option value="">City</option>
+                              <option value="lisbon">Lisbon</option>
+                              <option value="london">London</option>
+                              <option value="dubai">Dubai</option>
+                           </select>
+                        </div>
+                        <div class="da-work-search-field">
+                           <select id="filter-style" class="da-work-select">
+                              <option value="">Style</option>
+                              <option value="minimal">Minimal</option>
+                              <option value="luxury">Luxury</option>
+                              <option value="industrial">Industrial</option>
+                           </select>
+                        </div>
+                        <div class="da-work-search-action">
+                           <button class="da-work-search-go" type="button">Search projects</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Project grid -->
+      <section id="work-grid" class="da-work-project-section">
+         <div class="container">
+            <div class="da-work-project-heading">
+               <p>Design showcase</p>
+               <h2>Explore signature projects.</h2>
+               <div class="da-work-project-filters">
+                  <button type="button" class="da-work-filter-btn is-active" data-filter-category="">All</button>
+                  <button type="button" class="da-work-filter-btn" data-filter-category="residential">Residential</button>
+                  <button type="button" class="da-work-filter-btn" data-filter-category="hospitality">Hospitality</button>
+                  <button type="button" class="da-work-filter-btn" data-filter-category="workspace">Workspace</button>
+               </div>
+            </div>
+            <div class="da-work-project-grid" id="da-work-project-grid">
+               <div class="da-work-project-item" data-category="residential" data-project-id="chandekar-2bhk">
+                  <a href="project-detail.html?project=chandekar-2bhk" class="da-work-project-card">
+                     <img src="assets/Projects Data/Chandekar 2BHK Project.jpg" alt="Chandekar 2BHK Project">
+                  </a>
+                  <div class="da-work-project-title">Chandekar 2-BHK Project</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="kharadi-1">
+                  <a href="project-detail.html?project=kharadi-1" class="da-work-project-card">
+                     <img src="assets/Projects Data/Kharadi1 Site.jpg" alt="Kharadi1 Site">
+                  </a>
+                  <div class="da-work-project-title">Kharadi-1 Site</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="kharadi-2">
+                  <a href="project-detail.html?project=kharadi-2" class="da-work-project-card">
+                     <img src="assets/Projects Data/Kharadi2 Site.JPG" alt="Kharadi2 Site">
+                  </a>
+                  <div class="da-work-project-title">Kharadi-2 Site</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="kondhwa">
+                  <a href="project-detail.html?project=kondhwa" class="da-work-project-card">
+                     <img src="assets/Projects Data/Kondhwa Site.JPG" alt="Kondhwa Site">
+                  </a>
+                  <div class="da-work-project-title">Kondhwa Site</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="kudje-5bhk">
+                  <a href="project-detail.html?project=kudje-5bhk" class="da-work-project-card">
+                     <img src="assets/Projects Data/Kudje 5 BHK.JPG" alt="Kudje 5 BHK">
+                  </a>
+                  <div class="da-work-project-title">Kudje 5-BHK</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="raut-3bhk">
+                  <a href="project-detail.html?project=raut-3bhk" class="da-work-project-card">
+                     <img src="assets/Projects Data/Raut3 BHK.jpg" alt="Raut3 BHK">
+                  </a>
+                  <div class="da-work-project-title">Raut 3-BHK</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="santorini-blue">
+                  <a href="project-detail.html?project=santorini-blue" class="da-work-project-card">
+                     <img src="assets/Projects Data/Santorini Blue Site.JPG" alt="Santorini Blue Site">
+                  </a>
+                  <div class="da-work-project-title">Santorini Blue Site</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="shirwal">
+                  <a href="project-detail.html?project=shirwal" class="da-work-project-card">
+                     <img src="assets/Projects Data/Shirwal Site.JPG" alt="Shirwal Site">
+                  </a>
+                  <div class="da-work-project-title">Shirwal Site</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="premium-apartment">
+                  <a href="project-detail.html?project=premium-apartment" class="da-work-project-card">
+                     <img src="assets/Projects Data/Premium Apartment.HEIC" alt="Premium Apartment">
+                  </a>
+                  <div class="da-work-project-title">Premium Apartment</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="diveagar">
+                  <a href="project-detail.html?project=diveagar" class="da-work-project-card">
+                     <img src="assets/Projects Data/Diveagar Project.jpeg" alt="Diveagar Project">
+                  </a>
+                  <div class="da-work-project-title">Diveagar Project</div>
+               </div>
+               <div class="da-work-project-item" data-category="hospitality" data-project-id="ahmednagar-institute">
+                  <a href="project-detail.html?project=ahmednagar-institute" class="da-work-project-card">
+                     <img src="assets/Projects Data/Ahmednagar Institute.HEIC" alt="Ahmednagar Institute">
+                  </a>
+                  <div class="da-work-project-title">Ahmednagar Institute</div>
+               </div>
+               <div class="da-work-project-item" data-category="workspace" data-project-id="boyden">
+                  <a href="project-detail.html?project=boyden" class="da-work-project-card">
+                     <img src="assets/Projects Data/Boyden Project.jpg" alt="Boyden Project">
+                  </a>
+                  <div class="da-work-project-title">Boyden Project</div>
+               </div>
+               <div class="da-work-project-item" data-category="hospitality" data-project-id="chocolate-factory">
+                  <a href="project-detail.html?project=chocolate-factory" class="da-work-project-card">
+                     <img src="assets/Projects Data/Chocolate Factory.jpg" alt="Chocolate Factory">
+                  </a>
+                  <div class="da-work-project-title">Chocolate Factory</div>
+               </div>
+               <div class="da-work-project-item" data-category="hospitality" data-project-id="mahabaleshwar-treetops">
+                  <a href="project-detail.html?project=mahabaleshwar-treetops" class="da-work-project-card">
+                     <img src="assets/Projects Data/Mahabaleshwar Treetops.HEIC" alt="Mahabaleshwar Treetops">
+                  </a>
+                  <div class="da-work-project-title">Mahabaleshwar Treetops</div>
+               </div>
+               <div class="da-work-project-item" data-category="hospitality" data-project-id="fadke-hall">
+                  <a href="project-detail.html?project=fadke-hall" class="da-work-project-card">
+                     <img src="assets/Projects Data/Fadke Hall.jpg" alt="Fadke Hall">
+                  </a>
+                  <div class="da-work-project-title">Fadke Hall</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="joshi">
+                  <a href="project-detail.html?project=joshi" class="da-work-project-card">
+                     <img src="assets/Projects Data/Joshi .jpg" alt="Joshi">
+                  </a>
+                  <div class="da-work-project-title">Joshi</div>
+               </div>
+               <div class="da-work-project-item" data-category="hospitality" data-project-id="chande-restaurant">
+                  <a href="project-detail.html?project=chande-restaurant" class="da-work-project-card">
+                     <img src="assets/Projects Data/Chande Restaurant.jpeg" alt="Chande Restaurant">
+                  </a>
+                  <div class="da-work-project-title">Chande Restaurant</div>
+               </div>
+               <div class="da-work-project-item" data-category="residential" data-project-id="pearl-site">
+                  <a href="project-detail.html?project=pearl-site" class="da-work-project-card">
+                     <img src="assets/Projects Data/Pearl site.jpg" alt="Pearl site">
+                  </a>
+                  <div class="da-work-project-title">Pearl site</div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer>
+
+      <!-- footer area start -->
+      <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                     <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                        <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                              <div class="tp-line-content">
+                                 <h4 class="tp-footer-4-big-title">
+                                    <span class="d-none d-md-inline-block">
+                                       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                       </svg>
+                                    </span>
+                                    Have A Great Project ?
+                                 </h4>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-line-content">
+                                 <h4 class="tp-footer-4-big-title">
+                                    <span class="d-none d-md-inline-block">
+                                       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                       </svg>
+                                    </span>
+                                    Have A Great Project ?
+                                 </h4>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-line-content">
+                                 <h4 class="tp-footer-4-big-title">
+                                    <span class="d-none d-md-inline-block">
+                                       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                       </svg>
+                                    </span>
+                                    Have A Great Project ?
+                                 </h4>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="tp-line-content">
+                                 <h4 class="tp-footer-4-big-title">
+                                    <span class="d-none d-md-inline-block">
+                                       <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                       </svg>
+                                    </span>
+                                    Have A Great Project ?
+                                 </h4>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container container-1480">
+            <div class="tp-footer-4-top">
+               <div class="row align-items-center">
+                  <div class="col-xl-6 col-lg-6 col-md-6">
+                     <div class="tp-footer-4-top-left">
+                        <p>Have a project in mind? <br> Let’s work together!</p>
+                     </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6">
+                     <div class="tp-footer-4-top-right text-start text-md-end">
+                        <a class="tp-btn-white-lg" href="contact.html">Let's Talk!</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container container-1480">
+            <div class="row">
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-1">
+                     <div class="tp-footer-2-widget-logo">
+                        <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                     </div>
+                     <div class="tp-footer-2-widget-text">
+                        <p>Drop us a line & we will <br> contact as soon as we can</p>                         
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-2">
+                     <div class="tp-footer-2-widget-menu">
+                        <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                        <ul>
+                         <li><a href="index.html">Home</a></li>
+                         <li><a href="about-us.html">About</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                         <li><a href="blog-list.html">Blog</a></li>
+                         <li><a href="project.html">Portfolio</a></li>
+                       </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-3">
+                     <h4 class="tp-footer-2-widget-title">Office</h4>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                     </div>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                     </div>
+                     <div class="tp-footer-2-contact-item">
+                        <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                  <div class="tp-footer-2-widget footer-col-2-4">
+                     <div class="tp-footer-2-widget-newslatter">
+                        <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                        <form action="#">
+                           <div class="tp-footer-2-input p-relative">
+                              <input type="text" placeholder="Enter your email...">
+                              <button>
+                                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4"/>
+                                 </svg>                                        
+                              </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="tp-copyright-2-area tp-copyright-2-bdr-top black-bg" data-background="assets/img/home-04/hero/overly.png">
+         <div class="container container-1480">
+            <div class="row align-items-center">
+               <div class="col-xl-4 col-lg-5">
+                  <div class="tp-copyright-2-left text-center text-lg-start">
+                     <p>All rights reserved — 2026 ©DA Design Visuals</p>
+                  </div>
+               </div>
+               <div class="col-xl-8 col-lg-7">
+                  <div class="tp-copyright-2-social text-center text-lg-end">
+                     <a class="mb-10" href="#">Instagram</a>
+                     <a class="mb-10" href="#">Facebook</a>
+                     <a class="mb-10" href="#">Linkedin</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- footer area end -->
+
+   </footer>
+
+   <!-- JS -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+   <script src="assets/js/range-slider.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/beforeafter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/webgl.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/tp-cursor.js"></script>
+
+   <script>
+      (function () {
+         var hasGsap = typeof gsap !== 'undefined';
+
+         if (hasGsap && typeof ScrollTrigger !== 'undefined' && gsap.registerPlugin) {
+            gsap.registerPlugin(ScrollTrigger);
+         }
+
+         if (hasGsap) {
+            gsap.from('.da-work-tag', {
+               opacity: 0,
+               y: 20,
+               duration: 0.7,
+               ease: 'power2.out'
+            });
+
+            gsap.from('.da-work-hero-title', {
+               opacity: 0,
+               y: 30,
+               duration: 0.8,
+               ease: 'power2.out',
+               delay: 0.1
+            });
+
+            gsap.from('.da-work-hero-sub', {
+               opacity: 0,
+               y: 26,
+               duration: 0.8,
+               ease: 'power2.out',
+               delay: 0.2
+            });
+
+            gsap.from('.da-work-hero-avatars', {
+               opacity: 0,
+               y: 24,
+               duration: 0.8,
+               ease: 'power2.out',
+               delay: 0.3
+            });
+
+            gsap.from('.da-work-hero-actions', {
+               opacity: 0,
+               y: 22,
+               duration: 0.8,
+               ease: 'power2.out',
+               delay: 0.4
+            });
+
+            if (typeof ScrollTrigger !== 'undefined') {
+               gsap.from('.da-work-feature-card', {
+                  opacity: 0,
+                  y: 24,
+                  duration: 0.7,
+                  ease: 'power2.out',
+                  stagger: 0.08,
+                  scrollTrigger: {
+                     trigger: '.da-work-feature-area',
+                     start: 'top 80%'
+                  }
+               });
+            }
+         }
+
+         // Simple filtering for the Our Work grid using the search bar
+         var projectItems = Array.prototype.slice.call(document.querySelectorAll('.da-work-project-item'));
+         var categorySelect = document.getElementById('filter-category');
+         var citySelect = document.getElementById('filter-city');
+         var styleSelect = document.getElementById('filter-style');
+         var searchButton = document.querySelector('.da-work-search-go');
+         var categoryButtons = Array.prototype.slice.call(document.querySelectorAll('.da-work-filter-btn'));
+
+         function applyWorkFilters() {
+            if (!projectItems.length) return;
+
+            var category = categorySelect ? categorySelect.value : '';
+            var city = citySelect ? citySelect.value : '';
+            var style = styleSelect ? styleSelect.value : '';
+
+            projectItems.forEach(function (item) {
+               var matchCategory = !category || item.dataset.category === category;
+               var matchCity = !city || item.dataset.city === city;
+               var matchStyle = !style || item.dataset.style === style;
+               item.style.display = (matchCategory && matchCity && matchStyle) ? '' : 'none';
+            });
+
+            if (categoryButtons.length) {
+               categoryButtons.forEach(function (btn) {
+                  var btnCategory = btn.dataset.filterCategory || '';
+                  if (btnCategory === (category || '')) {
+                     btn.classList.add('is-active');
+                  } else {
+                     btn.classList.remove('is-active');
+                  }
+               });
+            }
+         }
+
+         if (searchButton) {
+            searchButton.addEventListener('click', function (e) {
+               e.preventDefault();
+               applyWorkFilters();
+            });
+         }
+
+         [categorySelect, citySelect, styleSelect].forEach(function (selectEl) {
+            if (!selectEl) return;
+            selectEl.addEventListener('change', applyWorkFilters);
+         });
+
+         if (categoryButtons.length) {
+            categoryButtons.forEach(function (btn) {
+               btn.addEventListener('click', function () {
+                  var value = btn.dataset.filterCategory || '';
+                  if (categorySelect) {
+                     categorySelect.value = value;
+                  }
+                  applyWorkFilters();
+               });
+            });
+         }
+      })();
+   </script>
+
+   <script>
+      // Ensure offcanvas mobile nav + hamburger work reliably on this page
+      (function () {
+         var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+         if (mobileNavContainer && mobileNavContainer.children.length === 0) {
+            var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+            if (desktopNav) {
+               mobileNavContainer.innerHTML = desktopNav.outerHTML;
+            }
+         }
+
+         if (!window.jQuery) return;
+
+         jQuery(function ($) {
+            $(document).on('click', '.da-burger', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').addClass('opened');
+               $('.body-overlay').addClass('opened');
+               $('.da-burger').addClass('is-open');
+            });
+
+            $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').removeClass('opened');
+               $('.body-overlay').removeClass('opened');
+               $('.da-burger').removeClass('is-open');
+            });
+         });
+      })();
+   </script>
+</body>
+
+</html>

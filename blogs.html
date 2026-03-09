@@ -1,0 +1,1064 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Blogs - DA Design Visuals</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+   
+   <!-- Page-specific styles -->
+   <style>
+      /* Back-to-top button: match homepage yellow floating button */
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      body {
+         background-color: #f3f4f6;
+      }
+
+      /* Blogs header: match Our Work black bar styling */
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      /* ensure nav links + quote button are white on black header */
+      body.page-inner .tp-header-3-menu > nav > ul > li > a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu > nav > ul > li > a:hover {
+         color: #f9cb08;
+      }
+
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      /* center menu items in header */
+      #header-sticky .tp-header-3-menu > nav > ul {
+         justify-content: center;
+      }
+
+      .da-blog-shell {
+         padding-top: 110px;
+         padding-bottom: 80px;
+         padding-left: 24px;
+         padding-right: 24px;
+      }
+
+      .da-blog-hero-card {
+         position: relative;
+         border-radius: 26px;
+         overflow: hidden;
+         background-color: #0f172a;
+         box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+         margin-bottom: 42px;
+      }
+
+      .da-blog-hero-media img {
+         width: 100%;
+         height: 380px;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-blog-hero-overlay {
+         position: absolute;
+         inset: 0;
+         background: linear-gradient(to top, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.1));
+         color: #f9fafb;
+         display: flex;
+         align-items: flex-end;
+         padding: 26px 30px;
+      }
+
+      .da-blog-hero-meta {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         margin-bottom: 10px;
+      }
+
+      .da-blog-pill {
+         display: inline-flex;
+         align-items: center;
+         padding: 4px 12px;
+         border-radius: 999px;
+         font-size: 11px;
+         letter-spacing: 0.12em;
+         text-transform: uppercase;
+         background-color: rgba(15, 23, 42, 0.85);
+         color: #e5e7eb;
+         border: 1px solid rgba(148, 163, 184, 0.4);
+      }
+
+      .da-blog-pill-ai {
+         background-color: rgba(249, 203, 8, 0.12);
+         color: #facc15;
+         border-color: rgba(250, 204, 21, 0.5);
+      }
+
+      .da-blog-hero-title {
+         font-size: 30px;
+         line-height: 1.2;
+         font-weight: 600;
+         margin-bottom: 8px;
+      }
+
+      .da-blog-hero-text {
+         font-size: 14px;
+         max-width: 520px;
+         color: rgba(249, 250, 251, 0.9);
+         margin-bottom: 18px;
+      }
+
+      .da-blog-hero-author {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         font-size: 12px;
+         color: rgba(209, 213, 219, 0.95);
+      }
+
+      .da-blog-hero-author img {
+         width: 32px;
+         height: 32px;
+         border-radius: 999px;
+         object-fit: cover;
+      }
+
+      .da-blog-hero-author strong {
+         font-size: 13px;
+         color: #f9fafb;
+      }
+
+      .da-blog-header-row {
+         margin-bottom: 22px;
+      }
+
+      .da-blog-page-title {
+         font-size: 26px;
+         font-weight: 600;
+         margin-bottom: 4px;
+      }
+
+      .da-blog-page-copy {
+         font-size: 14px;
+         color: #6b7280;
+      }
+
+      .da-blog-filters {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         align-items: center;
+         justify-content: flex-end;
+      }
+
+      .da-blog-filter-pill {
+         border-radius: 999px;
+         border: 1px solid #e5e7eb;
+         background-color: #f9fafb;
+         padding: 6px 14px;
+         font-size: 13px;
+         color: #4b5563;
+         cursor: pointer;
+      }
+
+      .da-blog-filter-pill.is-active {
+         background-color: #020617;
+         color: #f9fafb;
+         border-color: #020617;
+      }
+
+
+      .da-blog-grid {
+         margin-top: 16px;
+      }
+
+      .da-blog-card {
+         background-color: #ffffff;
+         border-radius: 20px;
+         overflow: hidden;
+         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+      }
+
+      .da-blog-card-link {
+         display: block;
+         color: inherit;
+         text-decoration: none;
+         height: 100%;
+      }
+
+      .da-blog-card-link:hover .da-blog-card-title {
+         text-decoration: underline;
+      }
+
+      .da-blog-card-img img {
+         width: 100%;
+         height: 210px;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-blog-card-body {
+         padding: 16px 18px 16px;
+         flex: 1 1 auto;
+      }
+
+      .da-blog-card-meta {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         font-size: 11px;
+         color: #6b7280;
+         margin-bottom: 8px;
+      }
+
+      .da-blog-card-meta span {
+         display: inline-flex;
+         align-items: center;
+         gap: 6px;
+      }
+
+      .da-blog-card-tag {
+         padding: 3px 9px;
+         border-radius: 999px;
+         background-color: #eff6ff;
+         color: #1d4ed8;
+         font-size: 11px;
+      }
+
+      .da-blog-card-title {
+         font-size: 16px;
+         font-weight: 600;
+         margin-bottom: 6px;
+      }
+
+      .da-blog-card-text {
+         font-size: 13px;
+         color: #4b5563;
+         line-height: 1.6;
+      }
+
+      .da-blog-card-author {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         padding: 0 18px 14px;
+         margin-top: 6px;
+         font-size: 12px;
+         color: #6b7280;
+      }
+
+      .da-blog-card-author img {
+         width: 36px;
+         height: 36px;
+         border-radius: 999px;
+         object-fit: cover;
+      }
+
+      .da-blog-card-author strong {
+         font-size: 13px;
+         color: #111827;
+         display: block;
+         line-height: 1.1;
+         margin-bottom: 2px;
+      }
+
+      .da-blog-card-author div div {
+         line-height: 1.1;
+         margin-top: 0;
+      }
+
+      .da-blog-pagination {
+         margin-top: 26px;
+         display: flex;
+         justify-content: center;
+         gap: 6px;
+      }
+
+      .da-blog-page-btn {
+         width: 30px;
+         height: 30px;
+         border-radius: 999px;
+         border: 1px solid #e5e7eb;
+         background-color: #ffffff;
+         font-size: 12px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         cursor: pointer;
+      }
+
+      .da-blog-page-btn.is-active {
+         background-color: #020617;
+         color: #f9fafb;
+         border-color: #020617;
+      }
+
+      .da-blog-grid .col.da-blog-hidden {
+         display: none !important;
+      }
+
+      @media (max-width: 991.98px) {
+         .da-blog-shell {
+            padding-top: 90px;
+            padding-left: 16px;
+            padding-right: 16px;
+         }
+
+         .da-blog-hero-media img {
+            height: 320px;
+         }
+      }
+
+      @media (max-width: 767.98px) {
+         .da-blog-hero-overlay {
+            padding: 20px 18px;
+         }
+
+         .da-blog-hero-title {
+            font-size: 22px;
+         }
+
+         .da-blog-page-title {
+            font-size: 22px;
+         }
+
+         .da-blog-filters {
+            justify-content: flex-start;
+         }
+
+      }
+   </style>
+</head>
+
+<body id="body" class="tp-smooth-scroll page-inner">
+   <!-- back to top start -->
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back to top end -->
+
+   <!-- Global sound widget (reused) -->
+   <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
+      <div class="da-sound-wave">
+         <span class="da-sound-bar da-sound-bar-1"></span>
+         <span class="da-sound-bar da-sound-bar-2"></span>
+         <span class="da-sound-bar da-sound-bar-3"></span>
+         <span class="da-sound-bar da-sound-bar-4"></span>
+         <span class="da-sound-bar da-sound-bar-5"></span>
+         <span class="da-sound-bar da-sound-bar-6"></span>
+         <span class="da-sound-bar da-sound-bar-7"></span>
+         <span class="da-sound-bar da-sound-bar-8"></span>
+      </div>
+      <button class="da-sound-toggle" id="da-sound-toggle" type="button" aria-label="Enable site sound">
+         <i class="fa-light fa-volume-off" aria-hidden="true"></i>
+      </button>
+      <audio id="da-sound-audio" src="assets/DA%20WEB.mp3" preload="auto" loop></audio>
+   </div>
+
+   <!-- offcanvas start (same as Our Work) -->
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+                       <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Information</h3>
+
+               <ul>
+                  <li><a href="tel:+919850811995">+91 9850811995</a></li>
+                  <li><a href="mailto:contact@dadesign.com">contact@dadesign.com</a></li>
+                  <li><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li>
+                     <a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M11.25 1.5H4.75C2.95507 1.5 1.5 2.95507 1.5 4.75V11.25C1.5 13.0449 2.95507 14.5 4.75 14.5H11.25C13.0449 14.5 14.5 13.0449 14.5 11.25V4.75C14.5 2.95507 13.0449 1.5 11.25 1.5Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path
+                              d="M10.6016 7.5907C10.6818 8.13166 10.5894 8.68414 10.3375 9.16955C10.0856 9.65497 9.68711 10.0486 9.19862 10.2945C8.71014 10.5404 8.15656 10.6259 7.61663 10.5391C7.0767 10.4522 6.57791 10.1972 6.19121 9.81055C5.80451 9.42385 5.54959 8.92506 5.46271 8.38513C5.37583 7.8452 5.46141 7.29163 5.70728 6.80314C5.95315 6.31465 6.34679 5.91613 6.83221 5.66425C7.31763 5.41238 7.87011 5.31998 8.41107 5.4002C8.96287 5.48202 9.47372 5.73915 9.86817 6.1336C10.2626 6.52804 10.5197 7.0389 10.6016 7.5907Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M11.5742 4.42578H11.5842" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M2.50589 12.7494C4.57662 16.336 9.16278 17.5648 12.7494 15.4941C14.2113 14.65 15.2816 13.388 15.8962 11.9461C16.7895 9.85066 16.7208 7.37526 15.4941 5.25063C14.2674 3.12599 12.1581 1.82872 9.89669 1.55462C8.34063 1.366 6.71259 1.66183 5.25063 2.50589C1.66403 4.57662 0.435172 9.16278 2.50589 12.7494Z"
+                              stroke="currentColor" stroke-width="1.5" />
+                           <path
+                              d="M12.7127 15.4292C12.7127 15.4292 12.0086 10.4867 10.5011 7.87559C8.99362 5.26451 5.28935 2.57155 5.28935 2.57155M5.68449 15.6124C6.79553 12.2606 12.34 8.54524 16.3975 9.43537M12.311 2.4082C11.1953 5.72344 5.75732 9.38453 1.71875 8.58915"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M1 5.5715H6.33342C7.62867 5.5715 8.61917 6.56199 8.61917 7.85725C8.61917 9.15251 7.62867 10.143 6.33342 10.143H1.76192C1.30477 10.143 1 9.83823 1 9.38108V1.76192C1 1.30477 1.30477 1 1.76192 1H5.5715C6.86676 1 7.85725 1.99049 7.85725 3.28575C7.85725 4.58101 6.86676 5.5715 5.5715 5.5715H1Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+                           <path
+                              d="M10.9062 7.09454H17.0016C17.0016 5.41832 15.6301 4.04688 13.9539 4.04688C12.2777 4.04688 10.9062 5.41832 10.9062 7.09454ZM10.9062 7.09454C10.9062 8.77076 12.2777 10.1422 13.9539 10.1422H15.2492"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                           <path d="M16.1125 1.44434H11.668" stroke="currentColor" stroke-width="1.2"
+                              stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M12.75 13H5.25C3 13 1.5 11.5 1.5 9.25V4.75C1.5 2.5 3 1 5.25 1H12.75C15 1 16.5 2.5 16.5 4.75V9.25C16.5 11.5 15 13 12.75 13Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                           <path
+                              d="M8.70676 5.14837L10.8006 6.40465C11.5543 6.90716 11.5543 7.66093 10.8006 8.16344L8.70676 9.41972C7.86923 9.92224 7.19922 9.50348 7.19922 8.5822V6.06964C7.19922 4.98086 7.86923 4.64585 8.70676 5.14837Z"
+                              fill="currentColor" />
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+   <!-- offcanvas end -->
+
+   <header>
+
+      <!-- full-screen hero with left menu & centered logo (copied from contact page) -->
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+            <div class="container-fluid">
+
+               <!-- Mobile header: centered logo + global 2-line hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                     <div class="tp-header-3-menu-wrap text-start">
+                        <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                           <div class="tp-header-3-menu header-main-menu">
+                              <nav class="tp-main-menu-content">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="our-work.html">Our Work</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="blogs.html">Blogs</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="contact.html">Contact</a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                        <div class="tp-header-logo tp-header-3-logo text-center">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                     <div class="tp-header-3-right d-none d-md-flex">
+                        <a href="contact.html" class="da-header-quote-btn">
+                           <i class="fa-regular fa-file-lines"></i>
+                           <span>Request a Quote</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      <!-- header / hero combined area end -->
+
+   </header>
+
+   <main>
+      <section class="da-blog-shell">
+         <div class="container container-1480">
+            <!-- Blog listing header (just under site header) -->
+            <div class="row da-blog-header-row align-items-center">
+               <div class="col-lg-7 mb-3 mb-lg-0">
+                  <h2 class="da-blog-page-title">Blog & Case Studies</h2>
+                  <p class="da-blog-page-copy">Stories, guides and AI-powered interiors to help you visualize your next space before the first site visit.</p>
+               </div>
+               <div class="col-lg-5">
+                  <div class="da-blog-filters">
+                     <button type="button" class="da-blog-filter-pill is-active" data-filter="all">All</button>
+                     <button type="button" class="da-blog-filter-pill" data-filter="residential">Residential</button>
+                     <button type="button" class="da-blog-filter-pill" data-filter="hospitality">Hospitality</button>
+                     <button type="button" class="da-blog-filter-pill" data-filter="workplace">Workplace</button>
+                     <button type="button" class="da-blog-filter-pill" data-filter="tips">Tips &amp; Guides</button>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Blog grid -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 da-blog-grid">
+               <div class="col" data-category="residential">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=calm-living-rooms" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-1.jpg" alt="AI-generated visualization of a calm beige living room">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Residential</span></span>
+                           <span>30 Jan 2026 
+                              <span aria-hidden="true">·</span> 10 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">Unveiling the Secrets Behind Calm Living Rooms</h3>
+                        <p class="da-blog-card-text">Dive into AI-assisted moodboards that balance warm woods, soft textiles and layered light to build a sanctuary in the middle of the city.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Deepali Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="residential">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=wardrobe-corners" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-2.jpg" alt="AI-generated wardrobe and dressing area visualization">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Residential</span></span>
+                           <span>29 Jan 2026 
+                              <span aria-hidden="true">·</span> 5 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">A Designer’s Guide to Wardrobe Corners</h3>
+                        <p class="da-blog-card-text">See how AI renders help us test storage layouts, finishes and lighting before we lock in your master-suite wardrobe design.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Ajit Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="tips">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=ai-tools-interior-brief" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-3.jpg" alt="AI-generated flatlay of interior materials and gadgets">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Tips &amp; Guides</span></span>
+                           <span>26 Jan 2026 
+                              <span aria-hidden="true">·</span> 7 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">5 AI Tools That Transform Your Interior Brief</h3>
+                        <p class="da-blog-card-text">From layout generators to lighting simulators, we unpack the tools our studio uses to turn vague ideas into crystal-clear visual directions.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Deepali Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="hospitality">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=restaurants-photograph-beautifully" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-4.jpg" alt="AI-generated visualization of a restaurant interior">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Hospitality</span></span>
+                           <span>24 Jan 2026 
+                              <span aria-hidden="true">·</span> 9 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">Restaurants That Photograph Beautifully</h3>
+                        <p class="da-blog-card-text">Learn how we use AI-generated shots to balance ambience, seating density and hero moments so every table feels like the best</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Ajit Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="hospitality">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=boutique-stays" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-5.jpg" alt="AI-generated coastal resort deck visualization">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Hospitality</span></span>
+                           <span>20 Jan 2026 
+                              <span aria-hidden="true">·</span> 8 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">Journey Through Time at Boutique Stays</h3>
+                        <p class="da-blog-card-text">We explore how AI visualizations help boutique resorts test storytelling angles, from sunrise decks to candlelit courtyards.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Deepali Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="hospitality">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=cafes-that-taste" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-7.jpg" alt="AI-generated sandwich and cafe counter visualization">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Hospitality</span></span>
+                           <span>18 Jan 2026 
+                              <span aria-hidden="true">·</span> 6 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">Designing Cafés That Taste as Good as They Look</h3>
+                        <p class="da-blog-card-text">See how AI renders of counters, menus and plating help us choreograph the full journey from first glance to final bite.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Ajit Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="workplace">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=hybrid-workspaces" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-2.jpg" alt="AI-generated SUV and travel gear visualization">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Workplace</span></span>
+                           <span>17 Jan 2026 
+                              <span aria-hidden="true">·</span> 5 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">Designing Hybrid Workspaces for Creative Teams</h3>
+                        <p class="da-blog-card-text">We use AI to preview how teams move between focus pods, collaboration lounges and content zones inside modern studios.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Deepali Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+
+               <div class="col" data-category="tips">
+                  <article class="da-blog-card">
+                     <a href="blog-detail.html?post=ai-interior-prompts" class="da-blog-card-link">
+                     <div class="da-blog-card-img">
+                        <img src="assets/img/inner-blog/blog-standard/blog-3.jpg" alt="AI-generated packing and luggage visualization in an interior setting">
+                     </div>
+                     <div class="da-blog-card-body">
+                        <div class="da-blog-card-meta">
+                           <span><span class="da-blog-card-tag">Tips &amp; Guides</span></span>
+                           <span>12 Jan 2026 
+                              <span aria-hidden="true">·</span> 8 mins read
+                           </span>
+                        </div>
+                        <h3 class="da-blog-card-title">10 Essential Prompts for Better AI Interior Renders</h3>
+                        <p class="da-blog-card-text">Steal our studio’s favorite prompt formulas to generate sharper, more realistic visuals for your next interior brief.</p>
+                     </div>
+                     <div class="da-blog-card-author">
+                        <img src="assets/blog%20avatar.png" alt="Portrait of DA founder">
+                        <div>
+                           <strong>Ajit Shinde</strong>
+                           <div>Founder, DA</div>
+                        </div>
+                     </div>
+                     </a>
+                  </article>
+               </div>
+            </div>
+
+            <!-- Simple pagination (static) -->
+            <div class="da-blog-pagination" aria-label="Blog pagination">
+               <button type="button" class="da-blog-page-btn" aria-label="Previous page">‹</button>
+               <button type="button" class="da-blog-page-btn is-active">1</button>
+               <button type="button" class="da-blog-page-btn">2</button>
+               <button type="button" class="da-blog-page-btn">3</button>
+               <button type="button" class="da-blog-page-btn">4</button>
+               <button type="button" class="da-blog-page-btn" aria-label="Next page">›</button>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer>
+
+            <!-- footer area start -->
+            <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                           <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                              <div class="swiper-wrapper">
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="container container-1480">
+                  <div class="tp-footer-4-top">
+                     <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-left">
+                              <p>Have a project in mind? <br> Let’s work together!</p>
+                           </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-right text-start text-md-end">
+                              <a class="tp-btn-white-lg" href="contact.html">Let's Talk!</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-1">
+                           <div class="tp-footer-2-widget-logo">
+                              <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                           </div>
+                           <div class="tp-footer-2-widget-text">
+                              <p>Drop us a line & we will <br> contact as soon as we can</p>                         
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-2">
+                           <div class="tp-footer-2-widget-menu">
+                              <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                              <ul>
+                         <li><a href="index.html">Home</a></li>
+                         <li><a href="about-us.html">About</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                         <li><a href="blogs.html">Blog</a></li>
+                         <li><a href="project.html">Portfolio</a></li>
+                       </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-3">
+                           <h4 class="tp-footer-2-widget-title">Office</h4>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-4">
+                           <div class="tp-footer-2-widget-newslatter">
+                              <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                              <form action="#">
+                                 <div class="tp-footer-2-input p-relative">
+                                    <input type="text" placeholder="Enter your email...">
+                                    <button>
+                                       <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4"/>
+                                       </svg>                                       
+                                    </button>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-copyright-2-area tp-copyright-2-bdr-top black-bg" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row align-items-center">
+                     <div class="col-xl-4 col-lg-5">
+                        <div class="tp-copyright-2-left text-center text-lg-start">
+                           <p>All rights reserved — 2026 ©DA Design Visuals</p>
+                        </div>
+                     </div>
+                     <div class="col-xl-8 col-lg-7">
+                        <div class="tp-copyright-2-social text-center text-lg-end">
+                           <a class="mb-10" href="#">Instagram</a>
+                           <a class="mb-10" href="#">Facebook</a>
+                           <a class="mb-10" href="#">Linkedin</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- footer area end -->
+
+   </footer>
+
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+   <script src="assets/js/range-slider.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/beforeafter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/webgl.js"></script>
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/tp-cursor.js"></script>
+   <script>
+      // Ensure offcanvas mobile nav + hamburger work reliably on this page
+      (function () {
+         var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+         if (mobileNavContainer && mobileNavContainer.children.length === 0) {
+            var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+            if (desktopNav) {
+               mobileNavContainer.innerHTML = desktopNav.outerHTML;
+            }
+         }
+
+         if (!window.jQuery) return;
+
+         jQuery(function ($) {
+            $(document).on('click', '.da-burger', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').addClass('opened');
+               $('.body-overlay').addClass('opened');
+               $('.da-burger').addClass('is-open');
+            });
+
+            $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').removeClass('opened');
+               $('.body-overlay').removeClass('opened');
+               $('.da-burger').removeClass('is-open');
+            });
+         });
+      })();
+   </script>
+   <script>
+      (function () {
+         var filterButtons = document.querySelectorAll('.da-blog-filter-pill');
+         var gridItems = document.querySelectorAll('.da-blog-grid .col');
+
+         if (!filterButtons.length || !gridItems.length) return;
+
+         filterButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+               var filter = btn.getAttribute('data-filter');
+
+               filterButtons.forEach(function (b) {
+                  b.classList.toggle('is-active', b === btn);
+               });
+
+               gridItems.forEach(function (item) {
+                  var category = item.getAttribute('data-category');
+                  if (!filter || filter === 'all' || category === filter) {
+                     item.classList.remove('da-blog-hidden');
+                  } else {
+                     item.classList.add('da-blog-hidden');
+                  }
+               });
+            });
+         });
+      })();
+   </script>
+</body>
+</html>

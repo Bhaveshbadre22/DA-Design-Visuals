@@ -1,0 +1,1736 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>About Us - DA Design Visuals</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Site favicon -->
+   <link rel="icon" type="image/jpeg" href="assets/DA Favicon.jpg">
+
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+   <style>
+      /* Back-to-top button: match homepage yellow floating button */
+      .back-to-top-btn {
+         background-color: #F9CB08;
+         color: #050505;
+      }
+
+      .back-to-top-btn:hover {
+         box-shadow: 0 10px 24px rgba(249, 203, 8, 0.6);
+      }
+
+      /* About header: same black bar treatment as Our Work / Contact */
+      body.page-inner #header-sticky,
+      body.page-inner #header-sticky.header-sticky {
+         background-color: #000000;
+         border-bottom: 1px solid rgba(249, 203, 8, 0.18);
+         transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
+         box-shadow: none;
+         backdrop-filter: none;
+         padding-top: 24px;
+         padding-bottom: 24px;
+      }
+
+      #header-sticky.da-header-hidden {
+         transform: translateY(-140%);
+      }
+
+      /* white nav items on black header */
+      body.page-inner .tp-header-3-menu > nav > ul > li > a {
+         color: #ffffff;
+      }
+
+      body.page-inner .tp-header-3-menu > nav > ul > li > a:hover {
+         color: #f9cb08;
+      }
+
+      /* white quote button on black */
+      body.page-inner .da-header-quote-btn {
+         color: #ffffff;
+         border-color: #ffffff;
+      }
+
+      body.page-inner .da-header-quote-btn:hover {
+         background-color: #F9CB08;
+         color: #050505;
+         border-color: #F9CB08;
+      }
+
+      /* center menu items within the middle column on desktop */
+      #header-sticky .tp-header-3-menu > nav > ul {
+         justify-content: center;
+      }
+
+      /* ABOUT PAGE LAYOUT */
+      body.page-inner {
+         background-color: #ffffff;
+         color: #111111;
+      }
+
+      .da-about-hero {
+         position: relative;
+         padding-top: 140px;
+         padding-bottom: 120px;
+         background-color: #ffffff;
+         text-align: center;
+      }
+
+      .da-about-hero-inner {
+         max-width: 880px;
+         margin: 0 auto 46px;
+      }
+
+      .da-about-hero-pill {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 6px 18px;
+         border-radius: 999px;
+         background-color: #f5f5f7;
+         border: 1px solid rgba(5, 5, 5, 0.06);
+         font-size: 11px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #777777;
+         margin-bottom: 22px;
+      }
+
+      .da-about-hero-pill-badge {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         min-width: 26px;
+         height: 26px;
+         border-radius: 999px;
+         background-color: #ffffff;
+         color: #555555;
+         font-size: 11px;
+      }
+
+      .da-about-hero-pill-label {
+         opacity: 0.8;
+      }
+
+      .da-about-hero-title {
+         font-size: 56px;
+         line-height: 1.05;
+         font-weight: 600;
+         letter-spacing: -0.03em;
+         color: #050505;
+         margin-bottom: 20px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      .da-about-hero-title span {
+         color: #F9CB08;
+      }
+
+      .da-about-hero-copy {
+         font-size: 17px;
+         line-height: 1.7;
+         color: #555555;
+         max-width: 640px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      .da-about-hero-image-wrap {
+         max-width: 1120px;
+         margin: 0 auto;
+      }
+
+      .da-about-hero-image {
+         border-radius: 32px;
+         overflow: hidden;
+         box-shadow: 0 26px 80px rgba(0, 0, 0, 0.08);
+         position: relative;
+      }
+
+      .da-about-hero-image img {
+         width: 100%;
+         height: auto;
+         display: block;
+         object-fit: cover;
+      }
+
+      .da-about-hero-image-tag {
+         position: absolute;
+         left: 22px;
+         bottom: 22px;
+         padding: 8px 16px;
+         border-radius: 999px;
+         background: rgba(5, 5, 5, 0.86);
+         color: #f5f5f5;
+         font-size: 11px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      /* Dark narrative section */
+      .da-about-story {
+         background-color: #050505;
+         color: #f5f5f5;
+         padding-top: 110px;
+         padding-bottom: 110px;
+      }
+
+      .da-about-story-inner {
+         max-width: 780px;
+         margin: 0 auto;
+      }
+
+      .da-about-story-pill {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 6px 16px;
+         border-radius: 999px;
+         background-color: #111111;
+         border: 1px solid rgba(255, 255, 255, 0.12);
+         font-size: 11px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #d0d0d0;
+         margin-bottom: 26px;
+      }
+
+      .da-about-story-pill-dot {
+         width: 14px;
+         height: 14px;
+         border-radius: 50%;
+         background-color: #f9cb08;
+      }
+
+      .da-about-story-text {
+         font-size: 18px;
+         line-height: 1.8;
+         color: #e0e0e0;
+         margin-bottom: 26px;
+      }
+
+      .da-about-story-text strong {
+         font-weight: 600;
+      }
+
+      .da-about-story-icons {
+         display: flex;
+         gap: 12px;
+         margin-top: 24px;
+      }
+
+      .da-about-story-icon {
+         width: 34px;
+         height: 34px;
+         border-radius: 50%;
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         color: #ffffff;
+         font-size: 14px;
+      }
+
+      /* Values section */
+      .da-about-values {
+         padding-top: 110px;
+         padding-bottom: 110px;
+         background-color: #ffffff;
+         text-align: center;
+      }
+
+      .da-about-values-inner {
+         max-width: 900px;
+         margin: 0 auto 50px;
+      }
+
+      .da-about-values-pill {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 6px 18px;
+         border-radius: 999px;
+         background-color: #f5f5f7;
+         border: 1px solid rgba(5, 5, 5, 0.06);
+         font-size: 11px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #777777;
+         margin-bottom: 20px;
+      }
+
+      .da-about-values-title {
+         font-size: 40px;
+         line-height: 1.2;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 10px;
+      }
+
+      .da-about-values-copy {
+         font-size: 15px;
+         line-height: 1.9;
+         color: #666666;
+         max-width: 720px;
+         margin: 0 auto;
+      }
+
+      .da-about-values-pills-row {
+         max-width: 980px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+         gap: 18px;
+      }
+
+      .da-about-values-pill-item {
+         border-radius: 999px;
+         padding: 18px 32px;
+         border: 1px solid #e2e2e7;
+         background-color: #ffffff;
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         justify-content: center;
+      }
+
+      .da-about-values-pill-item.is-active {
+         border-color: #050505;
+         box-shadow: 0 18px 60px rgba(0, 0, 0, 0.06);
+      }
+
+      .da-about-values-pill-circle {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         border: 2px solid #e2e2e7;
+      }
+
+      .da-about-values-pill-item.is-active .da-about-values-pill-circle {
+         border-color: #050505;
+      }
+
+      .da-about-values-pill-label {
+         font-size: 14px;
+         color: #222222;
+      }
+
+      .da-about-values-card-grid {
+         max-width: 1120px;
+         margin: 40px auto 0;
+         display: grid;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+         gap: 24px;
+      }
+
+      .da-about-values-card {
+         background-color: #fef6d7;
+         border-radius: 24px;
+         padding: 26px 24px 24px;
+         border: 1px solid rgba(250, 210, 90, 0.9);
+         box-shadow: 0 24px 80px rgba(249, 203, 8, 0.16);
+         text-align: left;
+      }
+
+      .da-about-values-card-eyebrow {
+         font-size: 11px;
+         letter-spacing: 0.2em;
+         text-transform: uppercase;
+         color: #c19b26;
+         margin-bottom: 10px;
+      }
+
+      .da-about-values-card-title {
+         font-size: 18px;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 10px;
+      }
+
+      .da-about-values-card-text {
+         font-size: 14px;
+         line-height: 1.8;
+         color: #666666;
+      }
+
+      .da-about-hero-meta {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 26px;
+         margin-top: 32px;
+      }
+
+      .da-about-stat {
+         min-width: 140px;
+      }
+
+      .da-about-stat-number {
+         font-size: 32px;
+         font-weight: 600;
+         color: #050505;
+      }
+
+      .da-about-stat-label {
+         font-size: 13px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #999999;
+      }
+
+      .da-about-hero-visual {
+         position: relative;
+         border-radius: 32px;
+         overflow: hidden;
+         background: radial-gradient(circle at 0 0, #f9f5e8, #f5f5f5);
+         padding: 26px;
+         display: flex;
+         align-items: stretch;
+         justify-content: center;
+      }
+
+      .da-about-hero-main-img {
+         border-radius: 26px;
+         overflow: hidden;
+         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+         transform-origin: center center;
+      }
+
+      .da-about-hero-main-img img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-about-hero-badge {
+         position: absolute;
+         left: 30px;
+         bottom: 30px;
+         padding: 10px 18px;
+         border-radius: 999px;
+         background: rgba(5, 5, 5, 0.92);
+         color: #f9cb08;
+         font-size: 12px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         border: 1px solid rgba(249, 203, 8, 0.4);
+         backdrop-filter: blur(12px);
+      }
+
+      .da-about-hero-badge-dot {
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         background-color: #F9CB08;
+         box-shadow: 0 0 0 0 rgba(249, 203, 8, 0.7);
+         animation: da-pulse 1.8s infinite;
+      }
+
+      .da-about-floating-tag {
+         position: absolute;
+         top: 26px;
+         right: 30px;
+         padding: 10px 16px;
+         border-radius: 999px;
+         background: rgba(255, 255, 255, 0.94);
+         border: 1px solid rgba(5, 5, 5, 0.08);
+         font-size: 12px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #555555;
+      }
+
+      /* Mission / Vision / Philosophy */
+      .da-about-section {
+         padding-top: 80px;
+         padding-bottom: 80px;
+         background-color: #ffffff;
+      }
+
+      .da-about-section.alt-bg {
+         background-color: #f7f7f9;
+      }
+
+      .da-about-section-header {
+         margin-bottom: 40px;
+      }
+
+      .da-about-eyebrow {
+         font-size: 12px;
+         letter-spacing: 0.2em;
+         text-transform: uppercase;
+         color: #b0b0b0;
+         margin-bottom: 10px;
+      }
+
+      .da-about-heading {
+         font-size: 30px;
+         line-height: 1.2;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 12px;
+      }
+
+      .da-about-lead {
+         font-size: 16px;
+         line-height: 1.8;
+         color: #666666;
+         max-width: 520px;
+      }
+
+      .da-about-pill-grid {
+         display: grid;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+         gap: 24px;
+      }
+
+      .da-about-pill {
+         background-color: #ffffff;
+         border-radius: 24px;
+         padding: 24px 24px 22px;
+         border: 1px solid rgba(5, 5, 5, 0.06);
+         box-shadow: 0 18px 50px rgba(0, 0, 0, 0.02);
+      }
+
+      .da-about-pill-label {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         padding: 4px 10px;
+         border-radius: 999px;
+         background-color: #fef6d7;
+         color: #826000;
+         font-size: 11px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         margin-bottom: 14px;
+      }
+
+      .da-about-pill-title {
+         font-size: 18px;
+         font-weight: 600;
+         margin-bottom: 8px;
+         color: #050505;
+      }
+
+      .da-about-pill-text {
+         font-size: 14px;
+         line-height: 1.7;
+         color: #666666;
+      }
+
+      /* Founders */
+      .da-founders-grid {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 32px;
+      }
+
+      .da-founder-card {
+         position: relative;
+         border-radius: 26px;
+         background: linear-gradient(135deg, #ffffff 0, #f8f8f8 40%, #fdf7e5 100%);
+         border: 1px solid rgba(5, 5, 5, 0.04);
+         padding: 24px 22px 22px;
+         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+         overflow: hidden;
+      }
+
+      .da-founder-avatar {
+         width: 80px;
+         height: 80px;
+         border-radius: 24px;
+         overflow: hidden;
+         margin-bottom: 18px;
+      }
+
+      .da-founder-avatar img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-founder-name {
+         font-size: 20px;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 4px;
+      }
+
+      .da-founder-role {
+         font-size: 13px;
+         text-transform: uppercase;
+         letter-spacing: 0.16em;
+         color: #a07a00;
+         margin-bottom: 10px;
+      }
+
+      .da-founder-bio {
+         font-size: 14px;
+         line-height: 1.7;
+         color: #666666;
+         max-width: 360px;
+      }
+
+      .da-founder-tagline {
+         margin-top: 16px;
+         font-size: 13px;
+         color: #888888;
+      }
+
+      .da-founder-meta {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-top: 18px;
+         font-size: 12px;
+         color: #777777;
+      }
+
+      .da-founder-meta span {
+         text-transform: uppercase;
+         letter-spacing: 0.18em;
+      }
+
+      .da-founder-meta a {
+         color: #050505;
+         text-decoration: none;
+         border-bottom: 1px solid rgba(5, 5, 5, 0.35);
+      }
+
+      .da-founder-orbit {
+         position: absolute;
+         width: 220px;
+         height: 220px;
+         border-radius: 999px;
+         border: 1px dashed rgba(5, 5, 5, 0.12);
+         right: -80px;
+         bottom: -120px;
+         pointer-events: none;
+         animation: da-orbit 18s linear infinite;
+      }
+
+      .da-founder-orbit::after {
+         content: "";
+         position: absolute;
+         width: 14px;
+         height: 14px;
+         border-radius: 50%;
+         background-color: #F9CB08;
+         box-shadow: 0 0 0 0 rgba(249, 203, 8, 0.7);
+         top: -7px;
+         left: 50%;
+         transform: translateX(-50%);
+         animation: da-pulse 2s infinite;
+      }
+
+      /* Philosophy list */
+      .da-philosophy-list {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 18px 32px;
+      }
+
+      .da-philosophy-list li {
+         display: flex;
+         align-items: flex-start;
+         gap: 10px;
+         font-size: 14px;
+         line-height: 1.7;
+         color: #555555;
+      }
+
+      .da-philosophy-bullet {
+         margin-top: 6px;
+         width: 7px;
+         height: 7px;
+         border-radius: 50%;
+         background-color: #F9CB08;
+      }
+
+      /* Why us / awards band */
+      .da-about-metrics-band {
+         padding-top: 40px;
+         padding-bottom: 40px;
+         border-top: 1px solid rgba(0, 0, 0, 0.04);
+         border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+         background: linear-gradient(90deg, #ffffff 0, #f9f7ef 50%, #ffffff 100%);
+      }
+
+      .da-about-metrics-grid {
+         display: grid;
+         grid-template-columns: repeat(4, minmax(0, 1fr));
+         gap: 26px;
+      }
+
+      .da-about-metric-item span {
+         display: block;
+      }
+
+      .da-about-metric-number {
+         font-size: 26px;
+         font-weight: 600;
+         letter-spacing: 0.06em;
+         text-transform: uppercase;
+         color: #050505;
+         margin-bottom: 4px;
+      }
+
+      .da-about-metric-label {
+         font-size: 12px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #888888;
+      }
+
+      .da-about-awards-wrap {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 18px 40px;
+         align-items: center;
+      }
+
+      .da-about-award-pill {
+         padding: 10px 18px;
+         border-radius: 999px;
+         border: 1px solid rgba(5, 5, 5, 0.08);
+         background-color: #ffffff;
+         font-size: 12px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #666666;
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .da-about-award-dot {
+         width: 6px;
+         height: 6px;
+         border-radius: 50%;
+         background-color: #F9CB08;
+      }
+
+      /* Stacked style cards section */
+      .da-about-stack {
+         padding-top: 110px;
+         padding-bottom: 150px;
+         background-color: #f5f5f7;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .da-about-stack-header {
+         text-align: center;
+         max-width: 720px;
+         margin: 0 auto 70px;
+      }
+
+      .da-about-stack-pill {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         padding: 6px 16px;
+         border-radius: 999px;
+         background-color: #ffffff;
+         border: 1px solid rgba(5, 5, 5, 0.06);
+         font-size: 11px;
+         letter-spacing: 0.18em;
+         text-transform: uppercase;
+         color: #777777;
+         margin-bottom: 18px;
+      }
+
+      .da-about-stack-title {
+         font-size: 38px;
+         line-height: 1.2;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 8px;
+      }
+
+      .da-about-stack-subtitle {
+         font-size: 14px;
+         line-height: 1.8;
+         color: #777777;
+      }
+
+      .da-about-stack-media {
+         position: relative;
+         margin-top: 10px;
+      }
+
+      .da-about-stack-bg {
+         position: absolute;
+         inset: 0;
+         top: 40px;
+         height: 420px;
+         max-width: 1180px;
+         margin: 0 auto;
+         border-radius: 40px;
+         background-image: url("assets/img/home-01/project/project-ful-img-1-1.jpg");
+         background-size: cover;
+         background-position: center;
+         filter: grayscale(0.2);
+      }
+
+      .da-about-stack-cards {
+         position: relative;
+         max-width: 880px;
+         margin: 0 auto;
+         padding-top: 260px;
+         padding-bottom: 40px;
+         height: 420px;
+      }
+
+      .da-about-stack-card {
+         position: relative;
+         background-color: #ffffff;
+         border-radius: 24px;
+         overflow: hidden;
+         border: 1px solid rgba(5, 5, 5, 0.06);
+         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+         max-width: 760px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      .da-about-stack-card + .da-about-stack-card {
+         margin-top: -130px;
+      }
+
+      .da-about-stack-card-media {
+         position: relative;
+         height: 260px;
+         overflow: hidden;
+      }
+
+      .da-about-stack-card-media img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+
+      .da-about-stack-card-tag {
+         position: absolute;
+         top: 18px;
+         left: 18px;
+         padding: 6px 14px;
+         border-radius: 999px;
+         background: rgba(5, 5, 5, 0.86);
+         color: #f5f5f7;
+         font-size: 11px;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+      }
+
+      .da-about-stack-card-body {
+         padding: 22px 22px 20px;
+      }
+
+      .da-about-stack-card-title {
+         font-size: 18px;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 8px;
+      }
+
+      .da-about-stack-card-text {
+         font-size: 14px;
+         line-height: 1.8;
+         color: #666666;
+         margin-bottom: 10px;
+      }
+
+      .da-about-stack-card-link {
+         font-size: 13px;
+         font-weight: 500;
+         letter-spacing: 0.16em;
+         text-transform: uppercase;
+         color: #050505;
+         text-decoration: none;
+      }
+
+      .da-about-stack-card-link span {
+         border-bottom: 1px solid rgba(5, 5, 5, 0.4);
+      }
+
+      /* Family image carousel */
+      .da-about-family {
+         padding-top: 100px;
+         padding-bottom: 110px;
+         background-color: #f7f7f9;
+         text-align: center;
+      }
+
+      .da-about-family-header {
+         max-width: 780px;
+         margin: 0 auto 40px;
+      }
+
+      .da-about-family-title {
+         font-size: 34px;
+         line-height: 1.25;
+         font-weight: 600;
+         color: #050505;
+         margin-bottom: 14px;
+      }
+
+      .da-about-family-highlight {
+         color: #F9CB08;
+      }
+
+      .da-about-family-line {
+         width: 0;
+         height: 2px;
+         margin: 14px auto 0;
+         background-color: #F9CB08;
+         border-radius: 999px;
+         animation: da-line-grow 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      }
+
+      .da-about-family-copy {
+         font-size: 15px;
+         line-height: 1.9;
+         color: #666666;
+         max-width: 620px;
+         margin: 0 auto;
+      }
+
+      .da-about-family-slider-wrap {
+         max-width: 1000px;
+         margin: 40px auto 0;
+      }
+
+      .da-about-family-slider .swiper-slide {
+         padding: 10px;
+      }
+
+      .da-about-family-slide {
+         height: 360px;
+         border-radius: 26px;
+         overflow: hidden;
+         background-color: #000000;
+      }
+
+      .da-about-family-slide img {
+         width: auto;
+         height: 100%;
+         display: block;
+         object-fit: contain;
+         margin: 0 auto;
+      }
+
+      /* Soft reveal animation system */
+      .da-reveal {
+         opacity: 0;
+         transform: translateY(32px);
+         transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .da-reveal.is-visible {
+         opacity: 1;
+         transform: translateY(0);
+      }
+
+      .da-reveal[data-delay="1"] {
+         transition-delay: 0.08s;
+      }
+
+      .da-reveal[data-delay="2"] {
+         transition-delay: 0.18s;
+      }
+
+      .da-reveal[data-delay="3"] {
+         transition-delay: 0.28s;
+      }
+
+      .da-reveal[data-delay="4"] {
+         transition-delay: 0.4s;
+      }
+
+      @keyframes da-pulse {
+         0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(249, 203, 8, 0.7);
+         }
+         70% {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 12px rgba(249, 203, 8, 0);
+         }
+         100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(249, 203, 8, 0);
+         }
+      }
+
+      @keyframes da-orbit {
+         from {
+            transform: rotate(0deg);
+         }
+         to {
+            transform: rotate(360deg);
+         }
+      }
+
+      @keyframes da-line-grow {
+         0% {
+            width: 0;
+         }
+         100% {
+            width: 120px;
+         }
+      }
+
+      @media (max-width: 1199px) {
+         .da-about-hero-title {
+            font-size: 44px;
+         }
+      }
+
+      @media (max-width: 991px) {
+         .da-about-hero {
+            padding-top: 120px;
+            padding-bottom: 90px;
+         }
+
+         .da-about-hero-title {
+            font-size: 36px;
+         }
+
+         .da-about-values-card-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+
+         .da-about-values-pills-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+
+         .da-about-pill-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+
+         .da-founders-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .da-about-family {
+            padding-top: 80px;
+            padding-bottom: 90px;
+         }
+
+         .da-about-family-slide {
+            height: 300px;
+         }
+
+         .da-about-stack {
+            padding-top: 90px;
+            padding-bottom: 120px;
+         }
+
+         .da-about-stack-bg {
+            height: 360px;
+         }
+
+         .da-about-stack-cards {
+            padding-top: 240px;
+         }
+      }
+
+      @media (max-width: 767px) {
+         .da-about-hero {
+            padding-top: 110px;
+            padding-bottom: 70px;
+         }
+
+         .da-about-hero-title {
+            font-size: 30px;
+         }
+
+         .da-about-hero .container {
+            padding-left: 0;
+            padding-right: 0;
+         }
+
+         .da-about-hero-inner {
+            padding-left: 20px;
+            padding-right: 20px;
+         }
+
+         .da-about-hero-image-wrap {
+            max-width: 100%;
+         }
+
+         .da-about-hero-image {
+            border-radius: 0;
+         }
+
+         .da-about-hero-image-tag {
+            display: none;
+         }
+
+         .da-about-values-title {
+            font-size: 30px;
+         }
+
+         .da-about-section {
+            padding-top: 60px;
+            padding-bottom: 60px;
+         }
+
+         .da-about-metrics-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            row-gap: 20px;
+         }
+
+         .da-about-pill-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .da-about-values-card-grid,
+         .da-about-values-pills-row {
+            grid-template-columns: 1fr;
+         }
+
+         .da-philosophy-list {
+            grid-template-columns: 1fr;
+         }
+
+         .da-about-family-slider-wrap {
+            margin-top: 30px;
+         }
+
+         .da-about-family-slide {
+            height: 240px;
+         }
+
+         .da-about-stack {
+            padding-top: 80px;
+            padding-bottom: 90px;
+         }
+
+         .da-about-stack-bg {
+            height: 260px;
+            border-radius: 30px;
+         }
+
+         .da-about-stack-cards {
+            padding-top: 220px;
+         }
+
+         .da-about-stack-card + .da-about-stack-card {
+            margin-top: 24px;
+         }
+      }
+
+       @media (max-width: 575px) {
+         .da-about-hero-title {
+            font-size: 26px;
+         }
+
+         .da-about-story-text {
+            font-size: 16px;
+         }
+
+         .da-about-metrics-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .da-about-family-slide {
+            height: 220px;
+         }
+       }
+   </style>
+ </head>
+<body id="body" class="tp-smooth-scroll page-inner">
+
+   <!-- offcanvas area (same structure as homepage) -->
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-wrapper">
+         <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="tp-offcanvas-logo">
+               <a href="index.html">
+                  <img class="logo-1" src="assets/img/logo/logo.png" alt="">
+                  <img class="logo-2" src="assets/img/logo/logo-white.png" alt="">
+               </a>
+            </div>
+            <div class="tp-offcanvas-close">
+               <button class="tp-offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="tp-offcanvas-main">
+            <div class="tp-main-menu-mobile d-xl-none"></div>
+            <div class="tp-offcanvas-contact">
+               <h3 class="tp-offcanvas-title sm">Information</h3>
+
+               <ul>
+                  <li><a href="tel:+919850811995">+91 9850811995</a></li>
+                  <li><a href="mailto:contact@dadesign.com">contact@dadesign.com</a></li>
+                  <li><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></li>
+               </ul>
+            </div>
+            <div class="tp-offcanvas-social">
+               <h3 class="tp-offcanvas-title sm">Follow Us</h3>
+               <ul>
+                  <li>
+                     <a href="https://www.instagram.com/dadesignvisuals/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M11.25 1.5H4.75C2.95507 1.5 1.5 2.95507 1.5 4.75V11.25C1.5 13.0449 2.95507 14.5 4.75 14.5H11.25C13.0449 14.5 14.5 13.0449 14.5 11.25V4.75C14.5 2.95507 13.0449 1.5 11.25 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M10.6016 7.5907C10.6818 8.13166 10.5894 8.68414 10.3375 9.16955C10.0856 9.65497 9.68711 10.0486 9.19862 10.2945C8.71014 10.5404 8.15656 10.6259 7.61663 10.5391C7.0767 10.4522 6.57791 10.1972 6.19121 9.81055C5.80451 9.42385 5.54959 8.92506 5.46271 8.38513C5.37583 7.8452 5.46141 7.29163 5.70728 6.80314C5.95315 6.31465 6.34679 5.91613 6.83221 5.66425C7.31763 5.41238 7.87011 5.31998 8.41107 5.4002C8.96287 5.48202 9.47372 5.73915 9.86817 6.1336C10.2626 6.52804 10.5197 7.0389 10.6016 7.5907Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M11.5742 4.42578H11.5842" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M2.50589 12.7494C4.57662 16.336 9.16278 17.5648 12.7494 15.4941C14.2113 14.65 15.2816 13.388 15.8962 11.9461C16.7895 9.85066 16.7208 7.37526 15.4941 5.25063C14.2674 3.12599 12.1581 1.82872 9.89669 1.55462C8.34063 1.366 6.71259 1.66183 5.25063 2.50589C1.66403 4.57662 0.435172 9.16278 2.50589 12.7494Z" stroke="currentColor" stroke-width="1.5" />
+                           <path d="M12.7127 15.4292C12.7127 15.4292 12.0086 10.4867 10.5011 7.87559C8.99362 5.26451 5.28935 2.57155 5.28935 2.57155M5.68449 15.6124C6.79553 12.2606 12.34 8.54524 16.3975 9.43537M12.311 2.4082C11.1953 5.72344 5.75732 9.38453 1.71875 8.58915" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M1 5.5715H6.33342C7.62867 5.5715 8.61917 6.56199 8.61917 7.85725C8.61917 9.15251 7.62867 10.143 6.33342 10.143H1.76192C1.30477 10.143 1 9.83823 1 9.38108V1.76192C1 1.30477 1.30477 1 1.76192 1H5.5715C6.86676 1 7.85725 1.99049 7.85725 3.28575C7.85725 4.58101 6.86676 5.5715 5.5715 5.5715H1Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" />
+                           <path d="M10.9062 7.09454H17.0016C17.0016 5.41832 15.6301 4.04688 13.9539 4.04688C12.2777 4.04688 10.9062 5.41832 10.9062 7.09454ZM10.9062 7.09454C10.9062 8.77076 12.2777 10.1422 13.9539 10.1422H15.2492" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M16.1125 1.44434H11.668" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M12.75 13H5.25C3 13 1.5 11.5 1.5 9.25V4.75C1.5 2.5 3 1 5.25 1H12.75C15 1 16.5 2.5 16.5 4.75V9.25C16.5 11.5 15 13 12.75 13Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M8.70676 5.14837L10.8006 6.40465C11.5543 6.90716 11.5543 7.66093 10.8006 8.16344L8.70676 9.41972C7.86923 9.92224 7.19922 9.50348 7.19922 8.5822V6.06964C7.19922 4.98086 7.86923 4.64585 8.70676 5.14837Z" fill="currentColor" />
+                        </svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+
+   <header>
+
+      <!-- full-screen hero with left menu & centered logo (same as Our Work / Contact) -->
+      <div id="header-sticky" class="tp-header-3-area z-index-5">
+            <div class="container-fluid">
+
+               <!-- Mobile header: centered logo + global 2-line hamburger -->
+               <div class="row align-items-center d-md-none">
+                  <div class="col-12">
+                     <div class="da-header-mobile-inner">
+                        <div class="tp-header-3-mobile-logo">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                        <button class="tp-header-3-bar tp-offcanvas-open-btn da-burger" type="button" aria-label="Open navigation">
+                           <span class="da-burger-line"></span>
+                           <span class="da-burger-line"></span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Desktop / tablet header -->
+               <div class="row align-items-center d-none d-md-flex">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                     <div class="tp-header-3-menu-wrap text-start">
+                        <div class="tp-header-3-menu-box d-inline-flex align-items-start justify-content-start">
+                           <div class="tp-header-3-menu header-main-menu">
+                              <nav class="tp-main-menu-content">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="our-work.html">Our Work</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="blogs.html">Blogs</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="contact.html">Contact</a>
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                        <div class="tp-header-logo tp-header-3-logo text-center">
+                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                     <div class="tp-header-3-right d-none d-md-flex">
+                        <a href="contact.html" class="da-header-quote-btn">
+                           <i class="fa-regular fa-file-lines"></i>
+                           <span>Request a Quote</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      <!-- header / hero combined area end -->
+
+   </header>
+
+   <main>
+      <!-- HERO: white, minimal, animated -->
+      <section class="da-about-hero">
+         <div class="container">
+            <div class="da-about-hero-inner da-reveal" data-delay="1">
+               <div class="da-about-hero-pill">
+                  <span class="da-about-hero-pill-badge">01</span>
+                  <span class="da-about-hero-pill-label">About us</span>
+               </div>
+               <h1 class="da-about-hero-title">Empowering spaces through minimal, cinematic interiors.</h1>
+               <p class="da-about-hero-copy">
+                  DA Design Visuals is an interior design agency focused on crafted, light-led environments.
+                  We help homes, studios and brands tell their story through architecture, material and mood.
+               </p>
+            </div>
+
+            <div class="da-about-hero-image-wrap da-reveal" data-delay="2">
+               <div class="da-about-hero-image">
+                  <img src="assets/WhatsApp%20Image%202026-03-07%20at%2016.19.52.jpeg" alt="DA Design Visuals interior design project visuals">
+                  <div class="da-about-hero-image-tag">Interior design agency • DA Design Visuals</div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Dark narrative section -->
+      <section class="da-about-story">
+         <div class="container">
+            <div class="da-about-story-inner da-reveal" data-delay="1">
+               <div class="da-about-story-pill">
+                  <span class="da-about-story-pill-dot"></span>
+                  <span>About us</span>
+               </div>
+               <p class="da-about-story-text">
+                  <strong>For years, interior design has been treated as surface-level decor.</strong>
+                  At DA Design Visuals, we believe it’s time to build spaces around how people actually live,
+                  create and run their brands.
+               </p>
+               <p class="da-about-story-text">
+                  We don’t just pick finishes—we choreograph light, proportion and material so every room
+                  feels intentional from the moment you step in. Our process blends strategy, storytelling
+                  and execution to turn blank plans into cinematic, functional environments.
+               </p>
+               <p class="da-about-story-text">
+                  Design without visual noise. Homes, studios and experiences without compromise.
+                  Welcome to the future of interior design at DA Design Visuals.
+               </p>
+               <div class="da-about-story-icons">
+                  <span class="da-about-story-icon"><i class="fa-regular fa-building"></i></span>
+                  <span class="da-about-story-icon"><i class="fa-regular fa-house-chimney"></i></span>
+                  <span class="da-about-story-icon"><i class="fa-regular fa-clapperboard-play"></i></span>
+                  <span class="da-about-story-icon"><i class="fa-regular fa-lightbulb-on"></i></span>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Values section -->
+      <section class="da-about-values">
+         <div class="container">
+            <div class="da-about-values-inner da-reveal" data-delay="1">
+               <div class="da-about-values-pill">Our values</div>
+               <h2 class="da-about-values-title">Our Values, Our Foundation</h2>
+               <p class="da-about-values-copy">
+                  Our studio is built on clarity, functionality and modern storytelling. Every decision—from
+                  layout to lighting—comes back to creating interiors that feel intuitive, elevated and built
+                  to last.
+               </p>
+            </div>
+            <div class="da-about-values-pills-row da-reveal" data-delay="2">
+               <div class="da-about-values-pill-item">
+                  <span class="da-about-values-pill-circle"></span>
+                  <span class="da-about-values-pill-label">Innovative</span>
+               </div>
+               <div class="da-about-values-pill-item is-active">
+                  <span class="da-about-values-pill-circle"></span>
+                  <span class="da-about-values-pill-label">Function-first</span>
+               </div>
+               <div class="da-about-values-pill-item">
+                  <span class="da-about-values-pill-circle"></span>
+                  <span class="da-about-values-pill-label">Modern</span>
+               </div>
+            </div>
+
+            <div class="da-about-values-card-grid da-reveal" data-delay="3">
+               <article class="da-about-values-card">
+                  <p class="da-about-values-card-eyebrow">Mission</p>
+                  <h3 class="da-about-values-card-title">Make everyday spaces feel extraordinary.</h3>
+                  <p class="da-about-values-card-text">
+                     We exist to transform ordinary floor plans into elevated environments that support the
+                     way you live, host, build content and run your brand. Functional, future-proof and
+                     quietly luxurious.
+                  </p>
+               </article>
+               <article class="da-about-values-card">
+                  <p class="da-about-values-card-eyebrow">Vision</p>
+                  <h3 class="da-about-values-card-title">A new language for Indian interiors.</h3>
+                  <p class="da-about-values-card-text">
+                     We see a world where Indian homes and studios are globally iconic—minimal in clutter,
+                     rich in craft, deeply rooted in context and designed to evolve with your stories.
+                  </p>
+               </article>
+               <article class="da-about-values-card">
+                  <p class="da-about-values-card-eyebrow">Philosophy</p>
+                  <h3 class="da-about-values-card-title">Less noise. More narrative.</h3>
+                  <p class="da-about-values-card-text">
+                     Every line, curve and material earns its place. We strip away visual noise so what
+                     remains is light, texture and gestures that move you—subtle, intentional and timeless.
+                  </p>
+               </article>
+            </div>
+         </div>
+      </section>
+
+      <!-- Family image carousel section -->
+      <section class="da-about-family">
+         <div class="container">
+            <div class="da-about-family-header da-reveal" data-delay="1">
+               <h2 class="da-about-family-title">We don’t call them team,<br><span class="da-about-family-highlight">we call them family.</span></h2>
+               <div class="da-about-family-line"></div>
+               <p class="da-about-family-copy">
+                  The people behind DA Design Visuals are more than a studio roster.
+                  They are collaborators, dreamers and problem-solvers who treat every
+                  project like it’s their own home.
+               </p>
+            </div>
+
+            <div class="da-about-family-slider-wrap da-reveal" data-delay="2">
+               <div class="swiper da-about-family-slider">
+                  <div class="swiper-wrapper">
+                     <div class="swiper-slide">
+                        <figure class="da-about-family-slide">
+                           <img src="assets/Team/DSC07627.JPG" alt="DA Design Visuals family – interior design team moments">
+                        </figure>
+                     </div>
+                     <div class="swiper-slide">
+                        <figure class="da-about-family-slide">
+                           <img src="assets/Team/DSC07630.JPG" alt="DA Design Visuals family – behind the scenes together">
+                        </figure>
+                     </div>
+                     <div class="swiper-slide">
+                        <figure class="da-about-family-slide">
+                           <img src="assets/Team/DSC07636.JPG" alt="DA Design Visuals family – creative collaboration">
+                        </figure>
+                     </div>
+                     <div class="swiper-slide">
+                        <figure class="da-about-family-slide">
+                           <img src="assets/Team/DSC07642.JPG" alt="DA Design Visuals family – team portrait">
+                        </figure>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+   </main>
+
+   <footer>
+      <!-- footer area start -->
+
+            <div class="tp-footer-4-area black-bg pt-70 pb-120" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="tp-line-text-wrap tp-line-text-wrap-2">
+                           <div class="swiper tp-line-text-slide" data-sliderSpeed="5000" data-autoPlay="true">
+                              <div class="swiper-wrapper">
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-line-content">
+                                       <h4 class="tp-footer-4-big-title">
+                                          <span class="d-none d-md-inline-block">
+                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67315 4.18505C8.66905 0.252431 15.6462 -0.20759 23.987 2.64683C27.3343 3.79237 30.8591 5.46028 34.4296 7.60815C29.4182 10.648 24.3448 14.5829 19.5492 19.3024C14.7545 24.0212 10.7397 29.0303 7.62052 33.9917C5.53009 30.3877 3.91877 26.8369 2.82686 23.4718C0.105926 15.0866 0.677251 8.11767 4.67315 4.18505ZM7.13398 34.7771C-0.414747 21.9515 -2.04519 9.65169 4.10056 3.60325C10.2464 -2.44528 22.519 -0.618566 35.2227 7.13423C48.048 -0.414125 60.3475 -2.04439 66.3958 4.10125C72.4441 10.2469 70.6177 22.5187 62.8657 35.2219C70.4149 48.0478 72.0456 60.3482 65.8997 66.3968C59.7539 72.4453 47.4814 70.6186 34.7779 62.8659C21.9517 70.4155 9.65098 72.0464 3.60227 65.9004C-2.44645 59.7543 -0.619429 47.4812 7.13398 34.7771ZM33.9925 62.3794C30.3878 64.4703 26.8364 66.082 23.4709 67.1741C15.0856 69.895 8.1167 69.3237 4.18408 65.3278C0.251455 61.3319 -0.208569 54.3548 2.64585 46.014C3.79152 42.6663 5.45968 39.141 7.6079 35.5702C10.6477 40.5813 14.5824 45.6545 19.3018 50.4498C24.021 55.245 29.0306 59.2601 33.9925 62.3794ZM34.7855 61.9122C29.7675 58.8002 24.6787 54.7495 19.8836 49.8772C15.0883 45.0048 11.1192 39.8519 8.08772 34.7847C11.1996 29.7672 15.25 24.6789 20.1218 19.8842C24.9945 15.0887 30.1476 11.1195 35.215 8.08796C40.233 11.1999 45.3216 15.2506 50.1167 20.1228C54.9117 24.9949 58.8805 30.1475 61.912 35.2143C58.7999 40.2327 54.7489 45.3218 49.8762 50.1174C45.0043 54.9121 39.8521 58.8808 34.7855 61.9122ZM35.5709 62.392C39.1413 64.5398 42.666 66.2077 46.0133 67.3532C54.3541 70.2076 61.3312 69.7476 65.3271 65.815C69.323 61.8823 69.8943 54.9134 67.1734 46.5282C66.0814 43.1628 64.4699 39.6117 62.3792 36.0073C59.2597 40.9695 55.2444 45.9796 50.4488 50.6992C45.6541 55.418 40.5815 59.3524 35.5709 62.392ZM62.3917 34.4288C64.5392 30.8589 66.2068 27.3345 67.3522 23.9876C70.2066 15.6469 69.7466 8.66973 65.814 4.67383C61.8814 0.677935 54.9125 0.10661 46.5272 2.82754C43.1624 3.91937 39.6119 5.53055 36.0081 7.62077C40.9698 10.7401 45.9794 14.7551 50.6985 19.5502C55.4175 24.3452 59.352 29.418 62.3917 34.4288ZM34.9993 17.869L35.0463 19.5713C35.2795 28.018 42.072 34.8106 50.5188 35.0438L52.2211 35.0908L50.5188 35.1378C42.072 35.371 35.2795 42.1635 35.0463 50.6103L34.9993 52.3126L34.9523 50.6103C34.7191 42.1635 27.9265 35.371 19.4798 35.1378L17.7775 35.0908L19.4798 35.0438C27.9265 34.8106 34.7191 28.018 34.9523 19.5713L34.9993 17.869Z" fill="white"/>
+                                             </svg>
+                                          </span>
+                                          Have A Great Project ?
+                                       </h4>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="container container-1480">
+                  <div class="tp-footer-4-top">
+                     <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-left">
+                              <p>Have a project in mind? <br> Let’s work together!</p>
+                           </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="tp-footer-4-top-right text-start text-md-end">
+                              <a class="tp-btn-white-lg" href="contact.html">Let's Talk!</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-footer-2-area black-bg pb-20" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-4 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-1">
+                           <div class="tp-footer-2-widget-logo">
+                              <a href="index.html"><img src="assets/img/logo/logo-white.png" alt=""></a>
+                           </div>
+                           <div class="tp-footer-2-widget-text">
+                              <p>Drop us a line & we will <br> contact as soon as we can</p>                         
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-2 col-lg-3 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-2">
+                           <div class="tp-footer-2-widget-menu">
+                              <h4 class="tp-footer-2-widget-title">Sitemap</h4>
+                              <ul>
+                         <li><a href="index.html">Home</a></li>
+                         <li><a href="about-us.html">About</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                         <li><a href="blog-list.html">Blog</a></li>
+                         <li><a href="project.html">Portfolio</a></li>
+                       </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-3">
+                           <h4 class="tp-footer-2-widget-title">Office</h4>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu" target="_blank">10th Floor, Indilife, 1011, 1012, Pashan - Sus Rd, Pune, Maharashtra 411021</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="tel:+919850811995">+91 9850811995</a></span>
+                           </div>
+                           <div class="tp-footer-2-contact-item">
+                              <span><a href="mailto:contact@liko.com">contact@dadesign.com</a></span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-5 col-md-6 mb-50">
+                        <div class="tp-footer-2-widget footer-col-2-4">
+                           <div class="tp-footer-2-widget-newslatter">
+                              <h4 class="tp-footer-2-widget-title">Subscribe to our newsletter</h4>
+                              <form action="#">
+                                 <div class="tp-footer-2-input p-relative">
+                                    <input type="text" placeholder="Enter your email...">
+                                    <button>
+                                       <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M15.7767 8.06743C15.9198 8.21703 16 8.41908 16 8.62965C16 8.84022 15.9198 9.04228 15.7767 9.19189L8.92138 16.2938C8.77516 16.4386 8.58094 16.5198 8.37867 16.5206C8.27759 16.5201 8.17746 16.5002 8.08351 16.4614C7.94489 16.4012 7.8266 16.2996 7.74358 16.1697C7.66056 16.0398 7.61651 15.8873 7.61698 15.7316V9.41876H0.761697C0.559684 9.41876 0.365942 9.33563 0.223096 9.18764C0.0802502 9.03964 0 8.83894 0 8.62965C0 8.42038 0.0802502 8.21966 0.223096 8.07168C0.365942 7.92369 0.559684 7.84056 0.761697 7.84056H7.61698V1.52777C7.61651 1.37198 7.66056 1.21953 7.74358 1.08964C7.8266 0.959746 7.94489 0.858218 8.08351 0.797851C8.2242 0.741 8.37756 0.726577 8.52585 0.756252C8.67412 0.785926 8.81125 0.858486 8.92138 0.965535L15.7767 8.06743Z" fill="#F3F3F4"/>
+                                       </svg>                                       
+                                    </button>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="tp-copyright-2-area tp-copyright-2-bdr-top black-bg" data-background="assets/img/home-04/hero/overly.png">
+               <div class="container container-1480">
+                  <div class="row align-items-center">
+                     <div class="col-xl-4 col-lg-5">
+                        <div class="tp-copyright-2-left text-center text-lg-start">
+                           <p>All rights reserved — 2026 ©DA Design Visuals</p>
+                        </div>
+                     </div>
+                     <div class="col-xl-8 col-lg-7">
+                        <div class="tp-copyright-2-social text-center text-lg-end">
+                           <a class="mb-10" href="#">Instagram</a>
+                           <a class="mb-10" href="#">Facebook</a>
+                           <a class="mb-10" href="#">Linkedin</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- footer area end -->
+
+         </footer>
+
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/chroma.min.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/main.js"></script>
+
+   <!-- About page: ensure mobile offcanvas also shows main navigation -->
+   <script>
+      (function () {
+         var mobileNavContainer = document.querySelector('.tp-offcanvas-area .tp-main-menu-mobile');
+         if (!mobileNavContainer) return;
+
+         // If main.js already populated it, skip.
+         if (mobileNavContainer.children.length > 0) return;
+
+         var desktopNav = document.querySelector('#header-sticky .tp-main-menu-content');
+         if (!desktopNav) return;
+
+         mobileNavContainer.innerHTML = desktopNav.outerHTML;
+      })();
+   </script>
+
+   <!-- About page: ensure mobile hamburger & close reliably control offcanvas -->
+   <script>
+      (function ($) {
+         if (!window.jQuery) return;
+
+         $(function () {
+            // Open menu when hamburger is tapped
+            $(document).on('click', '.da-burger', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').addClass('opened');
+               $('.body-overlay').addClass('opened');
+               $('.da-burger').addClass('is-open');
+            });
+
+            // Close menu when X or overlay is tapped
+            $(document).on('click', '.tp-offcanvas-close-btn, .body-overlay', function (e) {
+               e.preventDefault();
+               $('.tp-offcanvas-area').removeClass('opened');
+               $('.body-overlay').removeClass('opened');
+               $('.da-burger').removeClass('is-open');
+            });
+         });
+      })(jQuery);
+   </script>
+
+   <!-- About page scroll reveal animations -->
+   <script>
+      (function () {
+         if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('.da-reveal').forEach(function (el) {
+               el.classList.add('is-visible');
+            });
+            return;
+         }
+
+         var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+               if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+               }
+            });
+         }, {
+            threshold: 0.15
+         });
+
+         document.querySelectorAll('.da-reveal').forEach(function (el) {
+            observer.observe(el);
+         });
+      })();
+   </script>
+
+   <!-- About page family slider -->
+   <script>
+      (function () {
+         if (!window.Swiper) return;
+
+         var sliderEl = document.querySelector('.da-about-family-slider');
+         if (!sliderEl) return;
+
+         new Swiper(sliderEl, {
+            loop: true,
+            speed: 700,
+            spaceBetween: 24,
+            autoplay: {
+               delay: 2800,
+               disableOnInteraction: false
+            },
+            slidesPerView: 1.1,
+            centeredSlides: true,
+            breakpoints: {
+               768: {
+                  slidesPerView: 2,
+                  centeredSlides: false
+               },
+               1200: {
+                  slidesPerView: 3,
+                  centeredSlides: false
+               }
+            }
+         });
+      })();
+   </script>
+
+   <script src="assets/js/tp-cursor.js"></script>
+</body>
+</html>
