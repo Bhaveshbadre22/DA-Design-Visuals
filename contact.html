@@ -1684,10 +1684,19 @@
       })();
    </script>
 
-   <!-- Lenis init -->
+   <!-- Lenis init (disabled on desktop to avoid heavy smooth scroll) -->
    <script>
       (function () {
          if (typeof Lenis === 'undefined') return;
+
+         // If a ScrollSmoother instance exists, or we're on desktop,
+         // skip Lenis so we don't get double smoothing or sluggish scroll.
+         if (
+            (window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())) ||
+            (window.matchMedia && window.matchMedia('(min-width: 1024px)').matches)
+         ) {
+            return;
+         }
 
          const lenis = new Lenis({
             lerp: 0.1,

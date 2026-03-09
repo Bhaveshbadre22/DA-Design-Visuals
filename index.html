@@ -2111,65 +2111,22 @@
       });
    })();
 
-   // Sketch to real interior video scroll section
+   // Sketch to real interior video section (simple autoplay, no scroll-scrub)
    (function() {
       const section = document.getElementById('sketch-layout');
-      if (!section || typeof gsap === 'undefined') return;
+      if (!section) return;
 
       const video = section.querySelector('.sketch-main-video');
       if (!video) return;
 
-      // On small screens, just autoplay the video when visible without pinning
-      if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
-         video.setAttribute('autoplay', '');
-         video.setAttribute('loop', '');
-         video.muted = true;
-         video.playsInline = true;
-         video.play().catch(function() {});
-         return;
-      }
-
-      if (typeof ScrollTrigger !== 'undefined' && gsap.registerPlugin) {
-         gsap.registerPlugin(ScrollTrigger);
-      }
-      if (typeof ScrollTrigger === 'undefined') return;
-
-      let duration = 0;
-      let isReady = false;
-
+      // Make the sketch video behave like a normal, lightweight autoplay loop
+      video.setAttribute('autoplay', '');
+      video.setAttribute('loop', '');
       video.muted = true;
       video.playsInline = true;
-      video.pause();
-      video.currentTime = 0;
 
-      // Ensure we know the video duration
-      const onMeta = function() {
-         duration = video.duration || 0;
-         if (duration > 0) {
-            isReady = true;
-         }
-      };
-
-      if (video.readyState >= 1) {
-         onMeta();
-      } else {
-         video.addEventListener('loadedmetadata', onMeta, { once: true });
-      }
-
-      ScrollTrigger.create({
-         trigger: section,
-         start: 'top top',
-         end: '+=350%',
-         scrub: true,
-         pin: section,
-         onUpdate: function(self) {
-            if (!isReady || !duration) return;
-            const t = self.progress * duration;
-            if (!isNaN(t)) {
-               video.currentTime = t;
-            }
-         }
-      });
+      // Try to start playback; ignore failures (e.g. strict autoplay policies)
+      video.play().catch(function() {});
    })();
 
    // Scroll Progress Bar Update
