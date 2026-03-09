@@ -62,7 +62,34 @@
 			});
 		});
 	})();
-	if ($('.tp-instagram-area').length > 0) {
+
+
+	// 08. Nice Select Js
+	$('select').niceSelect();
+
+	////////////////////////////////////////////////////
+	// 01. PreLoader Js
+	windowOn.on('load', function () {
+		var $loader = $("#loading");
+		if (!$loader.length) return;
+		// Allow pages with a custom GSAP-driven loader to control timing
+		if ($loader.data('custom-loader')) {
+			return;
+		}
+		$loader.fadeOut(500);
+	});
+
+
+	///////////////////////////////////////////////////
+	// 07. Sticky Header Js
+	windowOn.on('scroll', function () {
+		var scroll = windowOn.scrollTop();
+		if (scroll < 20) {
+			$("#header-sticky").removeClass("header-sticky");
+		} else {
+			$("#header-sticky").addClass("header-sticky");
+		}
+	});
 
 	// Auto-hide header on scroll down, show on scroll up (shared across pages)
 	(function () {
