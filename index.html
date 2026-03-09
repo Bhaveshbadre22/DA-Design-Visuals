@@ -1767,9 +1767,15 @@
    <script src="assets/js/tp-cursor.js"></script>
 
    <script>
-   // Lenis smooth scrolling integrated with GSAP ScrollTrigger
+   // Lenis smooth scrolling (used only when GSAP ScrollSmoother is NOT active)
    (function() {
       if (typeof Lenis === 'undefined') return;
+
+      // If a ScrollSmoother instance is active on this page (homepage),
+      // skip Lenis to avoid double smooth-scrolling and performance issues.
+      if (window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())) {
+         return;
+      }
 
       const lenis = new Lenis({
          lerp: 0.1,
@@ -1780,7 +1786,7 @@
       // expose for other scripts (e.g. main.js anchor scroll)
       window.lenis = lenis;
 
-      // keep ScrollTrigger in sync with Lenis scroll
+      // keep ScrollTrigger in sync with Lenis scroll when ScrollSmoother isn't driving it
       if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined' && gsap.registerPlugin) {
          gsap.registerPlugin(ScrollTrigger);
          lenis.on('scroll', ScrollTrigger.update);
