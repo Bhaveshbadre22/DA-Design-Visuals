@@ -29,63 +29,8 @@
 
 	var windowOn = $(window);
 
-	// Detect WebP support once and swap <img> sources to .webp versions when available.
-	(function () {
-		function checkWebPSupport(callback) {
-			var img = new Image();
-			img.onload = function () { callback(img.width > 0 && img.height > 0); };
-			img.onerror = function () { callback(false); };
-			img.src = "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIhAgAgAA";
-		}
-
-		checkWebPSupport(function (supported) {
-			if (!supported) return;
-
-			document.addEventListener('DOMContentLoaded', function () {
-				var images = document.querySelectorAll('img[src]');
-				images.forEach(function (img) {
-					var originalSrc = img.getAttribute('src');
-					if (!originalSrc) return;
-					if (originalSrc.indexOf('.webp') !== -1) return;
-
-					var lastDot = originalSrc.lastIndexOf('.');
-					if (lastDot === -1) return;
-
-					var webpSrc = originalSrc.substring(0, lastDot) + '.webp';
-					// Fallback to original if WebP not found
-					img.addEventListener('error', function handleError() {
-						img.removeEventListener('error', handleError);
-						img.src = originalSrc;
-					});
-					img.src = webpSrc;
-				});
-			});
-		});
-	})();
-
-
 	// 08. Nice Select Js
 	$('select').niceSelect();
-
-
-	function back_to_top() {
-		var btn = $('#back_to_top');
-		var btn_wrapper = $('.back-to-top-wrapper');
-
-		windowOn.scroll(function () {
-			if (windowOn.scrollTop() > 300) {
-				btn_wrapper.addClass('back-to-top-btn-show');
-			} else {
-				btn_wrapper.removeClass('back-to-top-btn-show');
-			}
-		});
-
-		btn.on('click', function (e) {
-			e.preventDefault();
-			$('html, body').animate({ scrollTop: 0 }, '300');
-		});
-	}
-	back_to_top();
 
 	////////////////////////////////////////////////////
 	// 01. PreLoader Js
@@ -256,7 +201,11 @@
 			var target = $(this.getAttribute('href'));
 			if (target.length) {
 				event.preventDefault();
-				if (window.lenis) {
+				var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
+				if (smoother) {
+					// Use GSAP ScrollSmoother when available (homepage)
+					smoother.scrollTo(target[0], true, "top top-120");
+				} else if (window.lenis) {
 					// Use Lenis for smooth anchor scrolling when available
 					window.lenis.scrollTo(target[0], { offset: -120 });
 				} else {
@@ -283,7 +232,11 @@
 
 		btn.on('click', function (e) {
 			e.preventDefault();
-			if (window.lenis) {
+			var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
+			if (smoother) {
+				// Use GSAP ScrollSmoother if active
+				smoother.scrollTo(0, true);
+			} else if (window.lenis) {
 				window.lenis.scrollTo(0);
 			} else {
 				$('html, body').animate({ scrollTop: 0 }, '300');
@@ -1843,6 +1796,8 @@
 			ignoreMobileResize: true,
 		});
 
+		// expose for other scripts (back-to-top, anchor links)
+		window.daSmoother = smoother;
 	}
 
 	/////////////////////////////////////////////////////
