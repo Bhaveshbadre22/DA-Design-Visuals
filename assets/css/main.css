@@ -29272,8 +29272,8 @@ body.project-detail-open {
 
 @media (max-width: 767.98px) {
   .tp-hero-3-area {
-    min-height: 80vh;
-    height: 80vh;
+    min-height: 100vh;
+    height: 100vh;
   }
 
   .da-hero-image {
