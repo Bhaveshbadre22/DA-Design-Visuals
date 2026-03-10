@@ -29271,8 +29271,20 @@ body.project-detail-open {
 }
 
 @media (max-width: 767.98px) {
+  .tp-hero-3-area {
+    min-height: auto;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
   .da-hero-image {
-    height: 100vh;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .tp-hero-3-area {
+    min-height: 100vh;
   }
 }
 
