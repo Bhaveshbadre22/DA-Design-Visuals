@@ -512,19 +512,12 @@ input[type=color] {
   text-shadow: none;
 }
 
-  position: relative; /* Added position relative */
-  overflow: hidden; /* Added overflow hidden */
-  background: var(--tp-common-black);
-  color: var(--tp-common-white);
-  text-shadow: none;
-}
-
 ::selection {
   background: var(--tp-common-black);
   color: var(--tp-common-white);
   text-shadow: none;
 }
-
+ 
 *::-moz-placeholder {
   color: var(--tp-common-black);
   font-size: 14px;
@@ -1468,7 +1461,7 @@ div.demo img {
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   background: var(--tp-common-white);
-  webkit-transition-duration: 800ms;
+  -webkit-transition-duration: 800ms;
 }
 .tp-btn-black-wrap {
   position: relative;
@@ -2228,7 +2221,7 @@ div.demo img {
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   background: var(--tp-common-black);
-  webkit-transition-duration: 800ms;
+  -webkit-transition-duration: 800ms;
 }
 .tp-btn-border-wrap {
   position: relative;

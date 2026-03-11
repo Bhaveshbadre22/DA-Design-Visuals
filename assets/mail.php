@@ -73,9 +73,7 @@
 
         // Set the recipient email address.
 
-        // FIXME: Update this to your desired email address.
-
-        $recipient = "mdsalim400@gmail.com";
+        $recipient = "da@dadesignvisual.com";
 
 
 
