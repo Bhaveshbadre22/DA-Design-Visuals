@@ -32,6 +32,36 @@
 	// 08. Nice Select Js
 	$('select').niceSelect();
 
+	// Lazy-load non-critical images and videos to improve performance
+	document.addEventListener('DOMContentLoaded', function () {
+		try {
+			var images = document.querySelectorAll('img');
+			images.forEach(function (img) {
+				// keep logo and hero visuals eager
+				if (img.classList.contains('da-hero-image')) return;
+				if (img.closest('header')) return;
+				if (!img.getAttribute('loading')) {
+					img.setAttribute('loading', 'lazy');
+				}
+				if (!img.getAttribute('decoding')) {
+					img.setAttribute('decoding', 'async');
+				}
+			});
+
+			var videos = document.querySelectorAll('video');
+			videos.forEach(function (video) {
+				// keep key hero/DA reveal videos eager
+				if (video.classList.contains('da-full-video')) return;
+				if (video.id === 'sketch-video') return;
+				if (!video.autoplay && !video.getAttribute('preload')) {
+					video.setAttribute('preload', 'none');
+				}
+			});
+		} catch (e) {
+			// fail silently if browser does not support any of this
+		}
+	});
+
 	////////////////////////////////////////////////////
 	// 01. PreLoader Js
 	windowOn.on('load', function () {

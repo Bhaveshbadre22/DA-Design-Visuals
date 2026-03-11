@@ -18,11 +18,10 @@
    <meta name="twitter:description" content="Luxury interior design and visualization studio based in Pune, crafting bespoke interiors.">
 
    <!-- Site favicon -->
-   <link rel="icon" type="image/x-icon" href="assets/favicon-unzipped/favicon.ico">
-   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-unzipped/favicon-96x96.png">
-   <link rel="icon" type="image/svg+xml" href="assets/favicon-unzipped/favicon.svg">
-   <link rel="apple-touch-icon" href="assets/favicon-unzipped/apple-touch-icon.png">
-   <link rel="manifest" href="assets/favicon-unzipped/site.webmanifest">
+   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
+   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
+   <link rel="apple-touch-icon" href="assets/img/favicon.png">
+   <link rel="manifest" href="assets/site.webmanifest">
 
    <!-- CSS here -->
    <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -64,20 +63,21 @@
       #header-sticky.da-header-hidden {
          transform: translateY(-140%);
       }
+
+      /* Fullscreen numeric loader */
       #loading {
          position: fixed;
          inset: 0;
          background-color: #000000;
-         background-image: none;
          color: #f9fafb;
          display: flex;
          align-items: center;
          justify-content: center;
-         padding-left: 0;
          z-index: 9999;
          opacity: 1;
          visibility: visible;
-         transition: opacity 0.6s ease, visibility 0.6s ease;
+         transition: opacity 0.6s ease, visibility 0.6s ease, transform 1.2s ease;
+         font-family: "Playfair Display", "Didot", "Times New Roman", serif;
       }
 
       #loading.is-hidden {
@@ -86,49 +86,93 @@
          pointer-events: none;
       }
 
-      .da-loader-track {
-         position: relative;
-         width: 70vw;
-         max-width: 640px;
-         height: 2px;
-         background-color: rgba(148, 163, 184, 0.35);
-         overflow: visible;
-      }
-
-      .da-loader-percent {
+      .loader-top {
          position: absolute;
-         bottom: 12px;
-         top: -36px;
+         top: 30px;
          left: 0;
-         font-size: 32px;
-         letter-spacing: 0.24em;
-         text-transform: uppercase;
-         white-space: nowrap;
-         transform: translateX(0);
-         transition: transform 0.6s ease;
-      }
-
-      .da-loader-line {
-         position: absolute;
-         left: 0;
-         top: 50%;
-         height: 2px;
          width: 100%;
-         background-color: #f9fafb;
+         display: flex;
+         justify-content: space-between;
+         padding: 0 40px;
+         font-size: 14px;
+         opacity: 0.8;
+      }
+
+      .loader-top .center {
+         text-align: center;
+      }
+
+      .counter-wrapper {
+         height: 20vw;
+         overflow: hidden;
+         font-size: 18vw;
+         line-height: 1;
+      }
+
+      .counter-track {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      .loader-images {
+         position: absolute;
+         inset: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         pointer-events: none;
+         z-index: 0;
+      }
+
+      .loader-image {
+         position: absolute;
+         width: 38vw;
+         max-width: 38vw;
+         height: auto;
+         opacity: 0;
+      }
+
+      .loader-progress {
+         position: absolute;
+         left: 50%;
+         bottom: 9vh;
+         width: 120px;
+         height: 1px;
+         background: rgba(249, 203, 8, 0.25);
+         transform: translateX(-50%);
+         overflow: hidden;
+      }
+
+      .loader-progress-fill {
+         width: 100%;
+         height: 100%;
+         background: #F9CB08;
          transform-origin: left center;
          transform: scaleX(0);
-         transition: transform 0.2s linear;
+      }
+
+      body.da-lock-scroll {
+         overflow: hidden;
+      }
+
+      #site-content {
+         opacity: 0;
+      }
+
+      /* Hide global sound widget while loader is active */
+      body.da-lock-scroll .da-sound-widget {
+         opacity: 0;
+         pointer-events: none;
       }
 
       @media (max-width: 575.98px) {
          #loading {
             padding-left: 0;
          }
-
-         .da-loader-percent {
-            font-size: 22px;
-            letter-spacing: 0.18em;
-            top: -30px;
+         .counter-wrapper {
+            height: 26vw;
+            font-size: 26vw;
          }
       }
 
@@ -460,13 +504,31 @@
    </div>
 
    <!-- pre loader area start -->
-   <div id="loading" class="preloader-wrap" aria-hidden="true">
-      <div class="da-loader-track">
-         <div id="daLoaderLine" class="da-loader-line"></div>
-         <span id="daLoaderPercent" class="da-loader-percent">0%</span>
+   <div id="loading" class="preloader-wrap" aria-hidden="true" data-custom-loader="true">
+      <div class="loader-top">
+         <div>DA Design Visuals</div>
+         <div>
+            Founded 2020<br>
+         </div>
+      </div>
+
+      <div class="counter-wrapper">
+         <div class="counter-track" id="counter-track"></div>
+      </div>
+
+      <div class="loader-images">
+         <img src="assets/img/hero image.jpg" alt="Hero image 1" class="loader-image">
+         <img src="assets/img/home-03/about/da-hero-livingroom.JPG" alt="Hero image 2" class="loader-image">
+         <img src="assets/img/home-03/IMG_1134.jpg" alt="Hero image 3" class="loader-image">
+      </div>
+
+      <div class="loader-progress">
+         <div class="loader-progress-fill"></div>
       </div>
    </div>
    <!-- pre loader area end -->
+
+   <div id="site-content">
 
    <!-- back to top start -->
    <div class="back-to-top-wrapper">
@@ -1766,23 +1828,23 @@
    <!-- Lenis smooth scroll -->
    <script src="https://unpkg.com/@studio-freight/lenis@1.0.40/dist/lenis.min.js"></script>
 
-   <script src='assets/js/three.js'></script>
-   <script src='assets/js/tween-max.js'></script>
-   <script src='assets/js/scroll-magic.js'></script>
+   <script src='assets/js/three.js' defer></script>
+   <script src='assets/js/tween-max.js' defer></script>
+   <script src='assets/js/scroll-magic.js' defer></script>
                                           
-   <script src="assets/js/range-slider.js"></script>
-   <script src="assets/js/swiper-bundle.js"></script>
-   <script src="assets/js/slick.js"></script>
-   <script src="assets/js/magnific-popup.js"></script>
-   <script src="assets/js/nice-select.js"></script>
-   <script src="assets/js/purecounter.js"></script>
-   <script src="assets/js/beforeafter.js"></script>
-   <script src="assets/js/isotope-pkgd.js"></script>
-   <script src="assets/js/imagesloaded-pkgd.js"></script>
-   <script src="assets/js/ajax-form.js"></script>
-   <script src="assets/js/webgl.js"></script>
-   <script src="assets/js/main.js"></script>
-   <script src="assets/js/tp-cursor.js"></script>
+   <script src="assets/js/range-slider.js" defer></script>
+   <script src="assets/js/swiper-bundle.js" defer></script>
+   <script src="assets/js/slick.js" defer></script>
+   <script src="assets/js/magnific-popup.js" defer></script>
+   <script src="assets/js/nice-select.js" defer></script>
+   <script src="assets/js/purecounter.js" defer></script>
+   <script src="assets/js/beforeafter.js" defer></script>
+   <script src="assets/js/isotope-pkgd.js" defer></script>
+   <script src="assets/js/imagesloaded-pkgd.js" defer></script>
+   <script src="assets/js/ajax-form.js" defer></script>
+   <script src="assets/js/webgl.js" defer></script>
+   <script src="assets/js/main.js" defer></script>
+   <script src="assets/js/tp-cursor.js" defer></script>
 
    <script>
    // Lenis smooth scrolling (used only when GSAP ScrollSmoother is NOT active)
@@ -1817,68 +1879,104 @@
       requestAnimationFrame(raf);
    })();
 
-   // Simple percentage preloader (full-screen black with sliding counter)
+   // GSAP-based scrolling numeric preloader (0-100 credit-roll)
    (function() {
+      if (typeof gsap === 'undefined') return;
+
       const loader = document.getElementById('loading');
-      const label = document.getElementById('daLoaderPercent');
-      const line = document.getElementById('daLoaderLine');
-      const track = loader ? loader.querySelector('.da-loader-track') : null;
-      if (!loader || !label || !line || !track) return;
+      const track = document.getElementById('counter-track');
+      const siteContent = document.getElementById('site-content');
+      const loaderImages = loader ? loader.querySelectorAll('.loader-image') : null;
 
-      let progress = 0;
-      let intervalId;
-      let isPageLoaded = document.readyState === 'complete';
-      let finished = false;
+      if (!loader || !track || !siteContent) return;
 
-      function updatePosition() {
-         const scale = Math.max(progress / 100, 0.02);
-         line.style.transform = 'scaleX(' + scale + ')';
+      // Prevent background scroll while loader is visible
+      document.body.classList.add('da-lock-scroll');
 
-         const trackRect = track.getBoundingClientRect();
-         const trackWidth = trackRect.width || 0;
-         const lineEnd = trackWidth * scale;
-         const gap = 40; // px space between line tip and percentage text
-         label.style.transform = 'translateX(' + (lineEnd + gap) + 'px)';
+      // Build numbers 0-100 dynamically
+      for (let i = 0; i <= 100; i++) {
+         const num = document.createElement('div');
+         // 01, 02, 03 ... formatting
+         num.textContent = i.toString().padStart(2, '0');
+         track.appendChild(num);
       }
 
-      function finish() {
-         if (finished) return;
-         finished = true;
-         if (intervalId) clearInterval(intervalId);
-         loader.classList.add('is-hidden');
+      const MAX_WAIT = 12000; // safety timeout in ms (counter + image fades)
+      let revealed = false;
+
+      function revealSite() {
+         if (revealed) return;
+         revealed = true;
+
+         const tl = gsap.timeline({
+            onComplete: function() {
+               loader.classList.add('is-hidden');
+               document.body.classList.remove('da-lock-scroll');
+            }
+         });
+
+         // Slide the black loader panel up in a single smooth motion
+         tl.to('#loading', {
+            yPercent: -100,
+            duration: 1.6,
+            ease: 'power3.inOut'
+         })
+         .to(siteContent, {
+            opacity: 1,
+            duration: 1.1,
+            ease: 'power2.out'
+         }, '-=0.2');
       }
 
-      function tick() {
-         if (finished) return;
-
-         progress += 1;
-         if (progress > 100) progress = 100;
-         label.textContent = progress + '%';
-
-         updatePosition();
-
-         if (progress === 100 && isPageLoaded) {
-            // Short delay so users see 100%
-            setTimeout(finish, 300);
+      function playLoaderImages() {
+         const images = loaderImages ? Array.from(loaderImages) : [];
+         if (!images.length) {
+            revealSite();
+            return;
          }
+
+         const tl = gsap.timeline({ onComplete: revealSite });
+
+         // Hide the numeric column before showing images
+         tl.to('.counter-wrapper', {
+            autoAlpha: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+         });
+
+         gsap.set(images, { autoAlpha: 0 });
+
+         images.forEach(function(img) {
+            tl.to(img, {
+               autoAlpha: 1,
+               duration: 0.45,
+               ease: 'power2.out'
+            })
+            .to(img, {
+               autoAlpha: 0,
+               duration: 0.55,
+               ease: 'power2.inOut'
+            }, '+=0.15');
+         });
       }
 
-      updatePosition();
-      intervalId = setInterval(tick, 35);
+      // Scroll the number column like a film credit roll and animate the line
+      const counterTimeline = gsap.timeline({ onComplete: playLoaderImages });
+      counterTimeline.to('#counter-track', {
+         yPercent: -100,
+         duration: 5,
+         ease: 'expo.out'
+      }, 0)
+      .to('.loader-progress-fill', {
+         scaleX: 1,
+         duration: 5,
+         ease: 'expo.out'
+      }, 0);
 
-      // Ensure we never get stuck behind the loader even if the load event is slow
-      const MAX_WAIT = 8000; // ms
-      const fallbackTimer = setTimeout(function() {
-         finish();
+      // Safety: never let users get stuck behind the loader
+      setTimeout(function() {
+         revealSite();
       }, MAX_WAIT);
-
-      window.addEventListener('load', function() {
-         isPageLoaded = true;
-         clearTimeout(fallbackTimer);
-         if (progress === 100) {
-            setTimeout(finish, 300);
-         }
-      });
    })();
 
    // Hero background creative crossfade between multiple images
@@ -2442,6 +2540,8 @@
    </script>
 
    <!-- Global sound widget: waveform bars -->
+   </div>
+
    <div class="da-sound-widget" id="da-sound-widget" aria-hidden="true">
       <div class="da-sound-wave">
             <span class="da-sound-bar da-sound-bar-1"></span>
