@@ -1185,8 +1185,8 @@
          };
 
          var PROJECT_IMAGE_OVERRIDES = {
-            'mahabaleshwar-treetops-2': 'Mahabaleshwar Treetops.jpg',
-            'patil-site-pashan-near-to-office': 'Patil Site.jpg'
+            'mahabaleshwar-treetops-2': 'Mahabaleshwar Treetops.webp',
+            'patil-site-pashan-near-to-office': 'Patil Site.webp'
          };
 
          function buildProjectItemsFromCsv(rows) {
@@ -1214,7 +1214,7 @@
                }
 
                var overrideFile = PROJECT_IMAGE_OVERRIDES[id];
-               var imgFile = PROJECT_IMG_BASE + (overrideFile || (rawName + '.jpg'));
+               var imgFile = PROJECT_IMG_BASE + (overrideFile || (rawName + '.webp'));
 
                items.push({
                   id: id,
