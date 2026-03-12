@@ -2766,6 +2766,7 @@ div.demo img {
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
+    overflow-x: hidden;
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
