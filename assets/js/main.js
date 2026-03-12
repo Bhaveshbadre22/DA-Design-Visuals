@@ -1817,17 +1817,31 @@
 		gsap.config({
 			nullTargetWarn: false,
 		});
-	
-		let smoother = ScrollSmoother.create({
-			smooth: 2,
-			effects: true,
-			smoothTouch: 0.1,
-			normalizeScroll: false,
-			ignoreMobileResize: true,
-		});
 
-		// expose for other scripts (back-to-top, anchor links)
-		window.daSmoother = smoother;
+		// Windows machines (especially with wheel mice) can struggle
+		// with JS-based smooth scrolling, so only enable ScrollSmoother
+		// on non-Windows platforms and fall back to native scroll on Windows.
+		var isWindows = false;
+		try {
+			var platform = navigator.platform || "";
+			var ua = navigator.userAgent || "";
+			isWindows = /Win/i.test(platform) || /Windows/i.test(ua);
+		} catch (e) {
+			isWindows = false;
+		}
+
+		if (!isWindows) {
+			let smoother = ScrollSmoother.create({
+				smooth: 2,
+				effects: true,
+				smoothTouch: 0.1,
+				normalizeScroll: false,
+				ignoreMobileResize: true,
+			});
+
+			// expose for other scripts (back-to-top, anchor links)
+			window.daSmoother = smoother;
+		}
 	}
 
 	/////////////////////////////////////////////////////
