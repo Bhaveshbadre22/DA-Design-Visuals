@@ -1945,7 +1945,7 @@
    <script src="assets/js/gsap-split-text.js"></script>
    <script src="assets/js/chroma.min.js"></script>
 
-   <!-- Lenis smooth scroll -->
+   <!-- Lenis smooth scroll (disabled on Windows via inline guard below) -->
    <script src="https://unpkg.com/@studio-freight/lenis@1.0.40/dist/lenis.min.js"></script>
 
    <script src='assets/js/three.js' defer></script>
@@ -1967,13 +1967,22 @@
    <script src="assets/js/tp-cursor.js" defer></script>
 
    <script>
-   // Lenis smooth scrolling (used only when GSAP ScrollSmoother is NOT active)
+   // Lenis smooth scrolling (used only when GSAP ScrollSmoother is NOT active and not on Windows)
    (function() {
       if (typeof Lenis === 'undefined') return;
 
+      var isWindows = false;
+      try {
+         var platform = navigator.platform || "";
+         var ua = navigator.userAgent || "";
+         isWindows = /Win/i.test(platform) || /Windows/i.test(ua);
+      } catch (e) {
+         isWindows = false;
+      }
+
       // If a ScrollSmoother instance is active on this page (homepage),
-      // skip Lenis to avoid double smooth-scrolling and performance issues.
-      if (window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())) {
+      // or we're on Windows, skip Lenis to avoid smooth-scroll lag.
+      if (isWindows || window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())) {
          return;
       }
 
