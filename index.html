@@ -1014,7 +1014,7 @@
             <section class="da-video-section" id="da-video-section">
                <div class="da-video-wrapper">
                   <!-- Full background video -->
-                  <video class="da-full-video" autoplay muted loop playsinline>
+                  <video class="da-full-video" autoplay muted loop playsinline poster="assets/img/home-03/IMG_1134.jpg">
                      <source src="assets/DA web video.mp4" type="video/mp4">
                   </video>
                   
@@ -2161,6 +2161,21 @@
             closeModal();
          });
       }
+   })();
+
+   // Ensure DA full background video attempts to play on load
+   (function () {
+      var video = document.querySelector('.da-full-video');
+      if (!video) return;
+
+      try {
+         video.muted = true;
+         video.playsInline = true;
+         var playPromise = video.play();
+         if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.catch(function () { /* ignore autoplay blocks */ });
+         }
+      } catch (e) {}
    })();
 
    // Hero background creative crossfade between multiple images
