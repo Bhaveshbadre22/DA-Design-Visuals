@@ -1065,126 +1065,379 @@
             }
          };
 
-         var project = PROJECTS[slug] || PROJECTS['chandekar-2bhk'];
+         var CSV_PATH = 'assets/DA Design Visuals - Project Data - DA Design Visuals - Projects Data-2.csv';
+         var FALLBACK_PROJECT_IMAGE = 'assets/img/inner-project/portfolio-col-2/port-1.jpg';
+         var PROJECT_IMG_BASE = 'assets/DA PROJECTS IMAGES/';
+
+         function toTitleCase(str) {
+            return String(str || '')
+               .toLowerCase()
+               .split(/\s+/)
+               .filter(function (part) { return part.length; })
+               .map(function (part) { return part.charAt(0).toUpperCase() + part.slice(1); })
+               .join(' ');
+         }
+
+         function normalizeKey(str) {
+            return String(str || '')
+               .toLowerCase()
+               .replace(/[^a-z0-9]+/g, '-')
+               .replace(/^-+|-+$/g, '');
+         }
+
+         function parseCsv(text) {
+            var rows = [];
+            var row = [];
+            var current = '';
+            var inQuotes = false;
+
+            for (var i = 0; i < text.length; i++) {
+               var ch = text[i];
+
+               if (ch === '"') {
+                  if (inQuotes && text[i + 1] === '"') {
+                     current += '"';
+                     i++;
+                  } else {
+                     inQuotes = !inQuotes;
+                  }
+               } else if (ch === ',' && !inQuotes) {
+                  row.push(current);
+                  current = '';
+               } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+                  if (current !== '' || row.length) {
+                     row.push(current);
+                     rows.push(row);
+                     row = [];
+                     current = '';
+                  }
+                  if (ch === '\r' && text[i + 1] === '\n') {
+                     i++;
+                  }
+               } else {
+                  current += ch;
+               }
+            }
+
+            if (current !== '' || row.length) {
+               row.push(current);
+               rows.push(row);
+            }
+
+            if (!rows.length) return [];
+
+            var headers = rows[0];
+            var dataRows = [];
+
+            for (var r = 1; r < rows.length; r++) {
+               var obj = {};
+               for (var c = 0; c < headers.length; c++) {
+                  obj[headers[c]] = rows[r][c] || '';
+               }
+               dataRows.push(obj);
+            }
+
+            return dataRows;
+         }
+
+         var HIDDEN_PROJECTS = {
+            'grand-gloria': true,
+            'scandevien': true,
+            'suncity': true,
+            'pimple-nilkh': true,
+            'airbnb-indilife-old-1-1-feb-2025': true
+         };
+
+         var PROJECT_IMAGE_OVERRIDES = {
+            'mahabaleshwar-treetops-2': 'Mahabaleshwar Treetops.jpg',
+            'patil-site-pashan-near-to-office': 'Patil Site.jpg'
+         };
+
+         function enhanceProjectsFromCsv(text) {
+            var rows = parseCsv(text);
+            if (!rows.length) return;
+
+            var byKey = {};
+            rows.forEach(function (row) {
+               var name = (row['Project Name'] || '').trim();
+               if (!name) return;
+               byKey[normalizeKey(name)] = row;
+            });
+
+            var existingKeys = {};
+            Object.keys(PROJECTS).forEach(function (k) {
+               existingKeys[k] = true;
+            });
+
+            Object.keys(PROJECTS).forEach(function (slugKey) {
+               var project = PROJECTS[slugKey];
+               if (!project) return;
+
+               var candidates = [];
+               if (project.title) candidates.push(project.title);
+               candidates.push(slugKey.replace(/-/g, ' '));
+
+               var matchedRow = null;
+
+               candidates.forEach(function (candidate) {
+                  if (matchedRow) return;
+                  var normCandidate = normalizeKey(candidate);
+                  Object.keys(byKey).some(function (k) {
+                     if (!k) return false;
+                     if (k === normCandidate || k.indexOf(normCandidate) === 0 || normCandidate.indexOf(k) === 0) {
+                        matchedRow = byKey[k];
+                        return true;
+                     }
+                     return false;
+                  });
+               });
+
+               if (!matchedRow) return;
+
+               var csvName = (matchedRow['Project Name'] || '').trim();
+               if (csvName) {
+                  project.title = toTitleCase(csvName);
+               }
+
+               var overviewParts = [];
+               var brief = (matchedRow['Project Overview/Brief'] || '').trim();
+               if (brief) {
+                  project.tagline = brief;
+                  overviewParts.push(brief);
+               }
+
+               var problems = (matchedRow['Problems'] || '').trim();
+               if (problems) {
+                  overviewParts.push('Challenge: ' + problems + '.');
+               }
+
+               var solution = (matchedRow['Solution We Provide'] || '').trim();
+               if (solution) {
+                  overviewParts.push('Our solution: ' + solution + '.');
+               }
+
+               var bestMoment = (matchedRow['Best Moment 2-3 Lines'] || '').trim();
+               if (bestMoment) {
+                  overviewParts.push(bestMoment);
+               }
+
+               if (overviewParts.length) {
+                  project.overview = overviewParts.join(' ');
+               }
+
+               var extraFacts = [];
+               var startDate = (matchedRow['Start Date/Year'] || '').trim();
+               var endDate = (matchedRow['End Date/Year'] || '').trim();
+               var services = (matchedRow['Types of Services We Provide'] || '').trim();
+
+               if (startDate) {
+                  extraFacts.push({ label: 'Start', value: startDate });
+               }
+               if (endDate) {
+                  extraFacts.push({ label: 'Completion', value: endDate });
+               }
+               if (services) {
+                  extraFacts.push({ label: 'Services (detailed)', value: services });
+               }
+
+               if (!Array.isArray(project.facts)) {
+                  project.facts = [];
+               }
+
+               Array.prototype.push.apply(project.facts, extraFacts);
+            });
+
+            // Create minimal project entries for any CSV rows that don't already
+            // exist in the PROJECTS map so their detail pages still show content.
+            rows.forEach(function (row) {
+               var rawName = (row['Project Name'] || '').trim();
+               if (!rawName) return;
+
+               var slugKey = normalizeKey(rawName);
+               if (!slugKey || existingKeys[slugKey] || PROJECTS[slugKey] || HIDDEN_PROJECTS[slugKey]) return;
+
+               var title = toTitleCase(rawName);
+               var brief = (row['Project Overview/Brief'] || '').trim();
+               var problems = (row['Problems'] || '').trim();
+               var solution = (row['Solution We Provide'] || '').trim();
+               var bestMoment = (row['Best Moment 2-3 Lines'] || '').trim();
+               var startDate = (row['Start Date/Year'] || '').trim();
+               var endDate = (row['End Date/Year'] || '').trim();
+               var services = (row['Types of Services We Provide'] || '').trim();
+
+               var overviewParts = [];
+               if (brief) overviewParts.push(brief);
+               if (problems) overviewParts.push('Challenge: ' + problems + '.');
+               if (solution) overviewParts.push('Our solution: ' + solution + '.');
+               if (bestMoment) overviewParts.push(bestMoment);
+
+               var facts = [];
+               if (startDate) facts.push({ label: 'Start', value: startDate });
+               if (endDate) facts.push({ label: 'Completion', value: endDate });
+               if (services) facts.push({ label: 'Services (detailed)', value: services });
+
+               var overrideFile = PROJECT_IMAGE_OVERRIDES[slugKey];
+               var imagePath = PROJECT_IMG_BASE + (overrideFile || (rawName + '.jpg'));
+
+               PROJECTS[slugKey] = {
+                  title: title,
+                  category: 'Residential',
+                  location: '',
+                  tagline: brief || 'Interior visualization project.',
+                  image: imagePath || FALLBACK_PROJECT_IMAGE,
+                  pills: ['Residential'],
+                  facts: facts,
+                  overview: overviewParts.length ? overviewParts.join(' ') : 'Interior visualization project summary coming soon.'
+               };
+            });
+         }
 
          function setText(id, value) {
             var el = document.getElementById(id);
             if (el && value) el.textContent = value;
          }
 
-         setText('sp-title', project.title);
-         setText('sp-category-meta', project.category + ' project');
-         setText('sp-location', project.location);
-         setText('sp-tagline', project.tagline);
-         setText('sp-overview', project.overview);
+         function renderProject() {
+            var project = PROJECTS[slug] || PROJECTS['chandekar-2bhk'];
 
-         var heroImg = document.getElementById('sp-hero-image');
-         if (heroImg) {
-            heroImg.src = project.image;
-            heroImg.alt = project.title;
-            heroImg.addEventListener('load', function () {
-               var wrap = document.getElementById('sp-hero-wrap');
-               if (wrap) {
-                  wrap.classList.add('is-visible');
-               }
-            });
-         }
+            setText('sp-title', project.title);
+            setText('sp-category-meta', project.category + ' project');
+            setText('sp-location', project.location);
+            setText('sp-tagline', project.tagline);
+            setText('sp-overview', project.overview);
 
-         var mainImg = document.getElementById('sp-main-image');
-         if (mainImg) {
-            mainImg.src = project.image;
-            mainImg.alt = project.title + ' main visual';
-         }
-
-         var pillsWrap = document.getElementById('sp-pills');
-         if (pillsWrap && Array.isArray(project.pills)) {
-            pillsWrap.innerHTML = '';
-            project.pills.forEach(function (label) {
-               var pill = document.createElement('span');
-               pill.className = 'da-single-project-pill';
-               pill.textContent = label;
-               pillsWrap.appendChild(pill);
-            });
-         }
-
-         var factsWrap = document.getElementById('sp-facts');
-         if (factsWrap && Array.isArray(project.facts)) {
-            factsWrap.innerHTML = '';
-            project.facts.forEach(function (fact) {
-               var li = document.createElement('li');
-               var labelSpan = document.createElement('span');
-               labelSpan.textContent = fact.label;
-               li.appendChild(labelSpan);
-               li.appendChild(document.createTextNode(' ' + fact.value));
-               factsWrap.appendChild(li);
-            });
-         }
-
-         // Build a looping gallery for the active project
-         var galleryWrapper = document.querySelector('.da-project-gallery-slider .swiper-wrapper');
-         if (galleryWrapper && project.image) {
-            galleryWrapper.innerHTML = '';
-
-            var images = Array.isArray(project.galleryImages) && project.galleryImages.length
-               ? project.galleryImages
-               : [project.image, project.image, project.image, project.image];
-
-            images.forEach(function (src, index) {
-               var slide = document.createElement('div');
-               slide.className = 'swiper-slide';
-
-               var card = document.createElement('div');
-               card.className = 'da-project-gallery-card';
-
-               var img = document.createElement('img');
-               img.src = src;
-               img.alt = project.title + ' view ' + (index + 1);
-
-               var caption = document.createElement('div');
-               caption.className = 'da-project-gallery-caption';
-               var leftSpan = document.createElement('span');
-               leftSpan.textContent = 'View ' + (index + 1);
-               var rightSpan = document.createElement('span');
-               rightSpan.textContent = project.category;
-               caption.appendChild(leftSpan);
-               caption.appendChild(rightSpan);
-
-               card.appendChild(img);
-               card.appendChild(caption);
-               slide.appendChild(card);
-               galleryWrapper.appendChild(slide);
-            });
-         }
-
-         if (typeof Swiper !== 'undefined') {
-            new Swiper('.da-project-gallery-slider', {
-               loop: true,
-               centeredSlides: true,
-               slidesPerView: 1.1,
-               spaceBetween: 18,
-               autoplay: {
-                  delay: 2600,
-                  disableOnInteraction: false
-               },
-               breakpoints: {
-                  768: {
-                     slidesPerView: 2.1,
-                     spaceBetween: 22
-                  },
-                  1200: {
-                     slidesPerView: 3,
-                     spaceBetween: 26
+            var heroImg = document.getElementById('sp-hero-image');
+            if (heroImg) {
+               heroImg.src = project.image;
+               heroImg.alt = project.title;
+               heroImg.addEventListener('load', function () {
+                  var wrap = document.getElementById('sp-hero-wrap');
+                  if (wrap) {
+                     wrap.classList.add('is-visible');
                   }
-               },
-               pagination: {
-                  el: '.da-project-gallery-pagination',
-                  clickable: true
-               },
-               navigation: {
-                  nextEl: '.da-project-gallery-next',
-                  prevEl: '.da-project-gallery-prev'
-               }
-            });
+               });
+            }
+
+            var mainImg = document.getElementById('sp-main-image');
+            if (mainImg) {
+               mainImg.src = project.image;
+               mainImg.alt = project.title + ' main visual';
+            }
+
+            var pillsWrap = document.getElementById('sp-pills');
+            if (pillsWrap && Array.isArray(project.pills)) {
+               pillsWrap.innerHTML = '';
+               project.pills.forEach(function (label) {
+                  var pill = document.createElement('span');
+                  pill.className = 'da-single-project-pill';
+                  pill.textContent = label;
+                  pillsWrap.appendChild(pill);
+               });
+            }
+
+            var factsWrap = document.getElementById('sp-facts');
+            if (factsWrap && Array.isArray(project.facts)) {
+               factsWrap.innerHTML = '';
+               project.facts.forEach(function (fact) {
+                  var li = document.createElement('li');
+                  var labelSpan = document.createElement('span');
+                  labelSpan.textContent = fact.label;
+                  li.appendChild(labelSpan);
+                  li.appendChild(document.createTextNode(' ' + fact.value));
+                  factsWrap.appendChild(li);
+               });
+            }
+
+            // Build a looping gallery for the active project
+            var galleryWrapper = document.querySelector('.da-project-gallery-slider .swiper-wrapper');
+            if (galleryWrapper && project.image) {
+               galleryWrapper.innerHTML = '';
+
+               var images = Array.isArray(project.galleryImages) && project.galleryImages.length
+                  ? project.galleryImages
+                  : [project.image, project.image, project.image, project.image];
+
+               images.forEach(function (src, index) {
+                  var slide = document.createElement('div');
+                  slide.className = 'swiper-slide';
+
+                  var card = document.createElement('div');
+                  card.className = 'da-project-gallery-card';
+
+                  var img = document.createElement('img');
+                  img.src = src;
+                  img.alt = project.title + ' view ' + (index + 1);
+
+                  var caption = document.createElement('div');
+                  caption.className = 'da-project-gallery-caption';
+                  var leftSpan = document.createElement('span');
+                  leftSpan.textContent = 'View ' + (index + 1);
+                  var rightSpan = document.createElement('span');
+                  rightSpan.textContent = project.category;
+                  caption.appendChild(leftSpan);
+                  caption.appendChild(rightSpan);
+
+                  card.appendChild(img);
+                  card.appendChild(caption);
+                  slide.appendChild(card);
+                  galleryWrapper.appendChild(slide);
+               });
+            }
+
+            if (typeof Swiper !== 'undefined') {
+               new Swiper('.da-project-gallery-slider', {
+                  loop: true,
+                  centeredSlides: true,
+                  slidesPerView: 1.1,
+                  spaceBetween: 18,
+                  autoplay: {
+                     delay: 2600,
+                     disableOnInteraction: false
+                  },
+                  breakpoints: {
+                     768: {
+                        slidesPerView: 2.1,
+                        spaceBetween: 22
+                     },
+                     1200: {
+                        slidesPerView: 3,
+                        spaceBetween: 26
+                     }
+                  },
+                  pagination: {
+                     el: '.da-project-gallery-pagination',
+                     clickable: true
+                  },
+                  navigation: {
+                     nextEl: '.da-project-gallery-next',
+                     prevEl: '.da-project-gallery-prev'
+                  }
+               });
+            }
+         }
+
+         // Load CSV-driven content, ignoring the drive link column, then render
+         if (window.fetch) {
+            fetch(CSV_PATH)
+               .then(function (response) {
+                  if (!response || !response.ok) return null;
+                  return response.text();
+               })
+               .then(function (text) {
+                  if (text) {
+                     try {
+                        enhanceProjectsFromCsv(text);
+                     } catch (e) {
+                        console.error('Failed to enhance project data from CSV', e);
+                     }
+                  }
+                  renderProject();
+               })
+               .catch(function () {
+                  renderProject();
+               });
+         } else {
+            renderProject();
          }
       })();
    </script>
