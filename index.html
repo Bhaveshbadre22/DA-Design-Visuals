@@ -1967,35 +1967,36 @@
    <script src="assets/js/tp-cursor.js" defer></script>
 
    <script>
-   // Lenis smooth scrolling (used only when GSAP ScrollSmoother is NOT active and not on Windows)
+   // Lenis smooth scrolling (only on mobile/tablet, never with GSAP ScrollSmoother)
    (function() {
       if (typeof Lenis === 'undefined') return;
 
-      var isWindows = false;
-      try {
-         var platform = navigator.platform || "";
-         var ua = navigator.userAgent || "";
-         isWindows = /Win/i.test(platform) || /Windows/i.test(ua);
-      } catch (e) {
-         isWindows = false;
-      }
+      // Device detection: enable Lenis only on mobile/tablet
+      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      var isWindows = /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
 
-      // If a ScrollSmoother instance is active on this page (homepage),
-      // or we're on Windows, skip Lenis to avoid smooth-scroll lag.
-      if (isWindows || window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())) {
+      // If GSAP ScrollSmoother is active, or on Windows, or not mobile/tablet, skip Lenis
+      if (
+         isWindows ||
+         !isMobile ||
+         window.daSmoother ||
+         (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())
+      ) {
          return;
       }
+
+      // Prevent double initialization
+      if (window.lenis) return;
 
       const lenis = new Lenis({
          lerp: 0.1,
          smoothWheel: true,
-         smoothTouch: false
+         smoothTouch: true // enable smoothTouch for mobile
       });
 
-      // expose for other scripts (e.g. main.js anchor scroll)
       window.lenis = lenis;
 
-      // keep ScrollTrigger in sync with Lenis scroll when ScrollSmoother isn't driving it
+      // Sync ScrollTrigger if present
       if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined' && gsap.registerPlugin) {
          gsap.registerPlugin(ScrollTrigger);
          lenis.on('scroll', ScrollTrigger.update);
