@@ -1381,6 +1381,32 @@
             ]
          };
 
+         var PROJECT_SLUG_ALIASES = {
+            'boyden-project': 'boyden',
+            'chandekar-2bhk-project': 'chandekar-2bhk',
+            'diveagar-resort-project': 'diveagar',
+            'kharadi1-site-styling-one': 'kharadi-1',
+            'kharadi2-site': 'kharadi-2',
+            'kudje-5-bhk-bunglow': 'kudje-5bhk',
+            'mahabaleshwar-treetops-2': 'mahabaleshwar-treetops',
+            'premium-apartment-ranjit': 'premium-apartment',
+            'raut3-bhk': 'raut-3bhk',
+            'santorini-blue-site': 'santorini-blue',
+            'shirwal-site-vadewale': 'shirwal',
+            'pearl-banquete': 'pearl-site'
+         };
+
+         function resolveSlugWithAlias(store, key) {
+            if (store && Object.prototype.hasOwnProperty.call(store, key)) {
+               return key;
+            }
+            var alias = PROJECT_SLUG_ALIASES[key];
+            if (alias && store && Object.prototype.hasOwnProperty.call(store, alias)) {
+               return alias;
+            }
+            return key;
+         }
+
          var CSV_PATH = 'assets/DA Design Visuals - Project Data - DA Design Visuals - Projects Data-2.csv';
          var FALLBACK_PROJECT_IMAGE = 'assets/img/inner-project/portfolio-col-2/port-1.jpg';
          var PROJECT_IMG_BASE = 'assets/DA PROJECTS IMAGES/';
@@ -1614,9 +1640,11 @@
          }
 
          function renderProject() {
-            var project = PROJECTS[slug] || PROJECTS['chandekar-2bhk'];
+            var projectKey = resolveSlugWithAlias(PROJECTS, slug);
+            var project = PROJECTS[projectKey] || PROJECTS['chandekar-2bhk'];
 
-            var galleryOverride = PROJECT_GALLERIES[slug];
+            var galleryKey = resolveSlugWithAlias(PROJECT_GALLERIES, slug);
+            var galleryOverride = PROJECT_GALLERIES[galleryKey];
             if (Array.isArray(galleryOverride) && galleryOverride.length) {
                project.galleryImages = galleryOverride;
             }
