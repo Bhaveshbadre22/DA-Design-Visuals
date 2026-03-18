@@ -1063,6 +1063,21 @@
                ],
                overview: 'Calm, desaturated colours and simple forms keep this home feeling light and open, while still being practical to execute locally.'
             },
+            'jadhav-site': {
+               title: 'Jadhav Site',
+               category: 'Residential',
+               location: 'Pune, Maharashtra',
+               tagline: 'Tailored 3BHK renders that balance storage, lighting and serenity.',
+               image: 'assets/Project Gallery Imges/Jadhav compressed/DSC00268.webp',
+               pills: ['Residential', '3BHK', 'Warm minimal'],
+               facts: [
+                  { label: 'Type', value: 'Apartment interiors' },
+                  { label: 'Location', value: 'Pune, Maharashtra' },
+                  { label: 'Scope', value: 'Living, dining and bedrooms' },
+                  { label: 'Services', value: '3D visualization' }
+               ],
+               overview: 'Layered textures, integrated carpentry and soft lighting set a comfortable tone for the Jadhav family apartment without adding execution complexity.'
+            },
             'sagwan-resort': {
                title: 'Sagwan Resort',
                category: 'Hospitality',
@@ -1487,7 +1502,9 @@
 
          var PROJECT_IMAGE_OVERRIDES = {
             'mahabaleshwar-treetops-2': 'Mahabaleshwar Treetops.webp',
-            'patil-site-pashan-near-to-office': 'Patil Site.webp'
+            'patil-site-pashan-near-to-office': 'Patil Site.webp',
+            'treetop-manali': 'Treetop manali.jpg',
+            'jadhav-site': 'Jadhav site.jpg'
          };
 
          function enhanceProjectsFromCsv(text) {
@@ -1644,6 +1661,20 @@
                project.galleryImages = galleryOverride;
             }
 
+            var fallbackImage = Array.isArray(project.galleryImages) && project.galleryImages.length
+               ? project.galleryImages[0]
+               : FALLBACK_PROJECT_IMAGE;
+
+            function attachImageFallback(imgElement) {
+               if (!imgElement) return;
+               var hasFallback = false;
+               imgElement.addEventListener('error', function () {
+                  if (hasFallback) return;
+                  hasFallback = true;
+                  imgElement.src = fallbackImage;
+               });
+            }
+
             setText('sp-title', project.title);
             setText('sp-category-meta', project.category + ' project');
             setText('sp-location', project.location);
@@ -1652,8 +1683,9 @@
 
             var heroImg = document.getElementById('sp-hero-image');
             if (heroImg) {
-               heroImg.src = project.image;
+               attachImageFallback(heroImg);
                heroImg.alt = project.title;
+               heroImg.src = project.image;
                heroImg.addEventListener('load', function () {
                   var wrap = document.getElementById('sp-hero-wrap');
                   if (wrap) {
@@ -1664,8 +1696,9 @@
 
             var mainImg = document.getElementById('sp-main-image');
             if (mainImg) {
-               mainImg.src = project.image;
+               attachImageFallback(mainImg);
                mainImg.alt = project.title + ' main visual';
+               mainImg.src = project.image;
             }
 
             var pillsWrap = document.getElementById('sp-pills');
