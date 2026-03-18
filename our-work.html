@@ -704,9 +704,9 @@
                      </span>
                   </h1>
                   <div class="da-work-hero-avatars">
-                     <img src="assets/Projects Data/Chandekar 2BHK Project.jpg" alt="Chandekar 2-BHK project visual">
-                     <img src="assets/Projects Data/Boyden Project.jpg" alt="Boyden workspace visual">
-                     <img src="assets/Projects Data/Chocolate Factory.jpg" alt="Chocolate Factory hospitality visual">
+                     <img src="assets/DA PROJECTS IMAGES/Mahabaleshwar Treetops.webp" alt="Mahabaleshwar Treetops resort visual">
+                     <img src="assets/DA PROJECTS IMAGES/Premium Apartment ranjit.webp" alt="Premium Apartment Ranjit interior visualization">
+                     <img src="assets/DA PROJECTS IMAGES/Kudje 5 BHK bunglow.webp" alt="Kudje 5 BHK bungalow living area">
                      <p>Trusted by studios in Pune, Mumbai, Banglore &amp; beyond.</p>
                   </div>
                   <div class="da-work-hero-actions">
@@ -733,18 +733,23 @@
                         </div>
                         <div class="da-work-search-field">
                            <select id="filter-city" class="da-work-select">
-                              <option value="">City</option>
-                              <option value="lisbon">Lisbon</option>
-                              <option value="london">London</option>
-                              <option value="dubai">Dubai</option>
+                              <option value="">City / Region</option>
+                              <option value="pune">Pune &amp; PCMC</option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="mahabaleshwar">Mahabaleshwar</option>
+                              <option value="konkan">Konkan Coast</option>
+                              <option value="ahmednagar">Ahmednagar</option>
+                              <option value="manali">Manali</option>
                            </select>
                         </div>
                         <div class="da-work-search-field">
                            <select id="filter-style" class="da-work-select">
-                              <option value="">Style</option>
-                              <option value="minimal">Minimal</option>
-                              <option value="luxury">Luxury</option>
-                              <option value="industrial">Industrial</option>
+                              <option value="">Design language</option>
+                              <option value="modern-luxe">Modern Luxe</option>
+                              <option value="warm-minimal">Warm Minimal</option>
+                              <option value="tropical">Tropical Escape</option>
+                              <option value="industrial">Industrial Edge</option>
+                              <option value="heritage">Heritage Revival</option>
                            </select>
                         </div>
                         <div class="da-work-search-action">
@@ -1191,6 +1196,39 @@
             'jadhav-site': 'Jadhav site.jpg'
          };
 
+         var PROJECT_META_OVERRIDES = {
+            'chandekar-2bhk-project': { city: 'pune', style: 'modern-luxe' },
+            'kharadi1-site-styling-one': { city: 'pune', style: 'warm-minimal' },
+            'kharadi2-site': { city: 'pune', style: 'warm-minimal' },
+            'kondhwa-site-jadhav': { city: 'pune', style: 'heritage' },
+            'kudje-5-bhk-bunglow': { city: 'pune', style: 'modern-luxe' },
+            'raut3-bhk': { city: 'pune', style: 'modern-luxe' },
+            'santorini-blue-site': { city: 'mumbai', style: 'tropical' },
+            'shirwal-site-vadewale': { city: 'pune', style: 'warm-minimal' },
+            'premium-apartment-ranjit': { city: 'pune', style: 'modern-luxe' },
+            'leifii': { city: 'mumbai', style: 'industrial' },
+            'diveagar-resort-project': { city: 'konkan', style: 'tropical' },
+            'ahmednagar-institute': { city: 'ahmednagar', style: 'heritage' },
+            'boyden-project': { city: 'mumbai', style: 'industrial' },
+            'chocolate-factory': { city: 'mumbai', style: 'industrial' },
+            'mahabaleshwar-treetops-2': { city: 'mahabaleshwar', style: 'tropical' },
+            'fadke-hall': { city: 'pune', style: 'heritage' },
+            'joshi': { city: 'pune', style: 'modern-luxe' },
+            'chande-restaurant': { city: 'pune', style: 'industrial' },
+            'pearl-banquete': { city: 'mumbai', style: 'modern-luxe' },
+            'bavdhan-pebbles-sonune-site': { city: 'pune', style: 'warm-minimal' },
+            'sagwan-resort': { city: 'konkan', style: 'tropical' },
+            'airbnb-indilife-japand': { city: 'pune', style: 'warm-minimal' },
+            'chemist-site': { city: 'pune', style: 'industrial' },
+            'ganga-legend-shinde': { city: 'pune', style: 'modern-luxe' },
+            'treetop-manali': { city: 'manali', style: 'tropical' },
+            'patil-site-pashan-near-to-office': { city: 'pune', style: 'modern-luxe' },
+            'jadhav-site': { city: 'pune', style: 'heritage' },
+            'aambegav-inamdar': { city: 'pune', style: 'warm-minimal' },
+            'warje': { city: 'pune', style: 'warm-minimal' },
+            'dsk': { city: 'pune', style: 'modern-luxe' }
+         };
+
          function buildProjectItemsFromCsv(rows) {
             var items = [];
 
@@ -1217,12 +1255,17 @@
 
                var overrideFile = PROJECT_IMAGE_OVERRIDES[id];
                var imgFile = PROJECT_IMG_BASE + (overrideFile || (rawName + '.webp'));
+               var meta = PROJECT_META_OVERRIDES[id] || {};
+               var city = meta.city || 'pune';
+               var style = meta.style || (category === 'commercial' ? 'industrial' : 'modern-luxe');
 
                items.push({
                   id: id,
                   title: title,
                   category: category,
-                  image: imgFile
+                  image: imgFile,
+                  city: city,
+                  style: style
                });
             });
 
@@ -1238,7 +1281,9 @@
                var titleEl = el.querySelector('.da-work-project-title');
                var title = titleEl ? titleEl.textContent.trim() : '';
                var category = el.getAttribute('data-category') || 'residential';
-               items.push({ id: id, title: title, category: category });
+               var city = el.getAttribute('data-city') || 'pune';
+               var style = el.getAttribute('data-style') || 'modern-luxe';
+               items.push({ id: id, title: title, category: category, city: city, style: style });
             });
             return items;
          }
@@ -1254,6 +1299,8 @@
                wrapper.className = 'da-work-project-item';
                wrapper.setAttribute('data-category', item.category || 'residential');
                wrapper.setAttribute('data-project-id', item.id);
+               wrapper.setAttribute('data-city', item.city || 'pune');
+               wrapper.setAttribute('data-style', item.style || 'modern-luxe');
 
                var link = document.createElement('a');
                link.className = 'da-work-project-card';
