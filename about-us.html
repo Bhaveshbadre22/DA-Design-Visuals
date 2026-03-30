@@ -1377,47 +1377,98 @@
                </p>
             </div>
             <div class="da-about-values-pills-row da-reveal" data-delay="2">
-               <div class="da-about-values-pill-item">
-                  <span class="da-about-values-pill-circle"></span>
-                  <span class="da-about-values-pill-label">Innovative</span>
-               </div>
-               <div class="da-about-values-pill-item is-active">
-                  <span class="da-about-values-pill-circle"></span>
-                  <span class="da-about-values-pill-label">Function-first</span>
-               </div>
-               <div class="da-about-values-pill-item">
-                  <span class="da-about-values-pill-circle"></span>
-                  <span class="da-about-values-pill-label">Modern</span>
-               </div>
+                  <div class="da-about-values-pill-item is-active" data-tab="innovative">
+                     <span class="da-about-values-pill-circle"></span>
+                     <span class="da-about-values-pill-label">Innovative</span>
+                  </div>
+                  <div class="da-about-values-pill-item" data-tab="function">
+                     <span class="da-about-values-pill-circle"></span>
+                     <span class="da-about-values-pill-label">Function-first</span>
+                  </div>
+                  <div class="da-about-values-pill-item" data-tab="modern">
+                     <span class="da-about-values-pill-circle"></span>
+                     <span class="da-about-values-pill-label">Modern</span>
+                  </div>
             </div>
 
-            <div class="da-about-values-card-grid da-reveal" data-delay="3">
-               <article class="da-about-values-card">
-                  <p class="da-about-values-card-eyebrow">Mission</p>
-                  <h3 class="da-about-values-card-title">Make everyday spaces feel extraordinary.</h3>
-                  <p class="da-about-values-card-text">
-                     We exist to transform ordinary floor plans into elevated environments that support the
-                     way you live, host, build content and run your brand. Functional, future-proof and
-                     quietly luxurious.
-                  </p>
-               </article>
-               <article class="da-about-values-card">
-                  <p class="da-about-values-card-eyebrow">Vision</p>
-                  <h3 class="da-about-values-card-title">A new language for Indian interiors.</h3>
-                  <p class="da-about-values-card-text">
-                     We see a world where Indian homes and studios are globally iconic—minimal in clutter,
-                     rich in craft, deeply rooted in context and designed to evolve with your stories.
-                  </p>
-               </article>
-               <article class="da-about-values-card">
-                  <p class="da-about-values-card-eyebrow">Philosophy</p>
-                  <h3 class="da-about-values-card-title">Less noise. More narrative.</h3>
-                  <p class="da-about-values-card-text">
-                     Every line, curve and material earns its place. We strip away visual noise so what
-                     remains is light, texture and gestures that move you—subtle, intentional and timeless.
-                  </p>
-               </article>
-            </div>
+               <div class="da-about-values-card-grid da-reveal" data-delay="3">
+                  <!-- Innovative Cards -->
+                  <div class="da-about-values-cards-group" data-tab-content="innovative" style="display: flex; gap: 32px;">
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Mission</p>
+                        <h3 class="da-about-values-card-title">Make everyday spaces feel extraordinary.</h3>
+                        <p class="da-about-values-card-text">
+                           We exist to transform ordinary floor plans into elevated environments that support the
+                           way you live, host, build content and run your brand. Functional, future-proof and
+                           quietly luxurious.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Vision</p>
+                        <h3 class="da-about-values-card-title">A new language for Indian interiors.</h3>
+                        <p class="da-about-values-card-text">
+                           We see a world where Indian homes and studios are globally iconic—minimal in clutter,
+                           rich in craft, deeply rooted in context and designed to evolve with your stories.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Philosophy</p>
+                        <h3 class="da-about-values-card-title">Less noise. More narrative.</h3>
+                        <p class="da-about-values-card-text">
+                           Every line, curve and material earns its place. We strip away visual noise so what
+                           remains is light, texture and gestures that move you—subtle, intentional and timeless.
+                        </p>
+                     </article>
+                  </div>
+                  <!-- Function-first Cards -->
+                  <div class="da-about-values-cards-group" data-tab-content="function" style="display: none; gap: 32px;">
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Mission</p>
+                        <h3 class="da-about-values-card-title">Functionality at the Core</h3>
+                        <p class="da-about-values-card-text">
+                           Every design decision is rooted in usability, ensuring spaces work beautifully for daily life and business needs.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Vision</p>
+                        <h3 class="da-about-values-card-title">Effortless Living</h3>
+                        <p class="da-about-values-card-text">
+                           We envision interiors where form follows function, making every interaction seamless and intuitive.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Philosophy</p>
+                        <h3 class="da-about-values-card-title">Purposeful Details</h3>
+                        <p class="da-about-values-card-text">
+                           From storage to lighting, every detail is considered for maximum utility and comfort.
+                        </p>
+                     </article>
+                  </div>
+                  <!-- Modern Cards -->
+                  <div class="da-about-values-cards-group" data-tab-content="modern" style="display: none; gap: 32px;">
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Mission</p>
+                        <h3 class="da-about-values-card-title">Modern Yet Timeless</h3>
+                        <p class="da-about-values-card-text">
+                           We blend current trends with classic elements to create spaces that feel fresh today and relevant tomorrow.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Vision</p>
+                        <h3 class="da-about-values-card-title">Innovative Materials</h3>
+                        <p class="da-about-values-card-text">
+                           Our vision is to use materials and technology that elevate both aesthetics and performance.
+                        </p>
+                     </article>
+                     <article class="da-about-values-card">
+                        <p class="da-about-values-card-eyebrow">Philosophy</p>
+                        <h3 class="da-about-values-card-title">Design for the Future</h3>
+                        <p class="da-about-values-card-text">
+                           We create interiors that adapt and endure, ready for the next chapter of your story.
+                        </p>
+                     </article>
+                  </div>
+               </div>
          </div>
       </section>
 

@@ -29125,8 +29125,8 @@ body.project-detail-open {
   flex: 0 0 1px;
   margin: 0 3px;
   border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.75);
+  background: #FFD600;
+  box-shadow: 0 0 6px rgba(255, 214, 0, 0.75);
   transform-origin: bottom;
 }
 
