@@ -335,17 +335,34 @@
          max-width: 1120px;
          margin: 40px auto 0;
          display: grid;
-         grid-template-columns: repeat(3, minmax(0, 1fr));
-         gap: 24px;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 32px;
+         align-items: stretch;
+      }
+
+      .da-about-values-cards-group {
+         display: contents;
       }
 
       .da-about-values-card {
          background-color: #fef6d7;
          border-radius: 24px;
-         padding: 26px 24px 24px;
+         padding: 32px 28px 28px;
          border: 1px solid rgba(250, 210, 90, 0.9);
          box-shadow: 0 24px 80px rgba(249, 203, 8, 0.16);
          text-align: left;
+         min-height: 340px;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: flex-start;
+         width: 100%;
+         box-sizing: border-box;
+         transition: box-shadow 0.2s;
+      }
+      .da-about-values-card:hover {
+         box-shadow: 0 8px 32px rgba(249, 203, 8, 0.22);
+         border-color: #f9cb08;
       }
 
       .da-about-values-card-eyebrow {
@@ -1393,7 +1410,7 @@
 
                <div class="da-about-values-card-grid da-reveal" data-delay="3">
                   <!-- Innovative Cards -->
-                  <div class="da-about-values-cards-group" data-tab-content="innovative" style="display: flex; gap: 32px;">
+                  <div class="da-about-values-cards-group" data-tab-content="innovative">
                      <article class="da-about-values-card">
                         <p class="da-about-values-card-eyebrow">Mission</p>
                         <h3 class="da-about-values-card-title">Make everyday spaces feel extraordinary.</h3>
@@ -1421,31 +1438,31 @@
                      </article>
                   </div>
                   <!-- Function-first Cards -->
-                  <div class="da-about-values-cards-group" data-tab-content="function" style="display: none; gap: 32px;">
+                  <div class="da-about-values-cards-group" data-tab-content="function" style="display: none;">
                      <article class="da-about-values-card">
                         <p class="da-about-values-card-eyebrow">Mission</p>
-                        <h3 class="da-about-values-card-title">Functionality at the Core</h3>
+                        <h3 class="da-about-values-card-title">Empowering Inspired Spaces</h3>
                         <p class="da-about-values-card-text">
-                           Every design decision is rooted in usability, ensuring spaces work beautifully for daily life and business needs.
+                           Our mission is to help clients realize their dream environments by blending creativity, technical expertise, and a deep understanding of lifestyle needs.
                         </p>
                      </article>
                      <article class="da-about-values-card">
                         <p class="da-about-values-card-eyebrow">Vision</p>
-                        <h3 class="da-about-values-card-title">Effortless Living</h3>
+                        <h3 class="da-about-values-card-title">Collaboration at Every Step</h3>
                         <p class="da-about-values-card-text">
-                           We envision interiors where form follows function, making every interaction seamless and intuitive.
+                           We envision a studio where designers, clients, and craftsmen work hand-in-hand, ensuring every project is unique, personal, and exceeds expectations.
                         </p>
                      </article>
                      <article class="da-about-values-card">
                         <p class="da-about-values-card-eyebrow">Philosophy</p>
-                        <h3 class="da-about-values-card-title">Purposeful Details</h3>
+                        <h3 class="da-about-values-card-title">Design with Heart</h3>
                         <p class="da-about-values-card-text">
-                           From storage to lighting, every detail is considered for maximum utility and comfort.
+                           We believe great interiors are born from empathy, curiosity, and a passion for storytelling—spaces should reflect the people who live and work in them.
                         </p>
                      </article>
                   </div>
                   <!-- Modern Cards -->
-                  <div class="da-about-values-cards-group" data-tab-content="modern" style="display: none; gap: 32px;">
+                  <div class="da-about-values-cards-group" data-tab-content="modern" style="display: none;">
                      <article class="da-about-values-card">
                         <p class="da-about-values-card-eyebrow">Mission</p>
                         <h3 class="da-about-values-card-title">Modern Yet Timeless</h3>
@@ -1787,5 +1804,39 @@
    </script>
 
    <script src="assets/js/tp-cursor.js"></script>
+</script>
+
+<!-- About page: Values tab switching -->
+<script>
+   (function () {
+      var tabItems = document.querySelectorAll('.da-about-values-pill-item');
+      var cardGroups = document.querySelectorAll('.da-about-values-cards-group');
+      tabItems.forEach(function(tab) {
+         tab.addEventListener('click', function() {
+            // Remove active from all
+            tabItems.forEach(function(t) { t.classList.remove('is-active'); });
+            // Hide all card groups
+            cardGroups.forEach(function(g) { g.style.display = 'none'; });
+            // Activate clicked
+            tab.classList.add('is-active');
+            var tabName = tab.getAttribute('data-tab');
+            var group = document.querySelector('.da-about-values-cards-group[data-tab-content="' + tabName + '"]');
+            if (group) group.style.display = '';
+         });
+      });
+      // Ensure only the active tab's group is visible on load
+      var activeTab = document.querySelector('.da-about-values-pill-item.is-active');
+      if (activeTab) {
+         var tabName = activeTab.getAttribute('data-tab');
+         cardGroups.forEach(function(g) {
+            if (g.getAttribute('data-tab-content') === tabName) {
+               g.style.display = '';
+            } else {
+               g.style.display = 'none';
+            }
+         });
+      }
+   })();
+</script>
 </body>
 </html>
