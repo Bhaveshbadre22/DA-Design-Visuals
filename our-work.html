@@ -1191,7 +1191,11 @@
 
          var PROJECT_IMAGE_OVERRIDES = {
             'mahabaleshwar-treetops-2': 'Mahabaleshwar Treetops.webp',
-            'patil-site-pashan-near-to-office': 'Patil Site.webp'
+            'patil-site-pashan-near-to-office': 'Patil Site.webp',
+            'airbnb-indilife-japand': 'airbnb indilife japand.jpg',
+            'ganga-legend-shinde': 'Ganga legend Shinde.jpg',
+            'treetop-manali': 'Treetop manali.jpg',
+            'jadhav-site': 'Jadhav site.jpg'
          };
 
          var PROJECT_META_OVERRIDES = {
@@ -1304,9 +1308,18 @@
                link.className = 'da-work-project-card';
                link.href = 'project-detail.html?project=' + encodeURIComponent(item.id);
 
+               // Prefer .webp if available, fallback to original
+               var imgSrc = item.image || FALLBACK_IMG;
+               var webpSrc = imgSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
                var img = document.createElement('img');
-               img.src = item.image || FALLBACK_IMG;
                img.alt = item.title || 'Project image';
+               img.loading = 'lazy';
+
+               // Try to load .webp first, fallback to original if error
+               img.src = webpSrc;
+               img.onerror = function () {
+                  if (img.src !== imgSrc) img.src = imgSrc;
+               };
 
                link.appendChild(img);
 
