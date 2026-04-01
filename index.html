@@ -39,7 +39,8 @@
    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
    <link rel="stylesheet" href="assets/css/slick.css">
    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="preload" as="style" href="assets/css/font-awesome-pro.css" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="assets/css/font-awesome-pro.css"></noscript>
    <link rel="stylesheet" href="assets/css/spacing.css">
    <link rel="preload" as="style" href="assets/css/custom-animation.css" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="assets/css/custom-animation.css"></noscript>
@@ -600,7 +601,7 @@
       </div>
 
       <div class="loader-images">
-         <img src="assets/img/hero image.webp" alt="Hero image 1" class="loader-image" loading="eager" fetchpriority="high" decoding="async">
+         <img src="assets/img/hero image.webp" alt="Hero image 1" class="loader-image" loading="lazy" fetchpriority="low" decoding="async">
          <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Hero image 2" class="loader-image" loading="lazy" fetchpriority="low" decoding="async">
          <img src="assets/img/home-03/IMG_1134.webp" alt="Hero image 3" class="loader-image" loading="lazy" fetchpriority="low" decoding="async">
       </div>
@@ -798,8 +799,8 @@
             <div class="tp-hero-3-area tp-hero-3-ptb fix" style="background-color: #050505;">
                <div class="da-hero-bg">
                   <img src="assets/img/hero image.webp" alt="DA Design Visual hero" class="da-hero-image da-hero-image-1" loading="eager" fetchpriority="high" decoding="async">
-                  <img src="assets/img/home-03/IMG_1134.webp" alt="Interior detail" class="da-hero-image da-hero-image-2" loading="lazy" fetchpriority="low" decoding="async">
-                  <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Living room interior" class="da-hero-image da-hero-image-3" loading="lazy" fetchpriority="low" decoding="async">
+                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/home-03/IMG_1134.webp" alt="Interior detail" class="da-hero-image da-hero-image-2" loading="lazy" fetchpriority="low" decoding="async">
+                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Living room interior" class="da-hero-image da-hero-image-3" loading="lazy" fetchpriority="low" decoding="async">
                </div>
             </div>
             <!-- hero area end -->
@@ -1967,7 +1968,7 @@
    <script src="assets/js/chroma.min.js"></script>
 
    <!-- Lenis smooth scroll (disabled on Windows via inline guard below) -->
-   <script src="https://unpkg.com/@studio-freight/lenis@1.0.40/dist/lenis.min.js"></script>
+   <script src="https://unpkg.com/@studio-freight/lenis@1.0.40/dist/lenis.min.js" defer></script>
 
    <script src='assets/js/three.js' defer></script>
    <script src='assets/js/tween-max.js' defer></script>
@@ -1990,44 +1991,53 @@
    <script>
    // Lenis smooth scrolling (only on mobile/tablet, never with GSAP ScrollSmoother)
    (function() {
-      if (typeof Lenis === 'undefined') return;
+      var lenisStarted = false;
 
-      // Device detection: enable Lenis only on mobile/tablet
-      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      var isWindows = /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
+      function initLenis() {
+         if (lenisStarted || typeof Lenis === 'undefined') return;
 
-      // If GSAP ScrollSmoother is active, or on Windows, or not mobile/tablet, skip Lenis
-      if (
-         isWindows ||
-         !isMobile ||
-         window.daSmoother ||
-         (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())
-      ) {
-         return;
-      }
+         // Device detection: enable Lenis only on mobile/tablet
+         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+         var isWindows = /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
 
-      // Prevent double initialization
-      if (window.lenis) return;
+         // If GSAP ScrollSmoother is active, or on Windows, or not mobile/tablet, skip Lenis
+         if (
+            isWindows ||
+            !isMobile ||
+            window.daSmoother ||
+            (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get())
+         ) {
+            return;
+         }
 
-      const lenis = new Lenis({
-         lerp: 0.1,
-         smoothWheel: true,
-         smoothTouch: true // enable smoothTouch for mobile
-      });
+         // Prevent double initialization
+         if (window.lenis) return;
 
-      window.lenis = lenis;
+         lenisStarted = true;
 
-      // Sync ScrollTrigger if present
-      if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined' && gsap.registerPlugin) {
-         gsap.registerPlugin(ScrollTrigger);
-         lenis.on('scroll', ScrollTrigger.update);
-      }
+         const lenis = new Lenis({
+            lerp: 0.1,
+            smoothWheel: true,
+            smoothTouch: true // enable smoothTouch for mobile
+         });
 
-      function raf(time) {
-         lenis.raf(time);
+         window.lenis = lenis;
+
+         // Sync ScrollTrigger if present
+         if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined' && gsap.registerPlugin) {
+            gsap.registerPlugin(ScrollTrigger);
+            lenis.on('scroll', ScrollTrigger.update);
+         }
+
+         function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+         }
          requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf);
+
+      initLenis();
+      window.addEventListener('load', initLenis, { once: true });
    })();
 
    // GSAP-based scrolling numeric preloader (0-100 credit-roll)
@@ -2052,7 +2062,7 @@
          track.appendChild(num);
       }
 
-      const MAX_WAIT = 12000; // safety timeout in ms (counter + image fades)
+      const MAX_WAIT = 4000; // safety timeout in ms
       let revealed = false;
 
       function revealSite() {
@@ -2063,6 +2073,12 @@
             onComplete: function() {
                loader.classList.add('is-hidden');
                document.body.classList.remove('da-lock-scroll');
+
+               if (window.daStartHeroCrossfade) {
+                  try {
+                     window.daStartHeroCrossfade();
+                  } catch (e) {}
+               }
 
                if (window.daShowSoundPrompt) {
                   try {
@@ -2075,12 +2091,12 @@
          // Slide the black loader panel up in a single smooth motion
          tl.to('#loading', {
             yPercent: -100,
-            duration: 1.6,
+            duration: 0.9,
             ease: 'power3.inOut'
          })
          .to(siteContent, {
             opacity: 1,
-            duration: 1.1,
+            duration: 0.7,
             ease: 'power2.out'
          }, '-=0.2');
       }
@@ -2117,16 +2133,16 @@
          });
       }
 
-      // Scroll the number column like a film credit roll and animate the line
-      const counterTimeline = gsap.timeline({ onComplete: playLoaderImages });
+      // Scroll the number column briefly, then reveal site
+      const counterTimeline = gsap.timeline({ onComplete: revealSite });
       counterTimeline.to('#counter-track', {
          yPercent: -100,
-         duration: 5,
+         duration: 4,
          ease: 'expo.out'
       }, 0)
       .to('.loader-progress-fill', {
          scaleX: 1,
-         duration: 5,
+         duration: 4,
          ease: 'expo.out'
       }, 0);
 
@@ -2217,37 +2233,63 @@
       const images = hero.querySelectorAll('.da-hero-image');
       if (!images.length) return;
 
-      // If only one image is available, just show it
-      if (images.length === 1) {
-         gsap.set(images[0], { autoAlpha: 1, scale: 1 });
-         return;
-      }
-      // Start with the first image visible
       const imageArray = Array.from(images);
-      gsap.set(imageArray, { autoAlpha: 0, scale: 1.05 });
-      gsap.set(imageArray[0], { autoAlpha: 1, scale: 1 });
+      let started = false;
 
-      const tl = gsap.timeline({ repeat: -1 });
+      function loadDeferredHeroImages() {
+         const deferred = imageArray.filter((img, idx) => idx > 0 && img.dataset && img.dataset.src);
+         deferred.forEach(function (img) {
+            if (img.dataset.loaded === '1') return;
+            img.src = img.dataset.src;
+            img.dataset.loaded = '1';
+         });
+      }
 
-      imageArray.forEach((current, index) => {
-         const next = imageArray[(index + 1) % imageArray.length];
+      function startCrossfade() {
+         if (started) return;
+         started = true;
 
-         // Crossfade from current to next
-         tl.to(next, {
-            autoAlpha: 1,
-            scale: 1,
-            duration: 2.2,
-            ease: 'power2.inOut'
-         })
-         .to(current, {
-            autoAlpha: 0,
-            scale: 1.05,
-            duration: 2.2,
-            ease: 'power2.inOut'
-         }, '<')
-         // Pause briefly on each image
-         .to({}, { duration: 1.6 });
-      });
+         loadDeferredHeroImages();
+
+         // If only one image is available, just show it
+         if (imageArray.length === 1) {
+            gsap.set(imageArray[0], { autoAlpha: 1, scale: 1 });
+            return;
+         }
+
+         // Start with the first image visible
+         gsap.set(imageArray, { autoAlpha: 0, scale: 1.05 });
+         gsap.set(imageArray[0], { autoAlpha: 1, scale: 1 });
+
+         const tl = gsap.timeline({ repeat: -1 });
+
+         imageArray.forEach((current, index) => {
+            const next = imageArray[(index + 1) % imageArray.length];
+
+            // Crossfade from current to next
+            tl.to(next, {
+               autoAlpha: 1,
+               scale: 1,
+               duration: 2.2,
+               ease: 'power2.inOut'
+            })
+            .to(current, {
+               autoAlpha: 0,
+               scale: 1.05,
+               duration: 2.2,
+               ease: 'power2.inOut'
+            }, '<')
+            // Pause briefly on each image
+            .to({}, { duration: 1.6 });
+         });
+      }
+
+      window.daStartHeroCrossfade = startCrossfade;
+
+      // Fallback: if no loader exists, start immediately
+      if (!document.getElementById('loading')) {
+         startCrossfade();
+      }
    })();
 
    // DA Video Scroll Reveal - GSAP ScrollTrigger pinned animation

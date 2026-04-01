@@ -37,16 +37,12 @@
 		try {
 			var images = document.querySelectorAll('img');
 			images.forEach(function (img) {
-				var rect = img.getBoundingClientRect();
-				var isHeaderImage = !!img.closest('header');
-				var isKnownHero =
-					img.classList.contains('da-hero-image') ||
-					img.classList.contains('loader-image') ||
+				var isPrimaryHero =
+					img.classList.contains('da-hero-image-1') ||
 					img.id === 'sp-hero-image' ||
 					img.id === 'blog-hero-img';
-				var isInInitialViewport = rect.top < (window.innerHeight * 1.2) && rect.bottom > -120;
 
-				if (isHeaderImage || isKnownHero || isInInitialViewport) {
+				if (isPrimaryHero) {
 					if (!img.getAttribute('loading')) {
 						img.setAttribute('loading', 'eager');
 					}
