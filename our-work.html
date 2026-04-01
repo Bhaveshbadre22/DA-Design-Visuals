@@ -965,7 +965,6 @@
    <script src="assets/js/isotope-pkgd.js"></script>
    <script src="assets/js/imagesloaded-pkgd.js"></script>
    <script src="assets/js/ajax-form.js"></script>
-   <script src="assets/js/webgl.js"></script>
    <script src="assets/js/main.js"></script>
    <script src="assets/js/tp-cursor.js"></script>
 
@@ -1181,6 +1180,23 @@
             return dataRows;
          }
 
+         function splitProjectNameAndType(rawName) {
+            var value = String(rawName || '').trim();
+            if (!value) {
+               return { name: '', type: '' };
+            }
+
+            var parts = value.split(/\s[-–—]\s/);
+            if (parts.length < 2) {
+               return { name: value, type: '' };
+            }
+
+            return {
+               name: parts[0].trim(),
+               type: parts.slice(1).join(' - ').trim()
+            };
+         }
+
          var HIDDEN_PROJECTS = {
             'grand-gloria': true,
             'scandevien': true,
@@ -1231,6 +1247,24 @@
             'dsk': { city: 'pune', style: 'modern-luxe' }
          };
 
+         var PROJECT_CATEGORY_OVERRIDES = {
+            'leifii': 'commercial',
+            'ahmednagar-institute': 'commercial',
+            'boyden-project': 'commercial',
+            'chocolate-factory': 'commercial',
+            'chemist-site': 'commercial',
+            'chande-restaurant': 'commercial',
+            'pearl-banquete': 'commercial',
+            'diveagar-resort-project': 'commercial',
+            'sagwan-resort': 'commercial',
+            'mahabaleshwar-treetops-2': 'commercial',
+            'treetop-manali': 'commercial',
+            'airbnb-indilife-japand': 'commercial',
+            'dsk': 'renovation',
+            'aambegav-inamdar': 'renovation',
+            'ambegaon-inamdar': 'renovation'
+         };
+
          function buildProjectItemsFromCsv(rows) {
             var items = [];
 
@@ -1238,22 +1272,31 @@
                var rawName = (row['Project Name'] || '').trim();
                if (!rawName) return;
 
-               var id = normalizeKey(rawName);
+               var split = splitProjectNameAndType(rawName);
+               var baseName = split.name || rawName;
+               var nameType = split.type;
+
+               var id = normalizeKey(baseName);
                if (!id || HIDDEN_PROJECTS[id]) return;
 
-               var title = toTitleCase(rawName);
-
                var typeRaw = (row['Project Overview/Brief'] || '').toLowerCase();
+               var typeSignal = (nameType + ' ' + typeRaw).toLowerCase();
                var category = 'residential';
 
                // Assign project to one of four segments used across the site
-               if (typeRaw.indexOf('villa') !== -1 || typeRaw.indexOf('bungalow') !== -1 || typeRaw.indexOf('bunglow') !== -1 || typeRaw.indexOf('farmhouse') !== -1 || typeRaw.indexOf('holiday home') !== -1) {
+               if (typeSignal.indexOf('villa') !== -1 || typeSignal.indexOf('bungalow') !== -1 || typeSignal.indexOf('bunglow') !== -1 || typeSignal.indexOf('farmhouse') !== -1 || typeSignal.indexOf('holiday home') !== -1) {
                   category = 'luxury-villas';
-               } else if (typeRaw.indexOf('renovation') !== -1 || typeRaw.indexOf('remodel') !== -1 || typeRaw.indexOf('retrofit') !== -1 || typeRaw.indexOf('refurbish') !== -1 || typeRaw.indexOf('upgrade') !== -1) {
+               } else if (typeSignal.indexOf('renovation') !== -1 || typeSignal.indexOf('remodel') !== -1 || typeSignal.indexOf('retrofit') !== -1 || typeSignal.indexOf('refurbish') !== -1 || typeSignal.indexOf('upgrade') !== -1) {
                   category = 'renovation';
-               } else if (typeRaw.indexOf('workspace') !== -1 || typeRaw.indexOf('office') !== -1 || typeRaw.indexOf('corporate') !== -1 || typeRaw.indexOf('cowork') !== -1 || typeRaw.indexOf('co-working') !== -1 || typeRaw.indexOf('resort') !== -1 || typeRaw.indexOf('restaurant') !== -1 || typeRaw.indexOf('banquet') !== -1 || typeRaw.indexOf('cafe') !== -1 || typeRaw.indexOf('hotel') !== -1 || typeRaw.indexOf('lounge') !== -1 || typeRaw.indexOf('bar') !== -1) {
+               } else if (typeSignal.indexOf('workspace') !== -1 || typeSignal.indexOf('office') !== -1 || typeSignal.indexOf('corporate') !== -1 || typeSignal.indexOf('cowork') !== -1 || typeSignal.indexOf('co-working') !== -1 || typeSignal.indexOf('resort') !== -1 || typeSignal.indexOf('restaurant') !== -1 || typeSignal.indexOf('banquet') !== -1 || typeSignal.indexOf('banquete') !== -1 || typeSignal.indexOf('cafe') !== -1 || typeSignal.indexOf('hotel') !== -1 || typeSignal.indexOf('lounge') !== -1 || typeSignal.indexOf('bar') !== -1 || typeSignal.indexOf('commercial') !== -1 || typeSignal.indexOf('commerciai') !== -1 || typeSignal.indexOf('commecial') !== -1 || typeSignal.indexOf('institute') !== -1 || typeSignal.indexOf('factory') !== -1 || typeSignal.indexOf('retail') !== -1 || typeSignal.indexOf('showroom') !== -1 || typeSignal.indexOf('store') !== -1 || typeSignal.indexOf('shop') !== -1 || typeSignal.indexOf('chemist') !== -1) {
                   category = 'commercial';
                }
+
+               if (PROJECT_CATEGORY_OVERRIDES[id]) {
+                  category = PROJECT_CATEGORY_OVERRIDES[id];
+               }
+
+               var title = toTitleCase(baseName);
 
                var overrideFile = PROJECT_IMAGE_OVERRIDES[id];
                var imgFile = PROJECT_IMG_BASE + (overrideFile || (rawName + '.webp'));
@@ -1361,7 +1404,7 @@
                   var seen = {};
                   var merged = [];
 
-                  domItems.concat(csvItems).forEach(function (item) {
+                  csvItems.concat(domItems).forEach(function (item) {
                      if (!item.id || seen[item.id]) return;
                      seen[item.id] = true;
                      merged.push(item);

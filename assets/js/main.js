@@ -37,12 +37,31 @@
 		try {
 			var images = document.querySelectorAll('img');
 			images.forEach(function (img) {
-				// keep logo and hero visuals eager
-				if (img.classList.contains('da-hero-image')) return;
-				if (img.closest('header')) return;
-				if (!img.getAttribute('loading')) {
-					img.setAttribute('loading', 'lazy');
+				var rect = img.getBoundingClientRect();
+				var isHeaderImage = !!img.closest('header');
+				var isKnownHero =
+					img.classList.contains('da-hero-image') ||
+					img.classList.contains('loader-image') ||
+					img.id === 'sp-hero-image' ||
+					img.id === 'blog-hero-img';
+				var isInInitialViewport = rect.top < (window.innerHeight * 1.2) && rect.bottom > -120;
+
+				if (isHeaderImage || isKnownHero || isInInitialViewport) {
+					if (!img.getAttribute('loading')) {
+						img.setAttribute('loading', 'eager');
+					}
+					if (!img.getAttribute('fetchpriority')) {
+						img.setAttribute('fetchpriority', 'high');
+					}
+				} else {
+					if (!img.getAttribute('loading')) {
+						img.setAttribute('loading', 'lazy');
+					}
+					if (!img.getAttribute('fetchpriority')) {
+						img.setAttribute('fetchpriority', 'low');
+					}
 				}
+
 				if (!img.getAttribute('decoding')) {
 					img.setAttribute('decoding', 'async');
 				}
@@ -197,9 +216,38 @@
 
 	////////////////////////////////////////////////////
 	// 03. Common Js
-	$("[data-background").each(function () {
-		$(this).css("background-image", "url( " + $(this).attr("data-background") + "  )");
-	});
+	(function () {
+		var bgElements = document.querySelectorAll('[data-background]');
+		if (!bgElements.length) return;
+
+		function applyBackground(el) {
+			var bg = el.getAttribute('data-background');
+			if (!bg || el.dataset.bgApplied === '1') return;
+			el.style.backgroundImage = 'url(' + bg + ')';
+			el.dataset.bgApplied = '1';
+		}
+
+		if ('IntersectionObserver' in window) {
+			var bgObserver = new IntersectionObserver(function (entries, observer) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						applyBackground(entry.target);
+						observer.unobserve(entry.target);
+					}
+				});
+			}, {
+				rootMargin: '320px 0px'
+			});
+
+			bgElements.forEach(function (el) {
+				bgObserver.observe(el);
+			});
+		} else {
+			bgElements.forEach(function (el) {
+				applyBackground(el);
+			});
+		}
+	})();
 
 	$("[data-width]").each(function () {
 		$(this).css("width", $(this).attr("data-width"));
