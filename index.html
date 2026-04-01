@@ -22,18 +22,27 @@
    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
    <link rel="apple-touch-icon" href="assets/img/favicon.png">
    <link rel="manifest" href="assets/site.webmanifest">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="dns-prefetch" href="//fonts.googleapis.com">
+   <link rel="dns-prefetch" href="//fonts.gstatic.com">
+   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;200;300;400;500;600;700;800;900&family=Marcellus&family=Syne:wght@400;500;600;700;800&family=Aladin&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;200;300;400;500;600;700;800;900&family=Marcellus&family=Syne:wght@400;500;600;700;800&family=Aladin&display=swap"></noscript>
+   <link rel="preload" as="image" href="assets/img/hero%20image.webp" fetchpriority="high">
    <link rel="preconnect" href="https://unpkg.com" crossorigin>
    <link rel="dns-prefetch" href="//unpkg.com">
 
    <!-- CSS here -->
    <link rel="stylesheet" href="assets/css/bootstrap.css">
-   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="preload" as="style" href="assets/css/animate.css" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="assets/css/animate.css"></noscript>
    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
    <link rel="stylesheet" href="assets/css/slick.css">
    <link rel="stylesheet" href="assets/css/magnific-popup.css">
    <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
    <link rel="stylesheet" href="assets/css/spacing.css">
-   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="preload" as="style" href="assets/css/custom-animation.css" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="assets/css/custom-animation.css"></noscript>
    <link rel="stylesheet" href="assets/css/main.css">
 
    <!-- DA custom orbit preloader styles (index-3 only) -->
@@ -591,9 +600,9 @@
       </div>
 
       <div class="loader-images">
-         <img src="assets/img/hero image.webp" alt="Hero image 1" class="loader-image">
-         <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Hero image 2" class="loader-image">
-         <img src="assets/img/home-03/IMG_1134.webp" alt="Hero image 3" class="loader-image">
+         <img src="assets/img/hero image.webp" alt="Hero image 1" class="loader-image" loading="eager" fetchpriority="high" decoding="async">
+         <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Hero image 2" class="loader-image" loading="lazy" fetchpriority="low" decoding="async">
+         <img src="assets/img/home-03/IMG_1134.webp" alt="Hero image 3" class="loader-image" loading="lazy" fetchpriority="low" decoding="async">
       </div>
 
       <div class="loader-progress">
@@ -788,9 +797,9 @@
             <!-- full-screen hero background (desktop), 1:1 square on mobile -->
             <div class="tp-hero-3-area tp-hero-3-ptb fix" style="background-color: #050505;">
                <div class="da-hero-bg">
-                  <img src="assets/img/hero image.webp" alt="DA Design Visual hero" class="da-hero-image da-hero-image-1">
-                  <img src="assets/img/home-03/IMG_1134.webp" alt="Interior detail" class="da-hero-image da-hero-image-2">
-                  <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Living room interior" class="da-hero-image da-hero-image-3">
+                  <img src="assets/img/hero image.webp" alt="DA Design Visual hero" class="da-hero-image da-hero-image-1" loading="eager" fetchpriority="high" decoding="async">
+                  <img src="assets/img/home-03/IMG_1134.webp" alt="Interior detail" class="da-hero-image da-hero-image-2" loading="lazy" fetchpriority="low" decoding="async">
+                  <img src="assets/img/home-03/about/da-hero-livingroom.webp" alt="Living room interior" class="da-hero-image da-hero-image-3" loading="lazy" fetchpriority="low" decoding="async">
                </div>
             </div>
             <!-- hero area end -->
