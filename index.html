@@ -2047,9 +2047,24 @@
       const loader = document.getElementById('loading');
       const track = document.getElementById('counter-track');
       const siteContent = document.getElementById('site-content');
-      const loaderImages = loader ? loader.querySelectorAll('.loader-image') : null;
 
       if (!loader || !track || !siteContent) return;
+
+      // Adaptive loader profile based on connection quality
+      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType).toLowerCase() : '';
+      var saveData = !!(connection && connection.saveData);
+
+      var profile;
+      if (saveData || effectiveType.indexOf('2g') !== -1 || effectiveType.indexOf('slow-2g') !== -1) {
+         profile = { minMs: 2200, maxMs: 5200, counterSec: 3.8 };
+      } else if (effectiveType.indexOf('3g') !== -1) {
+         profile = { minMs: 1600, maxMs: 4200, counterSec: 3.8 };
+      } else {
+         profile = { minMs: 900, maxMs: 3000, counterSec: 3.8 };
+      }
+
+      var loaderStartTs = Date.now();
 
       // Prevent background scroll while loader is visible
       document.body.classList.add('da-lock-scroll');
@@ -2062,94 +2077,71 @@
          track.appendChild(num);
       }
 
-      const MAX_WAIT = 4000; // safety timeout in ms
       let revealed = false;
 
       function revealSite() {
          if (revealed) return;
          revealed = true;
+         var elapsed = Date.now() - loaderStartTs;
+         var remainingMin = Math.max(0, profile.minMs - elapsed);
 
-         const tl = gsap.timeline({
-            onComplete: function() {
-               loader.classList.add('is-hidden');
-               document.body.classList.remove('da-lock-scroll');
+         function runReveal() {
+            const tl = gsap.timeline({
+               onComplete: function() {
+                  loader.classList.add('is-hidden');
+                  document.body.classList.remove('da-lock-scroll');
 
-               if (window.daStartHeroCrossfade) {
-                  try {
-                     window.daStartHeroCrossfade();
-                  } catch (e) {}
+                  if (window.daStartHeroCrossfade) {
+                     try {
+                        window.daStartHeroCrossfade();
+                     } catch (e) {}
+                  }
+
+                  if (window.daShowSoundPrompt) {
+                     try {
+                        window.daShowSoundPrompt();
+                     } catch (e) {}
+                  }
                }
+            });
 
-               if (window.daShowSoundPrompt) {
-                  try {
-                     window.daShowSoundPrompt();
-                  } catch (e) {}
-               }
-            }
-         });
-
-         // Slide the black loader panel up in a single smooth motion
-         tl.to('#loading', {
-            yPercent: -100,
-            duration: 0.9,
-            ease: 'power3.inOut'
-         })
-         .to(siteContent, {
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out'
-         }, '-=0.2');
-      }
-
-      function playLoaderImages() {
-         const images = loaderImages ? Array.from(loaderImages) : [];
-         if (!images.length) {
-            revealSite();
-            return;
+            // Slide the black loader panel up in a single smooth motion
+            tl.to('#loading', {
+               yPercent: -100,
+               duration: 0.9,
+               ease: 'power3.inOut'
+            })
+            .to(siteContent, {
+               opacity: 1,
+               duration: 0.7,
+               ease: 'power2.out'
+            }, '-=0.2');
          }
 
-         const tl = gsap.timeline({ onComplete: revealSite });
-
-         // Hide the numeric column before showing images
-         tl.to('.counter-wrapper', {
-            autoAlpha: 0,
-            duration: 0.4,
-            ease: 'power2.out'
-         });
-
-         gsap.set(images, { autoAlpha: 0 });
-
-         images.forEach(function(img) {
-            tl.to(img, {
-               autoAlpha: 1,
-               duration: 0.45,
-               ease: 'power2.out'
-            })
-            .to(img, {
-               autoAlpha: 0,
-               duration: 0.55,
-               ease: 'power2.inOut'
-            }, '+=0.15');
-         });
+         if (remainingMin > 0) {
+            setTimeout(runReveal, remainingMin);
+         } else {
+            runReveal();
+         }
       }
 
-      // Scroll the number column briefly, then reveal site
+      // Scroll the number column, then reveal site adaptively
       const counterTimeline = gsap.timeline({ onComplete: revealSite });
       counterTimeline.to('#counter-track', {
          yPercent: -100,
-         duration: 4,
+         duration: profile.counterSec,
          ease: 'expo.out'
       }, 0)
       .to('.loader-progress-fill', {
          scaleX: 1,
-         duration: 4,
+         duration: profile.counterSec,
          ease: 'expo.out'
       }, 0);
 
       // Safety: never let users get stuck behind the loader
       setTimeout(function() {
          revealSite();
-      }, MAX_WAIT);
+      }, profile.maxMs);
    })();
 
    // Sound experience modal controller (hooked from preloader reveal)
