@@ -1,0 +1,15 @@
+{
+  "name": "da-design-visuals-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static site with Vercel serverless contact API",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "echo 'No build step'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.15"
+  }
+}

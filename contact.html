@@ -252,6 +252,11 @@
          background-color: #ffffff;
       }
 
+      /* Ensure #contact-form anchor isn't hidden under sticky header */
+      #contact-form {
+         scroll-margin-top: 170px;
+      }
+
       .da-contact-minimal .container-1480 {
          max-width: 980px;
          text-align: center;
@@ -1203,7 +1208,7 @@
                      </div>
                      <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
                      <div class="tp-header-3-right d-none d-md-flex">
-                        <a href="contact.html" class="da-header-quote-btn">
+                        <a href="contact.html#contact-form" class="da-header-quote-btn">
                            <i class="fa-regular fa-file-lines"></i>
                            <span>Request a Quote</span>
                         </a>
@@ -1279,7 +1284,7 @@
                         <span>DA Design Visuals?</span>
                      </h2>
 
-                     <form action="assets/mail.php" method="POST">
+                     <form id="contact-form" action="/api/contact" method="POST">
                         <div class="da-contact-chips-group">
                            <p class="da-contact-chips-group-label">Services</p>
                            <div class="da-contact-chips-row">
@@ -1338,8 +1343,13 @@
 
                         <div class="da-contact-minimal-footer">
                            <button type="submit" class="da-contact-minimal-submit">Send</button>
-                           <p class="da-contact-minimal-note">Share a rough idea of scope and budget. We’ll reply within one business day with next steps.</p>
+                           <p class="da-contact-minimal-note">
+                              Share a rough idea of scope and budget. We’ll reply within one business day with next steps.
+                              <br>
+                              <a id="da-whatsapp-send" href="#" style="color: inherit; text-decoration: underline;">Or send on WhatsApp</a>
+                           </p>
                         </div>
+                        <div class="ajax-response" aria-live="polite" role="status"></div>
                      </form>
                   </div>
                </div>
@@ -1892,6 +1902,45 @@
                $('.body-overlay').removeClass('opened');
                $('.da-burger').removeClass('is-open');
             });
+         });
+      })();
+   </script>
+
+   <script>
+      (function () {
+         var whatsappLink = document.getElementById('da-whatsapp-send');
+         var form = document.getElementById('contact-form');
+         if (!whatsappLink || !form) return;
+
+         // WhatsApp click-to-chat (prefills message; user still taps Send in WhatsApp)
+         var whatsappNumber = '919850811995';
+
+         function getCheckedValues(name) {
+            var inputs = form.querySelectorAll('input[name="' + name + '"]:checked');
+            return Array.prototype.map.call(inputs, function (el) { return el.value; });
+         }
+
+         whatsappLink.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var name = (form.querySelector('input[name="name"]') || {}).value || '';
+            var email = (form.querySelector('input[name="email"]') || {}).value || '';
+            var message = (form.querySelector('textarea[name="message"]') || {}).value || '';
+            var services = getCheckedValues('service[]');
+            var budget = ((form.querySelector('input[name="budget"]:checked') || {}).value) || '';
+
+            var lines = ['DA Design Visuals enquiry'];
+            if (name) lines.push('Name: ' + name);
+            if (email) lines.push('Email: ' + email);
+            if (services.length) lines.push('Services: ' + services.join(', '));
+            if (budget) lines.push('Budget: ' + budget);
+            if (message) {
+               lines.push('');
+               lines.push(message);
+            }
+
+            var url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(lines.join('\n'));
+            window.open(url, '_blank', 'noopener');
          });
       })();
    </script>
