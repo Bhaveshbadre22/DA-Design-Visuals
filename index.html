@@ -572,6 +572,166 @@
          display: none !important;
       }
 
+      /* Testimonials (envelope + stacked cards) */
+      .da-testimonials-mail-area {
+         position: relative;
+         overflow: hidden;
+         /* Override utility pb-120: remove extra blank area under envelope */
+         padding-bottom: 0 !important;
+         /* Override utility pt-120: keep envelope fully visible with heading */
+         padding-top: 70px !important;
+      }
+
+      /* Keep the big heading responsive (this heading isn't inside .tp-about-3-title-box) */
+      .da-testimonials-mail-area .tp-section-title-90 {
+         font-size: clamp(34px, 5.2vw, 72px);
+         line-height: 1.06;
+         margin: 0;
+      }
+
+      .da-testimonials-mail-title {
+         margin: 0;
+      }
+
+      .da-testimonials-mail-stage {
+         position: relative;
+         /* Keep the full envelope visible while the section is pinned */
+         height: min(clamp(480px, 40vw, 580px), calc(100vh - 260px));
+         /* Pocket edge (where cards should start showing) */
+         --da-envelope-pocket-top: 58%;
+      }
+
+      .da-testimonials-mail-deck {
+         position: absolute;
+         left: 50%;
+         /* Keep the cards physically "inside" the envelope pocket */
+         bottom: 0;
+         width: clamp(260px, 85vw, 520px);
+         transform: translateX(-50%);
+         z-index: 3;
+      }
+
+      .da-testimonials-mail-card {
+         position: absolute;
+         left: 50%;
+         bottom: 0;
+         width: 100%;
+         transform: translateX(-50%);
+         transform-origin: 50% 100%;
+         border-radius: 24px;
+         background: var(--tp-common-white-solid);
+         border: 1px solid rgba(17, 24, 39, 0.10);
+         box-shadow: none;
+         padding: 28px 30px 30px;
+         opacity: 1;
+         pointer-events: none;
+         will-change: transform, opacity;
+         /* Masking is handled by the envelope front layer */
+         clip-path: none;
+      }
+
+      .da-testimonials-mail-card-header {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         margin-bottom: 14px;
+      }
+
+      .da-testimonials-mail-avatar {
+         width: 52px;
+         height: 52px;
+         border-radius: 999px;
+         object-fit: cover;
+         flex: 0 0 auto;
+      }
+
+      .da-testimonials-mail-name {
+         font-size: 22px;
+         line-height: 1.2;
+         margin: 0;
+         color: var(--tp-common-black);
+      }
+
+      .da-testimonials-mail-role {
+         margin: 3px 0 0;
+         font-size: 15px;
+         line-height: 1.3;
+         color: rgba(17, 24, 39, 0.72);
+      }
+
+      .da-testimonials-mail-quote {
+         margin: 0;
+         font-size: 18px;
+         line-height: 1.55;
+         color: rgba(17, 24, 39, 0.92);
+      }
+
+      .da-testimonials-mail-envelope-back,
+      .da-testimonials-mail-envelope-front {
+         position: absolute;
+         left: 50%;
+         bottom: 0;
+         /* Reduce width so envelope stays fully in view */
+         width: min(720px, 94vw);
+         height: auto;
+         aspect-ratio: 3 / 2;
+         transform: translateX(-50%);
+         pointer-events: none;
+      }
+
+      .da-testimonials-mail-envelope-back {
+         z-index: 1;
+         filter: none;
+      }
+
+      .da-testimonials-mail-envelope-front {
+         z-index: 5;
+         /* Show only the pocket area (straight edge) */
+         clip-path: inset(calc(var(--da-envelope-pocket-top) - 1px) 0 -1px 0);
+      }
+
+      .da-testimonials-mail-envelope-back img,
+      .da-testimonials-mail-envelope-front img {
+         width: 100%;
+         height: 100%;
+         display: block;
+         object-fit: contain;
+      }
+
+      @media (max-width: 767.98px) {
+         .da-testimonials-mail-stage {
+            height: min(clamp(460px, 110vw, 620px), calc(100vh - 210px));
+            --da-envelope-pocket-top: 60%;
+         }
+
+         .da-testimonials-mail-deck {
+            bottom: 0;
+         }
+
+         .da-testimonials-mail-envelope-front {
+            clip-path: inset(calc(var(--da-envelope-pocket-top) - 1px) 0 -1px 0);
+         }
+
+         .da-testimonials-mail-card {
+            padding: 20px 20px 22px;
+            border-radius: 20px;
+         }
+
+         .da-testimonials-mail-name {
+            font-size: 18px;
+         }
+
+         .da-testimonials-mail-quote {
+            font-size: 16px;
+         }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+         .da-testimonials-mail-area {
+            scroll-behavior: auto;
+         }
+      }
+
       /* Home keeps using the global .da-burger styles defined in main.css */
    </style>
 </head>
@@ -1571,6 +1731,86 @@
                </div>
             </div>
             <!-- funfact area end -->
+
+            <!-- testimonials area start -->
+            <section class="da-testimonials-mail-area white-bg pt-120 pb-120">
+               <div class="container container-1480">
+                  <div class="row justify-content-center mb-20">
+                     <div class="col-xl-10">
+                        <span class="ab-inner-subtitle mb-15 text-center d-block">Our beloved client</span>
+                        <h3 class="tp-section-title-90 tp_text_invert tp_fade_bottom text-center">What our lovely<br>client says</h3>
+                     </div>
+                  </div>
+
+                  <div class="da-testimonials-mail-stage" aria-label="Client testimonials">
+                     <div class="da-testimonials-mail-envelope-back" aria-hidden="true">
+                        <img src="assets/envelope.png" alt="">
+                     </div>
+
+                     <div class="da-testimonials-mail-deck" data-da-testimonial-deck>
+                        <article class="da-testimonials-mail-card" data-da-testimonial-card>
+                           <header class="da-testimonials-mail-card-header">
+                              <img class="da-testimonials-mail-avatar" data-da-random-avatar="true" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'%3E%3C/svg%3E" alt="Client avatar">
+                              <div>
+                                 <h4 class="da-testimonials-mail-name">Shailendra Kulkarni</h4>
+                                 <p class="da-testimonials-mail-role">Indilife 1423</p>
+                              </div>
+                           </header>
+                           <p class="da-testimonials-mail-quote">Great working with your team—very professional and smooth collaboration. Truly appreciated your approach and execution.</p>
+                        </article>
+
+                        <article class="da-testimonials-mail-card" data-da-testimonial-card>
+                           <header class="da-testimonials-mail-card-header">
+                              <img class="da-testimonials-mail-avatar" data-da-random-avatar="true" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'%3E%3C/svg%3E" alt="Client avatar">
+                              <div>
+                                 <h4 class="da-testimonials-mail-name">Ajinkya</h4>
+                                 <p class="da-testimonials-mail-role">Indilife</p>
+                              </div>
+                           </header>
+                           <p class="da-testimonials-mail-quote">Guests are loving the Santorini Blue experience! Thanks for making it happen so beautifully.</p>
+                        </article>
+
+                        <article class="da-testimonials-mail-card" data-da-testimonial-card>
+                           <header class="da-testimonials-mail-card-header">
+                              <img class="da-testimonials-mail-avatar" data-da-random-avatar="true" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'%3E%3C/svg%3E" alt="Client avatar">
+                              <div>
+                                 <h4 class="da-testimonials-mail-name">Mahesh Inamdar</h4>
+                                 <p class="da-testimonials-mail-role">Client</p>
+                              </div>
+                           </header>
+                           <p class="da-testimonials-mail-quote">Amazing outcome—better than we imagined! Thank you for your support, guidance, and patience throughout.</p>
+                        </article>
+
+                        <article class="da-testimonials-mail-card" data-da-testimonial-card>
+                           <header class="da-testimonials-mail-card-header">
+                              <img class="da-testimonials-mail-avatar" data-da-random-avatar="true" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'%3E%3C/svg%3E" alt="Client avatar">
+                              <div>
+                                 <h4 class="da-testimonials-mail-name">Mr. Kar</h4>
+                                 <p class="da-testimonials-mail-role">Client</p>
+                              </div>
+                           </header>
+                           <p class="da-testimonials-mail-quote">Thank you for creating a home that truly reflects us. A peaceful, beautiful space—we had a wonderful experience overall.</p>
+                        </article>
+
+                        <article class="da-testimonials-mail-card" data-da-testimonial-card>
+                           <header class="da-testimonials-mail-card-header">
+                              <img class="da-testimonials-mail-avatar" data-da-random-avatar="true" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'%3E%3C/svg%3E" alt="Client avatar">
+                              <div>
+                                 <h4 class="da-testimonials-mail-name">Sayali &amp; Yogesh Pokharkar</h4>
+                                 <p class="da-testimonials-mail-role">Client</p>
+                              </div>
+                           </header>
+                           <p class="da-testimonials-mail-quote">Thank you for turning our dream home into reality. Your creativity, dedication, and personal touch made it special.</p>
+                        </article>
+                     </div>
+
+                     <div class="da-testimonials-mail-envelope-front" aria-hidden="true">
+                        <img src="assets/envelope.png" alt="">
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- testimonials area end -->
 
             <!-- blogs & case studies area start -->
             <section class="da-blog-strip-area pt-120 pb-120">
@@ -2800,6 +3040,277 @@
             }
          }
       }
+   })();
+   </script>
+
+   <script>
+   (function() {
+      var deck = document.querySelector('[data-da-testimonial-deck]');
+      if (!deck) return;
+
+      var section = document.querySelector('.da-testimonials-mail-area');
+      if (!section) return;
+
+      function initialsFromName(name) {
+         var safe = String(name || '').trim().replace(/\s+/g, ' ');
+         if (!safe) return 'C';
+         var parts = safe.split(' ');
+         var first = parts[0] ? parts[0].charAt(0) : '';
+         var last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : '';
+         var initials = (first + last).toUpperCase();
+         return initials || String(safe.charAt(0)).toUpperCase() || 'C';
+      }
+
+      function mulberry32(seed) {
+         var t = seed >>> 0;
+         return function() {
+            t += 0x6D2B79F5;
+            var x = Math.imul(t ^ (t >>> 15), 1 | t);
+            x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
+            return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+         };
+      }
+
+      function svgDataUri(svg) {
+         return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+      }
+
+      function buildRandomAvatarSvg(name, seed) {
+         var rand = mulberry32(seed);
+         var initials = initialsFromName(name);
+
+         // Use existing neutral palette values already present in this page's CSS
+         var fg = '#111827';
+         var bg = 'rgba(17,24,39,0.08)';
+         var accent = 'rgba(17,24,39,0.14)';
+         var ring = 'rgba(17,24,39,0.18)';
+
+         var dots = '';
+         for (var i = 0; i < 6; i++) {
+            var cx = Math.round(18 + rand() * 68);
+            var cy = Math.round(18 + rand() * 68);
+            var r = Math.round(3 + rand() * 7);
+            var op = (0.10 + rand() * 0.18).toFixed(2);
+            dots += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + accent + '" opacity="' + op + '" />';
+         }
+
+         var svg = '' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" role="img" aria-label="Avatar">' +
+            '<defs>' +
+            '<clipPath id="c"><circle cx="52" cy="52" r="52" /></clipPath>' +
+            '</defs>' +
+            '<g clip-path="url(#c)">' +
+            '<rect width="104" height="104" fill="' + bg + '" />' +
+            dots +
+            '</g>' +
+            '<circle cx="52" cy="52" r="51" fill="none" stroke="' + ring + '" />' +
+            '<text x="52" y="58" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="34" font-weight="700" fill="' + fg + '">' + initials + '</text>' +
+            '</svg>';
+
+         return svg;
+      }
+
+      function applyRandomAvatars() {
+         var avatarEls = Array.prototype.slice.call(section.querySelectorAll('img[data-da-random-avatar="true"]'));
+         if (!avatarEls.length) return;
+
+         avatarEls.forEach(function(img, idx) {
+            var nameEl = img.closest('.da-testimonials-mail-card')
+               ? img.closest('.da-testimonials-mail-card').querySelector('.da-testimonials-mail-name')
+               : null;
+            var name = nameEl ? nameEl.textContent : '';
+            var seed = (Date.now() + Math.floor(Math.random() * 1000000) + (idx * 1337)) >>> 0;
+            img.src = svgDataUri(buildRandomAvatarSvg(name, seed));
+            img.alt = name ? (name + ' avatar') : 'Client avatar';
+         });
+      }
+
+      var stage = section.querySelector('.da-testimonials-mail-stage');
+      var frontEnvelope = section.querySelector('.da-testimonials-mail-envelope-front');
+
+      var cards = Array.prototype.slice.call(deck.querySelectorAll('[data-da-testimonial-card]'));
+      if (!cards.length) return;
+
+      // Random avatars (safe, local, no network dependency)
+      applyRandomAvatars();
+
+      var prefersReduced = false;
+      try {
+         prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      } catch (e) {
+         prefersReduced = false;
+      }
+
+      // Basic stacked state (even for reduced motion)
+      var stackBaseY = 168;
+
+      function computeStackBaseY() {
+         if (!stage || !frontEnvelope || !cards.length) return;
+
+         var stageRect = stage.getBoundingClientRect();
+         var envRect = frontEnvelope.getBoundingClientRect();
+         var cardRect = cards[0].getBoundingClientRect();
+
+         if (!envRect.height || !cardRect.height) return;
+
+         var pocketTopStr = '';
+         try {
+            pocketTopStr = window.getComputedStyle(stage).getPropertyValue('--da-envelope-pocket-top') || '';
+         } catch (e) {
+            pocketTopStr = '';
+         }
+
+         var pocketTopRatio = 0.48;
+         var m = String(pocketTopStr).trim().match(/^([0-9.]+)%$/);
+         if (m && m[1]) {
+            pocketTopRatio = Math.max(0.1, Math.min(0.95, parseFloat(m[1]) / 100));
+         }
+
+         // Pocket edge Y (in viewport coords): envelope is anchored to stage bottom.
+         var pocketLineViewport = stageRect.bottom - (envRect.height * (1 - pocketTopRatio));
+
+         // How much of the card should be visible above the pocket edge while stacked.
+         var desiredPeek = Math.max(110, Math.min(170, cardRect.height * 0.7));
+
+         // With bottom:0, y:0 => cardTop = stageBottom - cardHeight.
+         // Solve for y so cardTop sits (pocketLine - desiredPeek).
+         var y = (pocketLineViewport - desiredPeek) - (stageRect.bottom - cardRect.height);
+         stackBaseY = Math.round(y);
+      }
+
+      function stackFor(index) {
+         // Positive base offset tucks cards into the envelope pocket
+         // so they visually emerge "from inside" the envelope.
+         // Back cards sit slightly higher, like a real stack
+         var y = stackBaseY - (index * 12);
+         // And drift a bit to the right
+         var x = index * 10;
+         var scale = 1 - (index * 0.028);
+         var opacity = 1 - (index * 0.12);
+         var rotation = (-4.5 + (index * 1.1));
+         if (scale < 0.82) scale = 0.82;
+         if (opacity < 0.45) opacity = 0.45;
+         return { x: x, y: y, scale: scale, opacity: opacity, rotation: rotation };
+      }
+
+      if (!window.gsap || !window.ScrollTrigger) {
+         // No GSAP available: leave cards stacked.
+         computeStackBaseY();
+         cards.forEach(function(card, index) {
+            var s = stackFor(index);
+            card.style.transform = 'translateX(calc(-50% + ' + s.x + 'px)) translateY(' + s.y + 'px) rotate(' + s.rotation + 'deg) scale(' + s.scale + ')';
+            card.style.opacity = String(s.opacity);
+            card.style.zIndex = String(100 - index);
+         });
+         return;
+      }
+
+      // GSAP stacked layout
+      computeStackBaseY();
+      cards.forEach(function(card, index) {
+         var s = stackFor(index);
+         gsap.set(card, {
+            xPercent: -50,
+            x: s.x,
+            y: s.y,
+            rotation: s.rotation,
+            scale: s.scale,
+            opacity: s.opacity,
+            zIndex: 100 - index
+         });
+      });
+
+      if (prefersReduced || cards.length < 2) return;
+
+      // Scroll-driven pinned animation:
+      // - pin testimonials section
+      // - each card flies out upward one-by-one
+      // - remaining cards shift forward to become the next top card
+      function getReadStopY() {
+         var front = section.querySelector('.da-testimonials-mail-envelope-front');
+         var h = front ? front.getBoundingClientRect().height : 0;
+         // Stop above the envelope opening for readability.
+         // Clamp keeps it consistent across screens.
+         var stop = h ? (h * 0.55) : (window.innerHeight * 0.22);
+         stop = Math.max(140, Math.min(240, stop));
+         return -Math.round(stop);
+      }
+
+      var timeline = gsap.timeline({
+         scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: function() {
+               // More scroll distance per card = more time to read.
+               return '+=' + Math.round(window.innerHeight * (cards.length * 2.2));
+            },
+            // Small scrub smoothing keeps the motion subtle.
+            scrub: 1.05,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+         }
+      });
+
+      function applyRemainingStack(fromIndex) {
+         for (var j = fromIndex; j < cards.length; j++) {
+            var pos = j - fromIndex;
+            var s = stackFor(pos);
+            timeline.to(cards[j], {
+               x: s.x,
+               y: s.y,
+               rotation: s.rotation,
+               scale: s.scale,
+               opacity: s.opacity,
+               duration: 0.25,
+               ease: 'power2.out'
+            }, '<');
+         }
+      }
+
+      for (var i = 0; i < cards.length; i++) {
+         // Emphasize the active (top) card slightly before it exits
+         timeline.to(cards[i], {
+            // Keep it at the stacked position (prevents a down-then-up "dip")
+            x: 0,
+            y: function() {
+               return stackFor(0).y;
+            },
+            rotation: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.18,
+            ease: 'power2.out'
+         });
+
+         // Card clears the envelope opening a bit
+         timeline.to(cards[i], {
+            y: getReadStopY,
+            duration: 0.38,
+            ease: 'power2.out'
+         });
+
+         // Hold the card for readability once it's out
+         timeline.to({}, {
+            duration: 1.35
+         });
+
+         // Card leaves the envelope and goes up off-screen
+         timeline.to(cards[i], {
+            y: function() {
+               return -(window.innerHeight * 0.95);
+            },
+            rotation: 2,
+            opacity: 0,
+            duration: 1.25,
+            ease: 'power1.inOut'
+         });
+
+         // Remaining stack shifts forward
+         applyRemainingStack(i + 1);
+      }
+
+      ScrollTrigger.refresh();
    })();
    </script>
 
