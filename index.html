@@ -60,6 +60,12 @@
 
       /* Header behavior: transparent on hero, solid on scroll, hide on scroll-down */
       #header-sticky {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         width: 100%;
+         z-index: 999;
          background-color: transparent;
          box-shadow: none;
          transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
@@ -534,7 +540,8 @@
 
          /* Slightly reduce hero top spacing on small screens */
          .tp-header-3-area.mt-35 {
-            margin-top: 15px;
+            margin-top: 0;
+            padding-top: 15px;
          }
 
          /* Mobile header logo sizing (home) */
@@ -931,12 +938,15 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
-                        <div class="tp-header-logo tp-header-3-logo text-center">
-                           <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
-                        </div>
+                  </div>
+
+                  <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-center">
+                     <div class="tp-header-logo tp-header-3-logo text-center">
+                        <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="DA Design Visual"></a>
                      </div>
-                     <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-block"></div>
+                  </div>
+
+                  <div class="col-xl-4 col-lg-4 col-md-4 d-none d-md-flex justify-content-end">
                      <div class="tp-header-3-right d-none d-md-flex">
                         <a href="contact.html#contact-form" class="da-header-quote-btn">
                            <i class="fa-regular fa-file-lines"></i>
@@ -945,7 +955,8 @@
                      </div>
                   </div>
                </div>
-      </div>
+               </div>
+            </div>
       <!-- header / hero combined area end -->
 
    </header>
