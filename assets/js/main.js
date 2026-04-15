@@ -28,6 +28,17 @@
 	"use strict";
 
 	var windowOn = $(window);
+	// Many libraries here are UMD bundles that attach themselves to `window`.
+	// In some Windows browser environments those may not be available as bare
+	// identifiers inside this strict-mode IIFE, causing runtime errors that
+	// stop the rest of this file (header/offcanvas) from initializing.
+	var gsap = window.gsap;
+	var ScrollTrigger = window.ScrollTrigger;
+	var ScrollSmoother = window.ScrollSmoother;
+	var ScrollToPlugin = window.ScrollToPlugin;
+	var PureCounter = window.PureCounter;
+	var SplitText = window.SplitText;
+	var ScrollMagic = window.ScrollMagic;
 
 	// 08. Nice Select Js
 	$('select').niceSelect();
@@ -275,7 +286,7 @@
 			var target = $(this.getAttribute('href'));
 			if (target.length) {
 				event.preventDefault();
-				var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
+				var smoother = window.daSmoother || (ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
 				if (smoother) {
 					// Use GSAP ScrollSmoother when available (homepage)
 					smoother.scrollTo(target[0], true, "top top-120");
@@ -306,7 +317,7 @@
 
 		btn.on('click', function (e) {
 			e.preventDefault();
-			var smoother = window.daSmoother || (window.ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
+			var smoother = window.daSmoother || (ScrollSmoother && ScrollSmoother.get && ScrollSmoother.get());
 			if (smoother) {
 				// Use GSAP ScrollSmoother if active
 				smoother.scrollTo(0, true);
@@ -1601,12 +1612,14 @@
 
 	////////////////////////////////////////////////////
 	// 17. Counter Js
-	new PureCounter();
-	new PureCounter({
-		filesizing: true,
-		selector: ".filesizecount",
-		pulse: 2,
-	});
+	if (typeof PureCounter === 'function') {
+		new PureCounter();
+		new PureCounter({
+			filesizing: true,
+			selector: ".filesizecount",
+			pulse: 2,
+		});
+	}
 
 	////////////////////////////////////////////////////
 	// 18. InHover Active Js
@@ -1800,45 +1813,23 @@
 		});
 	}
 
+	// Header spacer height
 	if ($('.tp-header-height').length > 0) {
-		var headerHeight = document.querySelector(".tp-header-height");
-		var setHeaderHeight = headerHeight.offsetHeight;
-
-		$(".tp-header-height").each(function () {
-			$(this).css({
-				'height': setHeaderHeight + 'px'
-			});
-		});
+		var headerHeight = 0;
+		if ($('.tp-header-area').length > 0) {
+			headerHeight = $('.tp-header-area').first().outerHeight();
+		}
+		if (!headerHeight) {
+			headerHeight = $('.tp-header-height').first().outerHeight();
+		}
+		if (headerHeight) {
+			$('.tp-header-height').css('height', headerHeight);
+		}
 	}
-	// Jquery Appear raidal
+
+	// Jquery Appear radial (optional)
 	if (typeof ($.fn.knob) != 'undefined') {
-		$('.knob').each(function () {
-			var $this = $(this),
-				knobVal = $this.attr('data-rel');
-
-			$this.knob({
-				'draw': function () {
-					$(this.i).val(this.cv + '%')
-				}
-			});
-
-			$this.appear(function () {
-				$({
-					value: 0
-				}).animate({
-					value: knobVal
-				}, {
-					duration: 2000,
-					easing: 'swing',
-					step: function () {
-						$this.val(Math.ceil(this.value)).trigger('change');
-					}
-				});
-			}, {
-				accX: 0,
-				accY: -150,
-			});
-		});
+		$('.knob').knob();
 	}
 
 	$('.tp-award-list-wrap .tp-award-list-item').on("mouseenter", function () {
@@ -1846,21 +1837,34 @@
 		$(this).addClass('active').siblings().removeClass('active');
 	});
 
-	$('.tp-porfolio-10-title-wrap > ul > li').on('mouseenter', function(){
+	$('.tp-porfolio-10-title-wrap > ul > li').on('mouseenter', function () {
 		$(this).siblings().removeClass('active');
 		const rel = $(this).attr('rel');
 		$(this).addClass('active');
-		$('#tp-porfolio-10-bg-box').removeClass().addClass(rel);
-	})
+	});
 
 
 	
 	if($('#smooth-wrapper').length && $('#smooth-content').length){
-		gsap.registerPlugin(ScrollTrigger, ScrollSmoother, TweenMax, ScrollToPlugin);
-	
-		gsap.config({
-			nullTargetWarn: false,
-		});
+		// GSAP smooth scrolling is optional; keep core interactions working even if
+		// GSAP plugins are missing or blocked on a given machine.
+		if (gsap && typeof gsap.registerPlugin === 'function') {
+			try {
+				var plugins = [];
+				if (ScrollTrigger) plugins.push(ScrollTrigger);
+				if (ScrollSmoother) plugins.push(ScrollSmoother);
+				if (ScrollToPlugin) plugins.push(ScrollToPlugin);
+				if (plugins.length) {
+					gsap.registerPlugin.apply(gsap, plugins);
+				}
+
+				gsap.config({
+					nullTargetWarn: false,
+				});
+			} catch (e) {
+				// swallow - keep header/offcanvas working
+			}
+		}
 
 		// Windows machines (especially with wheel mice) can struggle
 		// with JS-based smooth scrolling, so only enable ScrollSmoother
@@ -1874,7 +1878,7 @@
 			isWindows = false;
 		}
 
-		if (!isWindows) {
+		if (!isWindows && ScrollSmoother && typeof ScrollSmoother.create === 'function') {
 			let smoother = ScrollSmoother.create({
 				smooth: 2,
 				effects: true,
@@ -1909,7 +1913,9 @@
 
 
 	$('.accordion-button').on('click', function () {
-		ScrollTrigger.refresh();
+		if (ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+			ScrollTrigger.refresh();
+		}
 	});
 
 
@@ -2107,43 +2113,49 @@
 
 
 	if ($('.tp-project-full-img-wrap').length > 0) {
-		ScrollTrigger.create({
-			trigger: ".tp-project-full-img-wrap",
-			start: "top 65",
-			end: "bottom 0%",
-			pin: ".tp-project-full-img",
-			pinSpacing: false,
-		});
+		if (ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+			ScrollTrigger.create({
+				trigger: ".tp-project-full-img-wrap",
+				start: "top 65",
+				end: "bottom 0%",
+				pin: ".tp-project-full-img",
+				pinSpacing: false,
+			});
+		}
 	}
 
 
 	// portfolio scroll effect start
-	var controller = new ScrollMagic.Controller();
+	if (ScrollMagic && typeof ScrollMagic.Controller === 'function' && typeof ScrollMagic.Scene === 'function') {
+		var controller = new ScrollMagic.Controller();
 
-	var $elheight = window.innerHeight;
-	$('.tp-project-effect, .tp-team-area, .tp-award-2-area, .tp-service-4-area, .showcase-details-2-slider-wrap ').each(function () {
-		var $this = $(this);
-		var $thisHeight = $(this).height();
+		var $elheight = window.innerHeight;
+		var $portfolioSections = $('.tp-project-effect, .tp-team-area, .tp-award-2-area, .tp-service-4-area, .showcase-details-2-slider-wrap ');
+		$portfolioSections.each(function () {
+			var $this = $(this);
+			var $thisHeight = $(this).height();
 
-		var scene = new ScrollMagic.Scene({
-			triggerElement: $this[0], duration: $thisHeight
-		}).addTo(controller);
+			var scene = new ScrollMagic.Scene({
+				triggerElement: $this[0], duration: $thisHeight
+			}).addTo(controller);
 
-		scene.triggerHook(0.9)
+			scene.triggerHook(0.9)
 
-		scene.on('enter', function () {
-			$this.addClass('active');
-		});
-
-		if ($("body").hasClass("smooth-scroll")) {
-			scrollbar.addListener(() => {
-				scene.refresh()
+			scene.on('enter', function () {
+				$this.addClass('active');
 			});
-		}
-	})
 
-	let mv = gsap.matchMedia();
-	mv.add("(min-width: 768px)", () => {
+			if ($("body").hasClass("smooth-scroll") && window.scrollbar && typeof window.scrollbar.addListener === 'function') {
+				window.scrollbar.addListener(() => {
+					scene.refresh();
+				});
+			}
+		});
+	}
+
+	if (gsap && typeof gsap.matchMedia === 'function') {
+		let mv = gsap.matchMedia();
+		mv.add("(min-width: 768px)", () => {
 		// Moving Gallery		
 		gsap.utils.toArray('.moving-gallery').forEach((section, index) => {
 			const w = section.querySelector('.wrapper-gallery');
@@ -2156,7 +2168,8 @@
 				}
 			});
 		});
-	});
+		});
+	}
 
 
 
@@ -2431,7 +2444,7 @@
 
 
 
-	if ($('.tp-award-2-area').length > 0) {
+	if ($('.tp-award-2-area').length > 0 && gsap && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
 		let sections_2 = gsap.utils.toArray(".tp-award-2-area");
 		let listItem_2 = gsap.utils.toArray(".tpaward");
 		sections_2.forEach((section, index) => {
@@ -2442,42 +2455,45 @@
 				end: 'bottom -100%',
 				toggleClass: { targets: listItem_2[index], className: "addclass" }
 			});
-		})
+		});
 	}
 
-	let pj = gsap.matchMedia();
-	pj.add("(min-width: 992px)", () => {
-		if ($('.tp-project-2-area').length > 0) {
-
-			let sections = gsap.utils.toArray(".tp-project-2-area");
-			let listItem = gsap.utils.toArray(".tpproject");
-			sections.forEach((section, index) => {
-				ScrollTrigger.create({
-					trigger: section,
-					markers: false,
-					start: 'top 0',
-					end: 'bottom 10%',
-					toggleClass: { targets: listItem[index], className: "addclass" }
+	if (gsap && typeof gsap.matchMedia === 'function') {
+		let pj = gsap.matchMedia();
+		pj.add("(min-width: 992px)", () => {
+			if ($('.tp-project-2-area').length > 0 && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+				let sections = gsap.utils.toArray(".tp-project-2-area");
+				let listItem = gsap.utils.toArray(".tpproject");
+				sections.forEach((section, index) => {
+					ScrollTrigger.create({
+						trigger: section,
+						markers: false,
+						start: 'top 0',
+						end: 'bottom 10%',
+						toggleClass: { targets: listItem[index], className: "addclass" }
+					});
 				});
-			});
-		}
-	});
-
-	// Text Invert With Scroll 
-	const split = new SplitText(".tp_text_invert", { type: "lines" });
-
-	split.lines.forEach((target) => {
-		gsap.to(target, {
-			backgroundPositionX: 0,
-			ease: "none",
-			scrollTrigger: {
-				trigger: target,
-				scrub: 1,
-				start: 'top 85%',
-				end: "bottom center"
 			}
 		});
-	});
+	}
+
+	// Text Invert With Scroll
+	if (SplitText && typeof SplitText === 'function' && gsap) {
+		const split = new SplitText(".tp_text_invert", { type: "lines" });
+
+		split.lines.forEach((target) => {
+			gsap.to(target, {
+				backgroundPositionX: 0,
+				ease: "none",
+				scrollTrigger: {
+					trigger: target,
+					scrub: 1,
+					start: 'top 85%',
+					end: "bottom center"
+				}
+			});
+		});
+	}
 
 
 	if ($('.tp-project-3-wrap').length > 0) {
@@ -2539,9 +2555,10 @@
 
 
 
-	//Reveal Animation 
-	const anim_reveal = document.querySelectorAll(".tp_reveal_anim");
-	anim_reveal.forEach(areveal => {
+	// Reveal Animation (SplitText is optional)
+	if (SplitText && typeof SplitText === 'function' && gsap) {
+		const anim_reveal = document.querySelectorAll(".tp_reveal_anim");
+		anim_reveal.forEach(areveal => {
 
 		var duration_value = 1.5;
 		var onscroll_value = 1;
@@ -2592,12 +2609,12 @@
 			});
 		}
 
-	});
+		});
 
 
-	//Reveal Animation 
-	const anim_reveal2 = document.querySelectorAll(".tp_reveal_anim-2");
-	anim_reveal2.forEach(areveal => {
+		//Reveal Animation 
+		const anim_reveal2 = document.querySelectorAll(".tp_reveal_anim-2");
+		anim_reveal2.forEach(areveal => {
 
 		var duration_value = 2
 		var onscroll_value = 1
@@ -2646,7 +2663,8 @@
 			});
 		}
 
-	});
+		});
+	}
 
 
 	/////////////////////////////////////////////////////
@@ -2676,47 +2694,49 @@
 			}
 		});
 	
-		let mySplitText = new SplitText(".footer-big-text", { type: "words,chars" });
-		let chars = mySplitText.chars;
-		let endGradient = chroma.scale(['#FFF', '#FFF', '#FFF', '#FFF', '#FFF']);
-		cta.to(chars, {
+		if (SplitText && typeof SplitText === 'function' && window.chroma) {
+			let mySplitText = new SplitText(".footer-big-text", { type: "words,chars" });
+			let chars = mySplitText.chars;
+			let endGradient = window.chroma.scale(['#FFF', '#FFF', '#FFF', '#FFF', '#FFF']);
+			cta.to(chars, {
 			duration: 0.5,
 			scaleY: 0.6,
 			ease: "power1.out",
 			stagger: 0.04,
 			transformOrigin: 'center bottom'
-		});
-		cta.to(chars, {
+			});
+			cta.to(chars, {
 			yPercent: -20,
 			ease: "elastic",
 			stagger: 0.03,
 			duration: 0.8
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			scaleY: 1,
 			ease: "elastic.out",
 			stagger: 0.03,
 			duration: 1.5
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			color: (i, el, arr) => {
 				return endGradient(i / arr.length).hex();
 			},
 			ease: "power1.out",
 			stagger: 0.03,
 			duration: 0.3
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			yPercent: 0,
 			ease: "back",
 			stagger: 0.03,
 			duration: 0.8
-		}, 0.7);
-		cta.to(chars, {
+			}, 0.7);
+			cta.to(chars, {
 			color: '#fff',
 			duration: 1.4,
 			stagger: 0.05
-		});
+			});
+		}
 	}
 
 	if ($('.cta-text').length > 0) {
@@ -2743,37 +2763,38 @@
 			}
 		});
 	
-		let mySplitText = new SplitText(".cta-text", { type: "words,chars" });
-		let chars = mySplitText.chars;
-		let endGradient = chroma.scale(['#FFB55E', '#F25164', '#7F00D7', '#EC38BC', '#F25164']);
-		cta.to(chars, {
+		if (SplitText && typeof SplitText === 'function' && window.chroma) {
+			let mySplitText = new SplitText(".cta-text", { type: "words,chars" });
+			let chars = mySplitText.chars;
+			let endGradient = window.chroma.scale(['#FFB55E', '#F25164', '#7F00D7', '#EC38BC', '#F25164']);
+			cta.to(chars, {
 			duration: 0.5,
 			scaleY: 0.6,
 			ease: "power1.out",
 			stagger: 0.04,
 			transformOrigin: 'center bottom'
-		});
-		cta.to(chars, {
+			});
+			cta.to(chars, {
 			yPercent: -20,
 			ease: "elastic",
 			stagger: 0.03,
 			duration: 0.8
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			scaleY: 1,
 			ease: "elastic.out",
 			stagger: 0.03,
 			duration: 1.5
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			color: (i, el, arr) => {
 				return endGradient(i / arr.length).hex();
 			},
 			ease: "power1.out",
 			stagger: 0.03,
 			duration: 0.3
-		}, 0.5);
-		cta.to(chars, {
+			}, 0.5);
+			cta.to(chars, {
 			yPercent: 0,
 			ease: "back",
 			stagger: 0.03,
@@ -2785,9 +2806,10 @@
 			stagger: 0.05
 		});
 	}
+	}
 
 
-	if ($('.tp-char-animation').length > 0) {
+	if ($('.tp-char-animation').length > 0 && gsap && SplitText && typeof SplitText === 'function') {
 		// 25. Title Animation
 		let char_come = gsap.utils.toArray(".tp-char-animation");
 		char_come.forEach(splitTextLine => {
@@ -3387,36 +3409,36 @@
 		});
 	});
 
-	let pd = gsap.matchMedia();
-	pd.add("(min-width: 1400px)", () => {
+	if (gsap && typeof gsap.matchMedia === 'function') {
+		let pd = gsap.matchMedia();
+		pd.add("(min-width: 1400px)", () => {
+			if ($('.project-details-1-area').length > 0 && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+				ScrollTrigger.create({
+					trigger: ".project-details-1-area",
+					start: "top top",
+					end: "bottom 100%",
+					pin: ".project-details-1-right-wrap",
+					pinSpacing: false,
+				});
+			}
+		});
+	}
 
-		if ($('.project-details-1-area').length > 0) {
-			ScrollTrigger.create({
-				trigger: ".project-details-1-area",
-				start: "top top",
-				end: "bottom 100%",
-				pin: ".project-details-1-right-wrap",
-				pinSpacing: false,
-			});
-		}
 
-	});
-
-
-	let vd = gsap.matchMedia();
-	vd.add("(min-width: 1200px)", () => {
-
-		if ($('.project-details-2-area').length > 0) {
-			ScrollTrigger.create({
-				trigger: ".project-details-2-area",
-				start: "top top",
-				end: "bottom -100%",
-				pin: ".project-details-video",
-				pinSpacing: false,
-			});
-		}
-
-	});
+	if (gsap && typeof gsap.matchMedia === 'function') {
+		let vd = gsap.matchMedia();
+		vd.add("(min-width: 1200px)", () => {
+			if ($('.project-details-2-area').length > 0 && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+				ScrollTrigger.create({
+					trigger: ".project-details-2-area",
+					start: "top top",
+					end: "bottom -100%",
+					pin: ".project-details-video",
+					pinSpacing: false,
+				});
+			}
+		});
+	}
 
 
 	const progress = document.getElementById("progress");
@@ -3556,9 +3578,10 @@
 
 
 	/////////////////////////////////////////////////////
-	let tp_text_3d = gsap.utils.toArray(".tp-text-3d");
+	if (gsap && SplitText && typeof SplitText === 'function') {
+		let tp_text_3d = gsap.utils.toArray(".tp-text-3d");
 
-	tp_text_3d.forEach(splitTextLine => {
+		tp_text_3d.forEach(splitTextLine => {
 		var delay_value = 0.5
 		if (splitTextLine.getAttribute("data-delay")) {
 			delay_value = splitTextLine.getAttribute("data-delay");
@@ -3592,7 +3615,8 @@
 			transformOrigin: "top center -50",
 			stagger: 0.1
 		});
-	});
+		});
+	}
 
 
 	$('.tp-footer-menu ul li').on("mouseenter", function () {
@@ -3603,7 +3627,7 @@
 		$('.tp-footer-menu ul li').removeClass('active').addClass('active');
 	});
 
-	if ($('.tp_title_anim').length > 0) {
+	if ($('.tp_title_anim').length > 0 && gsap && SplitText && typeof SplitText === 'function') {
 		let splitTitleLines = gsap.utils.toArray(".tp_title_anim");
 		splitTitleLines.forEach(splitTextLine => {
 			const tl = gsap.timeline({
@@ -3683,31 +3707,33 @@
 	perspective()
 
 
-	let sp = gsap.matchMedia();
-	sp.add("(min-width: 1200px)", () => {
-		if ($('.tp-shop-area').length > 0) {
-			ScrollTrigger.create({
-				trigger: ".tp-shop-area",
-				start: "top -3%",
-				end: "bottom 110.5%",
-				pin: ".tp-shop-left-thumb",
-				pinSpacing: true,
-			});
-		}
-	});
+	if (gsap && typeof gsap.matchMedia === 'function') {
+		let sp = gsap.matchMedia();
+		sp.add("(min-width: 1200px)", () => {
+			if ($('.tp-shop-area').length > 0 && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+				ScrollTrigger.create({
+					trigger: ".tp-shop-area",
+					start: "top -3%",
+					end: "bottom 110.5%",
+					pin: ".tp-shop-left-thumb",
+					pinSpacing: true,
+				});
+			}
+		});
 
-	let sp_2 = gsap.matchMedia();
-	sp_2.add("(min-width: 1200px)", () => {
-		if ($('.tp-shop-details-area').length > 0) {
-			ScrollTrigger.create({
-				trigger: ".tp-shop-details-area",
-				start: "top -18%",
-				end: "bottom 110.5%",
-				pin: ".tp-shop-details-right-wrap",
-				pinSpacing: true,
-			});
-		}
-	});
+		let sp_2 = gsap.matchMedia();
+		sp_2.add("(min-width: 1200px)", () => {
+			if ($('.tp-shop-details-area').length > 0 && ScrollTrigger && typeof ScrollTrigger.create === 'function') {
+				ScrollTrigger.create({
+					trigger: ".tp-shop-details-area",
+					start: "top -18%",
+					end: "bottom 110.5%",
+					pin: ".tp-shop-details-right-wrap",
+					pinSpacing: true,
+				});
+			}
+		});
+	}
 
 
 

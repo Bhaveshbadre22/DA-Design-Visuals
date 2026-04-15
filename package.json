@@ -7,7 +7,11 @@
     "node": ">=18"
   },
   "scripts": {
+    "dev": "http-server . -p 5173 -c-1",
     "build": "echo 'No build step'"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   },
   "dependencies": {
     "nodemailer": "^6.9.15"

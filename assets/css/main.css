@@ -160,14 +160,14 @@ li,
   /**
   @font family declaration
   */
-  --tp-ff-body: 'Syne', sans-serif;
-  --tp-ff-heading: 'Syne', sans-serif;
-  --tp-ff-p: 'Syne', sans-serif;
-  --tp-ff-syne: 'Syne', sans-serif;
+  --tp-ff-body: 'Syne', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --tp-ff-heading: 'Syne', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --tp-ff-p: 'Syne', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --tp-ff-syne: 'Syne', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --tp-ff-gallery: 'gallery_modernregular', sans-serif;
   --tp-ff-shoulders: 'Big Shoulders Display', cursive;
-  --tp-ff-marcellus: 'Marcellus', sans-serif;
-  --tp-ff-aladin: 'Aladin', system-ui;
+  --tp-ff-marcellus: 'Marcellus', Georgia, 'Times New Roman', Times, serif;
+  --tp-ff-aladin: 'Aladin', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --tp-ff-fontawesome: "Font Awesome 6 Pro";
   /**
   @color declaration

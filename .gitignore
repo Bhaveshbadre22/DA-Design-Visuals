@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS
+.DS_Store
+
+# Vercel
+.vercel/
+
+# misc
+lighthouse-*.json
+lighthouse-current.json
+
+# generated bundles (not referenced in HTML)
+assets/css/bundle.min.css
+assets/js/bundle.min.js
