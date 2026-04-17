@@ -103,14 +103,18 @@
 
 	///////////////////////////////////////////////////
 	// 07. Sticky Header Js
-	windowOn.on('scroll', function () {
+	function updateStickyHeader() {
+		var $header = $("#header-sticky");
+		if (!$header.length) return;
 		var scroll = windowOn.scrollTop();
 		if (scroll < 20) {
-			$("#header-sticky").removeClass("header-sticky");
+			$header.removeClass("header-sticky");
 		} else {
-			$("#header-sticky").addClass("header-sticky");
+			$header.addClass("header-sticky");
 		}
-	});
+	}
+	windowOn.on('scroll', updateStickyHeader);
+	updateStickyHeader();
 
 	// Auto-hide header on scroll down, show on scroll up (shared across pages)
 	(function () {
