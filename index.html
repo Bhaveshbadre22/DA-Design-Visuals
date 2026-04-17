@@ -66,15 +66,15 @@
          right: 0;
          width: 100%;
          z-index: 999;
-         background-color: transparent;
-         box-shadow: none;
+         background: transparent !important;
+         box-shadow: none !important;
          transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
          will-change: transform, background-color, box-shadow;
       }
 
       #header-sticky.header-sticky {
-         background-color: rgba(5, 5, 5, 0.96);
-         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+         background: rgba(5, 5, 5, 0.96) !important;
+         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65) !important;
          backdrop-filter: blur(18px);
       }
 
@@ -895,7 +895,7 @@
    <header>
 
       <!-- full-screen hero with left menu & centered logo -->
-      <div id="header-sticky" class="tp-header-3-area mt-35 z-index-5" style="background: transparent; box-shadow: none;">
+      <div id="header-sticky" class="tp-header-3-area mt-35 z-index-5">
             <div class="container-fluid">
 
                <!-- Mobile header: centered logo + custom hamburger -->
