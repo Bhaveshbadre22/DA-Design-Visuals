@@ -29375,4 +29375,12 @@ body.project-detail-open {
   }
 }
 
+/* Windows performance mode: backdrop-filter can be very costly on Windows browsers */
+html.is-windows *,
+html.is-windows *::before,
+html.is-windows *::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
 /*# sourceMappingURL=main.css.map */

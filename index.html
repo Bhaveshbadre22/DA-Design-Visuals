@@ -2555,39 +2555,50 @@
          return; // Fail silently if ScrollTrigger isn't loaded
       }
 
+      var isWindows = document.documentElement.classList.contains('is-windows') || /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
+
       // Initial visual state
-      gsap.set(daText, { scale: 1 });
-      overlay.style.opacity = 1;
-      if (scrollIndicator) scrollIndicator.style.opacity = 1;
+      const setScale = gsap.quickSetter(daText, 'scale');
+      const overlayStyle = overlay.style;
+      const indicatorStyle = scrollIndicator ? scrollIndicator.style : null;
+
+      setScale(1);
+      overlayStyle.opacity = '1';
+      if (indicatorStyle) indicatorStyle.opacity = '1';
+
+      const minScale = 1;
+      const maxScale = isWindows ? 3.6 : 4.2;
+      const endDistance = isWindows ? '+=200%' : '+=260%';
+      const scrubValue = isWindows ? 0.35 : true;
 
       ScrollTrigger.create({
          trigger: section,
          start: 'top top',
-         end: '+=260%', // keep section pinned a bit longer than the animation
+         end: endDistance, // keep section pinned a bit longer than the animation
          pin: section,
-         scrub: true,
+         scrub: scrubValue,
+         anticipatePin: 1,
+         invalidateOnRefresh: true,
          onUpdate: function(self) {
             // Use only the first ~70% of the pinned range for the animation
             const progressFull = self.progress; // 0 -> 1 over the whole pinned distance
             const progress = Math.min(progressFull / 0.7, 1); // 0 -> 1 within first 70%
 
             // Grow Mask.svg smoothly via scale
-            const minScale = 1;
-            const maxScale = 4.2;
             const currentScale = minScale + (maxScale - minScale) * progress;
-            gsap.set(daText, { scale: currentScale });
+            setScale(currentScale);
 
             // Fade out overlay gradually from 40% to ~90% progress
             if (progress > 0.4) {
                const fadeProgress = (progress - 0.4) / 0.5;
-               overlay.style.opacity = Math.max(1 - fadeProgress, 0);
+               overlayStyle.opacity = String(Math.max(1 - fadeProgress, 0));
             } else {
-               overlay.style.opacity = 1;
+               overlayStyle.opacity = '1';
             }
 
             // Fade out scroll indicator early
-            if (scrollIndicator) {
-               scrollIndicator.style.opacity = Math.max(1 - progress * 1.5, 0);
+            if (indicatorStyle) {
+               indicatorStyle.opacity = String(Math.max(1 - progress * 1.5, 0));
             }
          }
       });
@@ -2616,6 +2627,8 @@
       }
       if (typeof ScrollTrigger === 'undefined') return;
 
+      var isWindows = document.documentElement.classList.contains('is-windows') || /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
+
       // simple helpers
       const clamp = function(v, min, max) {
          return v < min ? min : (v > max ? max : v);
@@ -2623,6 +2636,8 @@
       const lerp = function(a, b, t) {
          return a + (b - a) * t;
       };
+
+      const easeOut = gsap.parseEase ? gsap.parseEase('power2.out') : function(t) { return t; };
 
       // Initial states
       gsap.set(worldLines, {
@@ -2641,12 +2656,39 @@
          });
       }
 
+      // Prebuild fast setters to reduce per-frame overhead
+      const worldSetters = worldLines.map(function(el) {
+         return {
+            x: gsap.quickSetter(el, 'xPercent'),
+            y: gsap.quickSetter(el, 'y', 'px'),
+            scale: gsap.quickSetter(el, 'scale'),
+            opacity: gsap.quickSetter(el, 'opacity')
+         };
+      });
+      const pointSetters = mapPoints.map(function(el) {
+         return {
+            opacity: gsap.quickSetter(el, 'opacity'),
+            y: gsap.quickSetter(el, 'y', 'px')
+         };
+      });
+      const lineSetters = mapLines.map(function(el) {
+         return gsap.quickSetter(el, 'scaleY');
+      });
+      const ctaSetters = cta
+         ? {
+              opacity: gsap.quickSetter(cta, 'opacity'),
+              y: gsap.quickSetter(cta, 'y', 'px')
+           }
+         : null;
+
       ScrollTrigger.create({
          trigger: section,
          start: 'top top',
-         end: '+=400%',
-         scrub: true,
+         end: isWindows ? '+=260%' : '+=400%',
+         scrub: isWindows ? 0.45 : true,
          pin: section,
+         anticipatePin: 1,
+         invalidateOnRefresh: true,
          onUpdate(self) {
             const p = self.progress; // 0 -> 1 over entire combined section
 
@@ -2656,7 +2698,8 @@
             const mapPhase = clamp((p - textSplit) / (1 - textSplit), 0, 1);
 
             // --- TEXT PHASE ---
-            worldLines.forEach(function(line, index) {
+            for (let index = 0; index < worldLines.length; index++) {
+               const setters = worldSetters[index];
                const offset = index * 0.08; // small stagger between lines
                let local = clamp(textPhase - offset, 0, 1);
 
@@ -2664,10 +2707,14 @@
                const x = lerp(220, -260, local);
 
                // extra motion per line: subtle vertical drift + scale pulse
-               const wave = Math.sin(local * Math.PI); // 0 at edges, 1 at center
-               const direction = index === 0 ? -1 : (index === worldLines.length - 1 ? 1 : 0); // top up, bottom down
-               const y = direction * wave * 20; // pixels
-               const scale = 1 + wave * 0.04; // gentle grow towards center
+               let y = 0;
+               let scale = 1;
+               if (!isWindows) {
+                  const wave = Math.sin(local * Math.PI); // 0 at edges, 1 at center
+                  const direction = index === 0 ? -1 : (index === worldLines.length - 1 ? 1 : 0); // top up, bottom down
+                  y = direction * wave * 20; // pixels
+                  scale = 1 + wave * 0.04; // gentle grow towards center
+               }
 
                // opacity: fade in, hold, then fade out
                let alpha;
@@ -2679,48 +2726,43 @@
                   alpha = 1;
                }
 
-               gsap.set(line, {
-                  xPercent: x,
-                  y: y,
-                  scale: scale,
-                  opacity: alpha
-               });
-            });
+               setters.x(x);
+               setters.y(y);
+               setters.scale(scale);
+               setters.opacity(alpha);
+            }
 
             // After text phase is complete, ensure text is fully hidden
             if (textPhase >= 1) {
-               gsap.set(worldLines, { opacity: 0 });
+               for (let i = 0; i < worldSetters.length; i++) {
+                  worldSetters[i].opacity(0);
+               }
             }
 
             // --- MAP PHASE ---
             const total = mapPoints.length;
-            mapPoints.forEach(function(point, index) {
-               const line = mapLines[index];
+            for (let index = 0; index < total; index++) {
                const start = index / total;
                const end = (index + 1) / total;
 
                let local = clamp((mapPhase - start) / (end - start), 0, 1);
-               const eased = gsap.parseEase('power2.out')(local);
+               const eased = easeOut(local);
 
-               if (line) {
-                  gsap.set(line, { scaleY: eased });
+               if (lineSetters[index]) {
+                  lineSetters[index](eased);
                }
 
-               gsap.set(point, {
-                  opacity: eased,
-                  y: (1 - eased) * 18
-               });
-            });
+               pointSetters[index].opacity(eased);
+               pointSetters[index].y((1 - eased) * 18);
+            }
 
             // CTA appears only during map phase, after cities start showing
-            if (cta) {
+            if (cta && ctaSetters) {
                const showStart = 0.15; // after first few cities
                let alpha = clamp((mapPhase - showStart) / (1 - showStart), 0, 1);
-               gsap.set(cta, {
-                  opacity: alpha,
-                  y: (1 - alpha) * 16,
-                  pointerEvents: alpha > 0.9 ? 'auto' : 'none'
-               });
+               ctaSetters.opacity(alpha);
+               ctaSetters.y((1 - alpha) * 16);
+               cta.style.pointerEvents = alpha > 0.9 ? 'auto' : 'none';
             }
          }
       });
