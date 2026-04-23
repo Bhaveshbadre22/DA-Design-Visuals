@@ -66,15 +66,15 @@
          right: 0;
          width: 100%;
          z-index: 999;
-         background: transparent !important;
-         box-shadow: none !important;
+         background-color: transparent;
+         box-shadow: none;
          transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.45s ease;
          will-change: transform, background-color, box-shadow;
       }
 
       #header-sticky.header-sticky {
-         background: rgba(5, 5, 5, 0.96) !important;
-         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65) !important;
+         background-color: rgba(5, 5, 5, 0.96);
+         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
          backdrop-filter: blur(18px);
       }
 
@@ -895,7 +895,7 @@
    <header>
 
       <!-- full-screen hero with left menu & centered logo -->
-      <div id="header-sticky" class="tp-header-3-area mt-35 z-index-5">
+      <div id="header-sticky" class="tp-header-3-area mt-35 z-index-5" style="background: transparent; box-shadow: none;">
             <div class="container-fluid">
 
                <!-- Mobile header: centered logo + custom hamburger -->
@@ -1087,7 +1087,7 @@
                               </span>
                            </span>
                            <h4 class="tp-section-title-90 tp_text_invert tp_fade_bottom text-center" style="font-size: 60px;">
-                              We are a interior design studio based in Pune. We specialize in residential, commercial, and bespoke <br>interior experiences <span> <br></span>
+                              We are a luxury interior design studio based in Pune. We specialize in residential, commercial, and bespoke <br>interior experiences <span> <br></span>
                            </h4>
                         </div>
                      </div>
@@ -2555,50 +2555,39 @@
          return; // Fail silently if ScrollTrigger isn't loaded
       }
 
-      var isWindows = document.documentElement.classList.contains('is-windows') || /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
-
       // Initial visual state
-      const setScale = gsap.quickSetter(daText, 'scale');
-      const overlayStyle = overlay.style;
-      const indicatorStyle = scrollIndicator ? scrollIndicator.style : null;
-
-      setScale(1);
-      overlayStyle.opacity = '1';
-      if (indicatorStyle) indicatorStyle.opacity = '1';
-
-      const minScale = 1;
-      const maxScale = isWindows ? 3.6 : 4.2;
-      const endDistance = isWindows ? '+=200%' : '+=260%';
-      const scrubValue = isWindows ? 0.35 : true;
+      gsap.set(daText, { scale: 1 });
+      overlay.style.opacity = 1;
+      if (scrollIndicator) scrollIndicator.style.opacity = 1;
 
       ScrollTrigger.create({
          trigger: section,
          start: 'top top',
-         end: endDistance, // keep section pinned a bit longer than the animation
+         end: '+=260%', // keep section pinned a bit longer than the animation
          pin: section,
-         scrub: scrubValue,
-         anticipatePin: 1,
-         invalidateOnRefresh: true,
+         scrub: true,
          onUpdate: function(self) {
             // Use only the first ~70% of the pinned range for the animation
             const progressFull = self.progress; // 0 -> 1 over the whole pinned distance
             const progress = Math.min(progressFull / 0.7, 1); // 0 -> 1 within first 70%
 
             // Grow Mask.svg smoothly via scale
+            const minScale = 1;
+            const maxScale = 4.2;
             const currentScale = minScale + (maxScale - minScale) * progress;
-            setScale(currentScale);
+            gsap.set(daText, { scale: currentScale });
 
             // Fade out overlay gradually from 40% to ~90% progress
             if (progress > 0.4) {
                const fadeProgress = (progress - 0.4) / 0.5;
-               overlayStyle.opacity = String(Math.max(1 - fadeProgress, 0));
+               overlay.style.opacity = Math.max(1 - fadeProgress, 0);
             } else {
-               overlayStyle.opacity = '1';
+               overlay.style.opacity = 1;
             }
 
             // Fade out scroll indicator early
-            if (indicatorStyle) {
-               indicatorStyle.opacity = String(Math.max(1 - progress * 1.5, 0));
+            if (scrollIndicator) {
+               scrollIndicator.style.opacity = Math.max(1 - progress * 1.5, 0);
             }
          }
       });
@@ -2627,8 +2616,6 @@
       }
       if (typeof ScrollTrigger === 'undefined') return;
 
-      var isWindows = document.documentElement.classList.contains('is-windows') || /Win/i.test(navigator.platform) || /Windows/i.test(navigator.userAgent);
-
       // simple helpers
       const clamp = function(v, min, max) {
          return v < min ? min : (v > max ? max : v);
@@ -2636,8 +2623,6 @@
       const lerp = function(a, b, t) {
          return a + (b - a) * t;
       };
-
-      const easeOut = gsap.parseEase ? gsap.parseEase('power2.out') : function(t) { return t; };
 
       // Initial states
       gsap.set(worldLines, {
@@ -2656,39 +2641,12 @@
          });
       }
 
-      // Prebuild fast setters to reduce per-frame overhead
-      const worldSetters = worldLines.map(function(el) {
-         return {
-            x: gsap.quickSetter(el, 'xPercent'),
-            y: gsap.quickSetter(el, 'y', 'px'),
-            scale: gsap.quickSetter(el, 'scale'),
-            opacity: gsap.quickSetter(el, 'opacity')
-         };
-      });
-      const pointSetters = mapPoints.map(function(el) {
-         return {
-            opacity: gsap.quickSetter(el, 'opacity'),
-            y: gsap.quickSetter(el, 'y', 'px')
-         };
-      });
-      const lineSetters = mapLines.map(function(el) {
-         return gsap.quickSetter(el, 'scaleY');
-      });
-      const ctaSetters = cta
-         ? {
-              opacity: gsap.quickSetter(cta, 'opacity'),
-              y: gsap.quickSetter(cta, 'y', 'px')
-           }
-         : null;
-
       ScrollTrigger.create({
          trigger: section,
          start: 'top top',
-         end: isWindows ? '+=260%' : '+=400%',
-         scrub: isWindows ? 0.45 : true,
+         end: '+=400%',
+         scrub: true,
          pin: section,
-         anticipatePin: 1,
-         invalidateOnRefresh: true,
          onUpdate(self) {
             const p = self.progress; // 0 -> 1 over entire combined section
 
@@ -2698,8 +2656,7 @@
             const mapPhase = clamp((p - textSplit) / (1 - textSplit), 0, 1);
 
             // --- TEXT PHASE ---
-            for (let index = 0; index < worldLines.length; index++) {
-               const setters = worldSetters[index];
+            worldLines.forEach(function(line, index) {
                const offset = index * 0.08; // small stagger between lines
                let local = clamp(textPhase - offset, 0, 1);
 
@@ -2707,14 +2664,10 @@
                const x = lerp(220, -260, local);
 
                // extra motion per line: subtle vertical drift + scale pulse
-               let y = 0;
-               let scale = 1;
-               if (!isWindows) {
-                  const wave = Math.sin(local * Math.PI); // 0 at edges, 1 at center
-                  const direction = index === 0 ? -1 : (index === worldLines.length - 1 ? 1 : 0); // top up, bottom down
-                  y = direction * wave * 20; // pixels
-                  scale = 1 + wave * 0.04; // gentle grow towards center
-               }
+               const wave = Math.sin(local * Math.PI); // 0 at edges, 1 at center
+               const direction = index === 0 ? -1 : (index === worldLines.length - 1 ? 1 : 0); // top up, bottom down
+               const y = direction * wave * 20; // pixels
+               const scale = 1 + wave * 0.04; // gentle grow towards center
 
                // opacity: fade in, hold, then fade out
                let alpha;
@@ -2726,43 +2679,48 @@
                   alpha = 1;
                }
 
-               setters.x(x);
-               setters.y(y);
-               setters.scale(scale);
-               setters.opacity(alpha);
-            }
+               gsap.set(line, {
+                  xPercent: x,
+                  y: y,
+                  scale: scale,
+                  opacity: alpha
+               });
+            });
 
             // After text phase is complete, ensure text is fully hidden
             if (textPhase >= 1) {
-               for (let i = 0; i < worldSetters.length; i++) {
-                  worldSetters[i].opacity(0);
-               }
+               gsap.set(worldLines, { opacity: 0 });
             }
 
             // --- MAP PHASE ---
             const total = mapPoints.length;
-            for (let index = 0; index < total; index++) {
+            mapPoints.forEach(function(point, index) {
+               const line = mapLines[index];
                const start = index / total;
                const end = (index + 1) / total;
 
                let local = clamp((mapPhase - start) / (end - start), 0, 1);
-               const eased = easeOut(local);
+               const eased = gsap.parseEase('power2.out')(local);
 
-               if (lineSetters[index]) {
-                  lineSetters[index](eased);
+               if (line) {
+                  gsap.set(line, { scaleY: eased });
                }
 
-               pointSetters[index].opacity(eased);
-               pointSetters[index].y((1 - eased) * 18);
-            }
+               gsap.set(point, {
+                  opacity: eased,
+                  y: (1 - eased) * 18
+               });
+            });
 
             // CTA appears only during map phase, after cities start showing
-            if (cta && ctaSetters) {
+            if (cta) {
                const showStart = 0.15; // after first few cities
                let alpha = clamp((mapPhase - showStart) / (1 - showStart), 0, 1);
-               ctaSetters.opacity(alpha);
-               ctaSetters.y((1 - alpha) * 16);
-               cta.style.pointerEvents = alpha > 0.9 ? 'auto' : 'none';
+               gsap.set(cta, {
+                  opacity: alpha,
+                  y: (1 - alpha) * 16,
+                  pointerEvents: alpha > 0.9 ? 'auto' : 'none'
+               });
             }
          }
       });

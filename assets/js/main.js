@@ -40,31 +40,6 @@
 	var SplitText = window.SplitText;
 	var ScrollMagic = window.ScrollMagic;
 
-	// Platform hint for performance tuning (Windows browsers often exhibit
-	// worse jank with heavy blur/scroll effects).
-	var daIsWindows = false;
-	try {
-		var platform = navigator.platform || "";
-		var ua = navigator.userAgent || "";
-		daIsWindows = /Win/i.test(platform) || /Windows/i.test(ua);
-	} catch (e) {
-		daIsWindows = false;
-	}
-	window.daIsWindows = daIsWindows;
-	try {
-		if (daIsWindows && document && document.documentElement) {
-			document.documentElement.classList.add('is-windows');
-		}
-	} catch (e) {}
-
-	// ScrollTrigger performance defaults (safe; should not change visuals)
-	if (ScrollTrigger && typeof ScrollTrigger.config === 'function') {
-		ScrollTrigger.config({
-			limitCallbacks: true,
-			ignoreMobileResize: true,
-		});
-	}
-
 	// 08. Nice Select Js
 	$('select').niceSelect();
 
@@ -128,18 +103,14 @@
 
 	///////////////////////////////////////////////////
 	// 07. Sticky Header Js
-	function updateStickyHeader() {
-		var $header = $("#header-sticky");
-		if (!$header.length) return;
+	windowOn.on('scroll', function () {
 		var scroll = windowOn.scrollTop();
 		if (scroll < 20) {
-			$header.removeClass("header-sticky");
+			$("#header-sticky").removeClass("header-sticky");
 		} else {
-			$header.addClass("header-sticky");
+			$("#header-sticky").addClass("header-sticky");
 		}
-	}
-	windowOn.on('scroll', updateStickyHeader);
-	updateStickyHeader();
+	});
 
 	// Auto-hide header on scroll down, show on scroll up (shared across pages)
 	(function () {
@@ -1898,7 +1869,16 @@
 		// Windows machines (especially with wheel mice) can struggle
 		// with JS-based smooth scrolling, so only enable ScrollSmoother
 		// on non-Windows platforms and fall back to native scroll on Windows.
-		if (!daIsWindows && ScrollSmoother && typeof ScrollSmoother.create === 'function') {
+		var isWindows = false;
+		try {
+			var platform = navigator.platform || "";
+			var ua = navigator.userAgent || "";
+			isWindows = /Win/i.test(platform) || /Windows/i.test(ua);
+		} catch (e) {
+			isWindows = false;
+		}
+
+		if (!isWindows && ScrollSmoother && typeof ScrollSmoother.create === 'function') {
 			let smoother = ScrollSmoother.create({
 				smooth: 2,
 				effects: true,
@@ -3025,42 +3005,34 @@
 	});
 
 
-	var hoverBtns = (gsap && gsap.utils && typeof gsap.utils.toArray === 'function')
-		? gsap.utils.toArray(".tp-hover-btn-wrapper")
-		: [];
+	var hoverBtns = gsap.utils.toArray(".tp-hover-btn-wrapper");
 
-	const hoverBtnItem = (gsap && gsap.utils && typeof gsap.utils.toArray === 'function')
-		? gsap.utils.toArray(".tp-hover-btn-item")
-		: [];
-
+	const hoverBtnItem = gsap.utils.toArray(".tp-hover-btn-item");
 	hoverBtns.forEach((btn, i) => {
-		var target = hoverBtnItem[i];
-		if (!target || !gsap || typeof gsap.quickTo !== 'function') return;
-
-		var rect = btn.getBoundingClientRect();
-		function updateRect() {
-			rect = btn.getBoundingClientRect();
-		}
-		btn.addEventListener('mouseenter', updateRect);
-		window.addEventListener('resize', updateRect);
-
-		var xTo = gsap.quickTo(target, 'x', { duration: 1, ease: 'power2.out' });
-		var yTo = gsap.quickTo(target, 'y', { duration: 1, ease: 'power2.out' });
-		var movement = 60;
-
-		$(btn).on('mousemove', function (e) {
-			// Use client coordinates + cached rect (faster than jQuery offset)
-			var relX = (e.clientX || 0) - rect.left;
-			var relY = (e.clientY || 0) - rect.top;
-			var w = rect.width || 1;
-			var h = rect.height || 1;
-			xTo(((relX - w / 2) / w) * movement);
-			yTo(((relY - h / 2) / h) * movement);
+		$(btn).mousemove(function (e) {
+			callParallax(e);
 		});
+		function callParallax(e) {
+			parallaxIt(e, hoverBtnItem[i], 60);
+		}
 
-		$(btn).on('mouseleave', function () {
-			xTo(0);
-			yTo(0);
+		function parallaxIt(e, target, movement) {
+			var $this = $(btn);
+			var relX = e.pageX - $this.offset().left;
+			var relY = e.pageY - $this.offset().top;
+
+			gsap.to(target, 1, {
+				x: ((relX - $this.width() / 2) / $this.width()) * movement,
+				y: ((relY - $this.height() / 2) / $this.height()) * movement,
+				ease: Power2.easeOut,
+			});
+		}
+		$(btn).mouseleave(function (e) {
+			gsap.to(hoverBtnItem[i], 1, {
+				x: 0,
+				y: 0,
+				ease: Power2.easeOut,
+			});
 		});
 	});
 
@@ -3423,12 +3395,10 @@
 		}
 	}
 
-	hoverItem.forEach((item) => {
-		let rafId = 0;
+	hoverItem.forEach((item, i) => {
 		item.addEventListener("mousemove", (e) => {
-			if (rafId) cancelAnimationFrame(rafId);
-			rafId = requestAnimationFrame(() => moveImage(e, item));
-		}, { passive: true });
+			setInterval(moveImage(e, item), 100);
+		});
 	});
 	// hover reveal end
 

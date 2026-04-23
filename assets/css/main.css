@@ -279,12 +279,6 @@ body {
   line-height: 26px;
 }
 
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 a {
   text-decoration: none;
 }
@@ -29373,14 +29367,6 @@ body.project-detail-open {
   .tp-sketch-layout-inner {
     padding: 80px 0 90px;
   }
-}
-
-/* Windows performance mode: backdrop-filter can be very costly on Windows browsers */
-html.is-windows *,
-html.is-windows *::before,
-html.is-windows *::after {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */
