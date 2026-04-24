@@ -11194,6 +11194,9 @@ body.page-inner .da-header-quote-btn:hover {
 .tp-footer-2-contact-item span:hover a {
   color: rgba(255, 255, 255, 0.9);
 }
+.tp-footer-2-contact-item a[href^="mailto:"] {
+  text-transform: none;
+}
 .tp-footer-2-input input {
   background-color: transparent;
   border: none;

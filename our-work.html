@@ -85,6 +85,11 @@
       #header-sticky .tp-header-3-menu > nav > ul {
          justify-content: center;
       }
+
+      /* Footer: keep email in lowercase (don't inherit uppercase transform) */
+      .tp-footer-2-contact-item a[href^="mailto:"] {
+         text-transform: none !important;
+      }
       
 
       /* Hero */
@@ -1217,6 +1222,24 @@
             'jadhav-site': 'Jadhav site.jpg'
          };
 
+         var PROJECT_TITLE_OVERRIDES = {
+            'chande-restaurant': 'Sahara Resto Bar',
+            'diveagar-resort-project': 'Grand Ambience Resort',
+            'chandekar-2bhk-project': '2BHK Project',
+            'kondhwa-site-jadhav': 'Kondhwa Site',
+            'kudje-5-bhk-bunglow': '5 Bhk Bunglow',
+            'raut3-bhk': '3 BHK',
+            'shirwal-site-vadewale': 'Shirwal Site',
+            'premium-apartment-ranjit': 'Premium Apartment',
+            'bavdhan-pebbles-sonune-site': 'Bavdhan Pebbles Site',
+            'ganga-legend-shinde': 'Ganga Legend',
+            'patil-site-pashan-near-to-office': 'Pashan Site',
+            'jadhav-site': '2bhk site',
+            'aambegav-inamdar': 'Aambegav site',
+            'ambegaon-inamdar': 'Aambegav site',
+            'joshi': '2bhk site'
+         };
+
          var PROJECT_META_OVERRIDES = {
             'chandekar-2bhk-project': { city: 'pune', style: 'modern-luxe' },
             'kharadi1-site-styling-one': { city: 'pune', style: 'warm-minimal' },
@@ -1263,6 +1286,8 @@
             'mahabaleshwar-treetops-2': 'commercial',
             'treetop-manali': 'commercial',
             'airbnb-indilife-japand': 'commercial',
+            'patil-site-pashan-near-to-office': 'renovation',
+            'warje': 'renovation',
             'dsk': 'renovation',
             'aambegav-inamdar': 'renovation',
             'ambegaon-inamdar': 'renovation'
@@ -1299,7 +1324,7 @@
                   category = PROJECT_CATEGORY_OVERRIDES[id];
                }
 
-               var title = toTitleCase(baseName);
+               var title = PROJECT_TITLE_OVERRIDES[id] || toTitleCase(baseName);
 
                var overrideFile = PROJECT_IMAGE_OVERRIDES[id];
                var imgFile = PROJECT_IMG_BASE + (overrideFile || (rawName + '.webp'));
